@@ -27,27 +27,11 @@
 	"telephone": "+33970713693",
 	"email": "contact@mcj-courtage.com",
 	"legalName": "MCJ COURTAGE",
-	"address": {
-		"@type": "PostalAddress",
-		"streetAddress": "12 rue Clément Ader",
-		"addressLocality": "Abeilhan",
-		"addressRegion": "Hérault",
-		"addressCountry": "FR",
-		"postalCode": "34290"
-	},
-	"areaServed": [
-		{ "@type": "City", "name": "Marseille" },
-		{ "@type": "AdministrativeArea", "name": "Bouches-du-Rhône" },
-		{ "@type": "Country", "name": "France" }
-	],
+	"address": { "@type": "PostalAddress", "streetAddress": "12 rue Clément Ader", "addressLocality": "Abeilhan", "addressRegion": "Hérault", "addressCountry": "FR", "postalCode": "34290" },
+	"areaServed": [ { "@type": "City", "name": "Marseille" }, { "@type": "AdministrativeArea", "name": "Bouches-du-Rhône" }, { "@type": "Country", "name": "France" } ],
 	"knowsLanguage": ["ar", "fr"],
 	"priceRange": "€€",
-	"openingHoursSpecification": {
-		"@type": "OpeningHoursSpecification",
-		"dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-		"opens": "09:00",
-		"closes": "18:00"
-	}
+	"openingHoursSpecification": { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "18:00" }
 }</script>
 	<script type="application/ld+json">{
 	"@context": "https://schema.org",
@@ -60,124 +44,193 @@
 		{ "@type": "Question", "name": "ما هي الوثائق اللازمة لتأمين سيارة بلوحة أجنبية؟", "acceptedAnswer": { "@type": "Answer", "text": "تحتاج إلى البطاقة الرمادية (شهادة التسجيل) للسيارة الأجنبية، وبطاقة هوية السائق، ورخصة القيادة. لا يستغرق الاكتتاب سوى بضع دقائق." } }
 	]
 }</script>
+	<script type="text/javascript">
+		(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","x7huufw34g");
+	</script>
 	<style>
+	:root{--orange:#ff6701;--orange-d:#e05d00;--gold:#fdbb28;--navy:#0f1b3d;--navy-2:#1f2a44;--ink:#1d2433;--muted:#5b6577;--bg-soft:#f5f7fb;--radius:16px;--shadow:0 10px 30px rgba(15,27,61,.10)}
 	*{box-sizing:border-box}
-	body{margin:0;font-family:'Segoe UI',Tahoma,Arial,sans-serif;color:#222;background:#fff;line-height:1.7}
-	a{color:#ff6701}
-	.ata-lang-switch{position:fixed;top:8px;left:8px;z-index:9999;background:#ff6701;color:#fff;font-weight:700;font-size:14px;padding:7px 12px;border-radius:20px;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.3)}
-	.ata-lang-switch:hover{background:#e05d00}
-	header.hero{background:linear-gradient(135deg,#1f2a44,#39507e);color:#fff;text-align:center;padding:70px 18px 56px}
-	header.hero img{max-width:170px;margin-bottom:14px}
-	header.hero h1{font-size:30px;margin:8px 0 12px}
-	header.hero p{font-size:19px;margin:0 auto;max-width:620px;opacity:.95}
-	.cta-btn{display:inline-block;font-size:19px;font-weight:700;background:#fdbb28;color:#222;border:none;border-radius:12px;cursor:pointer;padding:16px 28px;margin-top:22px;box-shadow:0 4px 12px rgba(0,0,0,.25);transition:all .2s}
-	.cta-btn:hover{background:#e0a800;transform:translateY(-1px)}
-	.wrap{max-width:960px;margin:0 auto;padding:0 18px}
-	section{padding:44px 0}
-	section h2{color:#ff6701;font-size:25px;text-align:center;margin-bottom:8px}
-	.sep{width:60px;height:3px;background:#fdbb28;margin:10px auto 26px;border-radius:3px}
-	.intro{font-size:18px;text-align:center;max-width:760px;margin:0 auto}
-	.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px;margin-top:10px}
-	.card{background:#fafafa;border:1px solid #eee;border-top:4px solid #ff6701;border-radius:10px;padding:20px}
-	.card h3{margin:0 0 10px;color:#1f2a44;font-size:19px}
-	.card ul{margin:0;padding-inline-start:20px}
+	html{scroll-behavior:smooth}
+	body{margin:0;font-family:'Segoe UI',Tahoma,Arial,sans-serif;color:var(--ink);line-height:1.8;background:#fff;-webkit-font-smoothing:antialiased}
+	a{color:var(--orange);text-decoration:none}
+	img{max-width:100%;display:block}
+	.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+	.btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:17px;border:none;border-radius:999px;cursor:pointer;padding:15px 26px;transition:transform .15s,box-shadow .15s,background .15s;text-align:center}
+	.btn-primary{background:var(--orange);color:#fff;box-shadow:0 8px 20px rgba(255,103,1,.35)}
+	.btn-primary:hover{background:var(--orange-d);transform:translateY(-2px)}
+	.btn-ghost{background:rgba(255,255,255,.14);color:#fff;border:1.5px solid rgba(255,255,255,.55)}
+	.btn-ghost:hover{background:rgba(255,255,255,.24)}
+	.btn-call{background:var(--gold);color:#15233f}
+	.btn-call:hover{background:#f0a800;transform:translateY(-2px)}
+
+	header.site{position:sticky;top:0;z-index:900;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid #eef1f6}
+	.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+	.brand{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--navy);font-size:17px}
+	.brand img{height:38px;width:auto}
+	.nav-links{display:flex;align-items:center;gap:24px}
+	.nav-links a.lk{color:var(--navy-2);font-weight:600;font-size:15px}
+	.nav-links a.lk:hover{color:var(--orange)}
+	.lang{font-weight:700;font-size:14px;border:1.5px solid #dfe4ee;border-radius:999px;padding:6px 12px;color:var(--navy)}
+	.lang:hover{border-color:var(--orange);color:var(--orange)}
+	.nav-cta{background:var(--orange);color:#fff;border-radius:999px;padding:9px 16px;font-weight:700;font-size:14px}
+	@media(max-width:860px){.nav-links a.lk{display:none}}
+
+	.hero{position:relative;color:#fff;text-align:center;padding:96px 20px 88px;background:linear-gradient(180deg,rgba(8,15,35,.72),rgba(8,15,35,.80)),url('../images/hero-marseille.jpg') center/cover no-repeat,linear-gradient(135deg,#0f1b3d,#26406f 60%,#356a9c)}
+	.hero h1{font-size:clamp(28px,5vw,46px);line-height:1.25;margin:0 auto 14px;max-width:880px;font-weight:800;text-shadow:0 2px 18px rgba(0,0,0,.35)}
+	.hero .lead{font-size:clamp(17px,2.4vw,21px);max-width:700px;margin:0 auto 26px;opacity:.96}
+	.hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+	.badges{display:flex;gap:10px 22px;justify-content:center;flex-wrap:wrap;margin-top:30px;font-size:14.5px;font-weight:600}
+	.badges span{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.12);padding:8px 14px;border-radius:999px}
+
+	section{padding:62px 0}
+	.section-soft{background:var(--bg-soft)}
+	.eyebrow{text-align:center;color:var(--orange);font-weight:800;letter-spacing:.04em;font-size:14px;margin-bottom:8px}
+	h2.sec{text-align:center;font-size:clamp(24px,3.4vw,32px);font-weight:800;color:var(--navy);margin:0 auto 14px;max-width:760px;line-height:1.4}
+	.sec-intro{text-align:center;color:var(--muted);max-width:740px;margin:0 auto 40px;font-size:17px}
+
+	.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+	.step{background:#fff;border:1px solid #eef1f6;border-radius:var(--radius);padding:30px 24px;text-align:center;box-shadow:var(--shadow);position:relative}
+	.step .num{position:absolute;top:-16px;right:50%;transform:translateX(50%);width:34px;height:34px;border-radius:50%;background:var(--orange);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:15px}
+	.step .ico{font-size:42px;margin:6px 0 12px}
+	.step h3{margin:0 0 8px;font-size:19px;color:var(--navy)}
+	.step p{margin:0;color:var(--muted);font-size:15.5px}
+
+	.plates{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:6px}
+	.plate{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #e7ebf3;border-radius:12px;padding:14px 20px;font-weight:700;color:var(--navy);box-shadow:0 4px 14px rgba(15,27,61,.06)}
+	.plate b{background:var(--navy);color:var(--gold);border-radius:6px;padding:4px 9px;font-size:14px}
+
+	.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
+	.card{background:#fff;border:1px solid #eef1f6;border-top:4px solid var(--orange);border-radius:var(--radius);padding:26px 22px;box-shadow:var(--shadow);transition:transform .15s}
+	.card:hover{transform:translateY(-4px)}
+	.card .ico{font-size:32px;margin-bottom:10px}
+	.card h3{margin:0 0 10px;font-size:18px;color:var(--navy)}
+	.card ul{margin:0;padding-inline-start:18px;color:var(--muted);font-size:15px}
 	.card li{margin-bottom:6px}
-	.alt{background:#f5f7fb}
-	details{background:#fff;border:1px solid #eee;border-right:4px solid #fdbb28;border-radius:8px;margin-bottom:12px;padding:0 16px;box-shadow:0 2px 6px rgba(0,0,0,.06)}
-	summary{cursor:pointer;font-weight:700;font-size:17px;padding:16px 0;list-style:none}
+
+	.cta-band{background:linear-gradient(135deg,var(--navy),var(--navy-2));color:#fff;text-align:center;border-radius:24px;padding:46px 26px;box-shadow:var(--shadow)}
+	.cta-band h2{font-size:clamp(23px,3.2vw,30px);margin:0 0 10px}
+	.cta-band p{opacity:.9;margin:0 0 24px;font-size:17px}
+
+	details{background:#fff;border:1px solid #eef1f6;border-right:4px solid var(--gold);border-radius:12px;margin-bottom:12px;padding:0 18px;box-shadow:0 4px 14px rgba(15,27,61,.05)}
+	summary{cursor:pointer;font-weight:700;font-size:17px;padding:17px 0;list-style:none;color:var(--navy);display:flex;justify-content:space-between;gap:12px}
 	summary::-webkit-details-marker{display:none}
-	summary::after{content:"+";float:left;color:#ff6701;font-size:22px}
+	summary::after{content:"+";color:var(--orange);font-size:24px;line-height:1}
 	details[open] summary::after{content:"\2212"}
-	.faq-a{padding:0 0 16px;color:#444}
-	.contact{background:#1f2a44;color:#fff;text-align:center}
-	.contact h2{color:#fdbb28}
-	.contact a{color:#fdbb28;font-size:22px;font-weight:700;text-decoration:none}
-	footer{background:#141c2e;color:#9fb0cc;text-align:center;font-size:13px;padding:22px}
-	footer a{color:#cdd9ee}
-	/* modal */
-	.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:99999;justify-content:center;align-items:center}
+	.faq-a{padding:0 0 18px;color:var(--muted)}
+
+	.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+	.contact-card{background:#fff;border:1px solid #eef1f6;border-radius:var(--radius);padding:24px;text-align:center;box-shadow:var(--shadow)}
+	.contact-card .ico{font-size:30px;margin-bottom:8px}
+	.contact-card a{font-weight:700;color:var(--navy);font-size:18px}
+	.contact-card small{color:var(--muted)}
+
+	footer.site{background:var(--navy);color:#aeb9d0;padding:40px 0 26px;font-size:14px}
+	footer.site .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;margin-bottom:24px}
+	footer.site h4{color:#fff;font-size:15px;margin:0 0 12px}
+	footer.site a{color:#cdd9ee}
+	footer.site .legal{border-top:1px solid rgba(255,255,255,.12);padding-top:18px;text-align:center;font-size:13px;color:#8b97b3}
+
+	.modal-overlay{display:none;position:fixed;inset:0;background:rgba(8,12,28,.7);z-index:9999;justify-content:center;align-items:center;padding:12px}
 	.modal-overlay.show{display:flex}
-	.modal-content{background:#fff;width:820px;max-width:95%;height:93vh;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 10px 40px rgba(0,0,0,.35)}
-	.modal-header{background:#f2f2f2;padding:10px 14px;text-align:left;border-bottom:1px solid #ddd}
-	.modal-header button{background:transparent;border:none;font-size:32px;line-height:1;cursor:pointer;color:#333}
+	.modal-content{background:#fff;width:840px;max-width:100%;height:92vh;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+	.modal-header{background:#f2f4f8;padding:10px 14px;text-align:left;border-bottom:1px solid #e3e7ef}
+	.modal-header button{background:transparent;border:none;font-size:30px;line-height:1;cursor:pointer;color:#333}
 	.modal-body{flex:1;overflow:hidden}
 	.modal-body iframe{width:100%;height:100%;border:none;display:block}
 	body.no-scroll{overflow:hidden}
-	@media(max-width:600px){header.hero h1{font-size:24px}.modal-content{width:96%;height:94vh}}
+
+	@media(max-width:760px){.steps{grid-template-columns:1fr}section{padding:48px 0}}
 	</style>
 </head>
 <body>
-	<a href="../" class="ata-lang-switch" lang="fr" hreflang="fr" title="Version française">🇫🇷 Français</a>
-
-	<header class="hero">
-		<img src="../images/logo_big_white.png" alt="شعار تأمين الحدود مرسيليا" />
-		<h1>تأمين الحدود في مرسيليا للسيارات الأجنبية</h1>
-		<p>لوحة DZ أو TN أو MA نزلت من الباخرة: شهادة فورية، من 1 إلى 90 يوماً، صالحة في فرنسا وأوروبا.</p>
-		<button type="button" class="cta-btn cta-open">✅ ابدأ الاكتتاب الآن</button>
+	<header class="site">
+		<div class="wrap nav">
+			<a class="brand" href="./"><img src="../images/logo_small_orange_fuxxxh4q.png" alt="شعار تأمين الحدود مرسيليا" /> <span>تأمين الحدود مرسيليا</span></a>
+			<nav class="nav-links">
+				<a class="lk" href="#etapes">كيف يعمل</a>
+				<a class="lk" href="#garanties">الضمانات</a>
+				<a class="lk" href="#faq">الأسئلة</a>
+				<a class="lk" href="#contact">اتصل بنا</a>
+				<a class="lang" href="../" lang="fr" hreflang="fr">🇫🇷 Français</a>
+				<a class="nav-cta cta-open" href="#souscrire">اكتتب الآن</a>
+			</nav>
+		</div>
 	</header>
 
-	<section>
+	<section class="hero">
 		<div class="wrap">
-			<h2>تأمينك عند النزول من الباخرة في مرسيليا</h2>
-			<div class="sep"></div>
-			<p class="intro">هل وصلت إلى ميناء مرسيليا بالباخرة من الجزائر أو تونس أو المغرب بسيارتك المسجلة في الخارج؟ <strong>تأمين الحدود</strong> إجباري للتنقل في فرنسا فور خروجك من الباخرة. نؤمّن سيارتك ذات اللوحة الأجنبية (<strong>DZ، TN، MA</strong>) تأميناً مؤقتاً، في كل أنحاء فرنسا وأوروبا. الاكتتاب بالكامل عبر الإنترنت، <strong>شهادة فورية</strong>، من 1 إلى 90 يوماً.</p>
+			<h1>تأمين الحدود في مرسيليا لسيارتك الأجنبية</h1>
+			<p class="lead">هل نزلت من الباخرة بلوحة <strong>DZ أو TN أو MA</strong>؟ سِر بشكل قانوني في فرنسا: شهادة فورية، من 1 إلى 90 يوماً.</p>
+			<div class="hero-cta">
+				<button type="button" class="btn btn-primary cta-open">⚡ اكتتب عبر الإنترنت</button>
+				<a class="btn btn-ghost" href="tel:+33970713693" dir="ltr">📞 09 70 71 36 93</a>
+			</div>
+			<div class="badges">
+				<span>✅ شهادة فورية</span>
+				<span>🛡️ وسيط ORIAS 26008651</span>
+				<span>📅 من 1 إلى 90 يوماً</span>
+				<span>🇪🇺 فرنسا وأوروبا</span>
+			</div>
 		</div>
 	</section>
 
-	<section class="alt">
+	<section id="etapes">
 		<div class="wrap">
-			<h2>ضماناتنا الأساسية</h2>
-			<div class="sep"></div>
+			<div class="eyebrow">بسيط وسريع</div>
+			<h2 class="sec">تأمينك في 3 خطوات</h2>
+			<p class="sec-intro">من النزول في مرسيليا حتى الطريق، نتكفّل بكل شيء في بضع دقائق.</p>
+			<div class="steps">
+				<div class="step"><div class="num">1</div><div class="ico">🚢</div><h3>تنزل في مرسيليا</h3><p>تخرج سيارتك من الباخرة (الجزائر، وهران، بجاية، سكيكدة، تونس…) بلوحتها الأجنبية.</p></div>
+				<div class="step"><div class="num">2</div><div class="ico">⚡</div><h3>تكتتب عبر الإنترنت</h3><p>في 5 دقائق، تستلم شهادة التأمين فوراً عبر البريد الإلكتروني.</p></div>
+				<div class="step"><div class="num">3</div><div class="ico">🛣️</div><h3>تقود بأمان</h3><p>تتنقّل بشكل قانوني في كل أنحاء فرنسا وأوروبا، من 1 إلى 90 يوماً.</p></div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section-soft" id="pour-qui">
+		<div class="wrap">
+			<div class="eyebrow">لمن؟</div>
+			<h2 class="sec">تأمين مصمَّم لسيارات المغرب العربي</h2>
+			<p class="sec-intro">وصلت من المغرب العربي بالباخرة وسيارتك غير مؤمّنة في فرنسا؟ تأمين الحدود إجباري فور خروجك من الباخرة لاجتياز مراقبة الشرطة والجمارك.</p>
+			<div class="plates">
+				<div class="plate"><b>DZ</b> سيارة جزائرية</div>
+				<div class="plate"><b>TN</b> سيارة تونسية</div>
+				<div class="plate"><b>MA</b> سيارة مغربية</div>
+				<div class="plate"><b>WW</b> سيارة عابرة / مستوردة</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="garanties">
+		<div class="wrap">
+			<div class="eyebrow">ضماناتك</div>
+			<h2 class="sec">أساسيات تغطيتك</h2>
 			<div class="grid">
-				<div class="card">
-					<h3>المسؤولية المدنية</h3>
-					<ul>
-						<li>المسؤولية المدنية طوال مدة العقد</li>
-						<li>أضرار جسدية غير محدودة</li>
-						<li>أضرار مادية مرتبطة بالمسؤولية المدنية</li>
-					</ul>
-				</div>
-				<div class="card">
-					<h3>الحماية القانونية</h3>
-					<ul>
-						<li>استشارة قانونية والتدخل لدى الطرف الخصم</li>
-						<li>البحث عن حل ودّي</li>
-						<li>المتابعة القضائية مع محامٍ</li>
-						<li>الدفاع الجزائي والطعون</li>
-					</ul>
-				</div>
-				<div class="card">
-					<h3>المساعدة</h3>
-					<ul>
-						<li>السيارات أقل من 10 سنوات: حادث مادي، سرقة، محاولة سرقة، تخريب وعطل.</li>
-						<li>السيارات أكثر من 10 سنوات: حادث مادي، سرقة، محاولة سرقة وتخريب.</li>
-					</ul>
-				</div>
-				<div class="card">
-					<h3>ضمان الرضا</h3>
-					<ul>
-						<li>عقود تُنجز عبر الإنترنت في أقل من 5 دقائق.</li>
-						<li>متابعة المكتتب في إجراءاته.</li>
-						<li>عقود تُسلَّم بصيغة قابلة للتحميل.</li>
-					</ul>
+				<div class="card"><div class="ico">⚖️</div><h3>المسؤولية المدنية</h3><ul><li>المسؤولية المدنية طوال مدة العقد</li><li>أضرار جسدية غير محدودة</li><li>أضرار مادية مرتبطة بالمسؤولية المدنية</li></ul></div>
+				<div class="card"><div class="ico">🛡️</div><h3>الحماية القانونية</h3><ul><li>استشارة قانونية والتدخل لدى الطرف الخصم</li><li>البحث عن حل ودّي</li><li>المتابعة القضائية مع محامٍ</li><li>الدفاع الجزائي والطعون</li></ul></div>
+				<div class="card"><div class="ico">🆘</div><h3>المساعدة</h3><ul><li>أقل من 10 سنوات: حادث، سرقة، تخريب وعطل</li><li>أكثر من 10 سنوات: حادث، سرقة وتخريب</li></ul></div>
+				<div class="card"><div class="ico">⭐</div><h3>ضمان الرضا</h3><ul><li>عقد عبر الإنترنت في أقل من 5 دقائق</li><li>متابعة المكتتب</li><li>عقد قابل للتحميل فوراً</li></ul></div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section-soft" id="souscrire">
+		<div class="wrap">
+			<div class="cta-band">
+				<h2>مستعد للقيادة بشكل قانوني؟</h2>
+				<p>الاكتتاب عبر الإنترنت من الاثنين إلى الجمعة، من 09:00 إلى 18:00 — شهادة فورية.</p>
+				<div class="hero-cta">
+					<button type="button" class="btn btn-primary cta-open">⚡ ابدأ الاكتتاب الآن</button>
+					<a class="btn btn-call" href="tel:+33970713693" dir="ltr">📞 09 70 71 36 93</a>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<section>
-		<div class="wrap" style="text-align:center">
-			<h2>الاكتتاب عبر الإنترنت فوراً</h2>
-			<div class="sep"></div>
-			<p class="intro">من الاثنين إلى الجمعة من الساعة 09:00 إلى 18:00. تحتاج إلى تأمين لمدة 1 إلى 90 يوماً لسيارة جزائرية أو تونسية أو مغربية نزلت من الباخرة في مرسيليا؟ املأ استمارة الاكتتاب واستلم شهادتك فوراً.</p>
-			<button type="button" class="cta-btn cta-open">✅ ابدأ الاكتتاب الآن</button>
-		</div>
-	</section>
-
-	<section class="alt">
-		<div class="wrap">
-			<h2>الأسئلة الشائعة — تأمين الحدود في مرسيليا</h2>
-			<div class="sep"></div>
+	<section id="faq">
+		<div class="wrap" style="max-width:860px">
+			<div class="eyebrow">تتساءل…</div>
+			<h2 class="sec">الأسئلة الشائعة</h2>
 			<details><summary>ما هو تأمين الحدود في مرسيليا؟</summary><div class="faq-a">تأمين الحدود هو عقد تأمين مؤقت إجباري للتنقل في فرنسا بسيارة مسجلة في الخارج (لوحة جزائرية DZ أو تونسية TN أو مغربية MA) غير مغطاة بالبطاقة الخضراء. فور النزول من الباخرة في مرسيليا، يجب أن تكون سيارتك مؤمّنة لاجتياز مراقبة الشرطة والجمارك.</div></details>
 			<details><summary>هل يمكن القيادة في فرنسا بسيارة مسجلة في الجزائر أو تونس؟</summary><div class="faq-a">نعم. يمكن للسيارة المسجلة في الجزائر أو تونس أو المغرب التنقل في فرنسا لمدة أقصاها 6 أشهر دون تسجيل فرنسي، شريطة أن تكون مؤمّنة بتأمين حدود ساري المفعول طوال مدة الإقامة.</div></details>
 			<details><summary>ما هي المدة التي يمكنني تأمين سيارتي خلالها؟</summary><div class="faq-a">يمكنك الاكتتاب في تأمين الحدود لمدة تتراوح من 1 إلى 90 يوماً. تُسلَّم شهادة التأمين فوراً بعد الاكتتاب عبر الإنترنت.</div></details>
@@ -186,21 +239,43 @@
 		</div>
 	</section>
 
-	<section class="contact">
+	<section class="section-soft" id="contact">
 		<div class="wrap">
-			<h2>اتصل بنا</h2>
-			<div class="sep"></div>
-			<p>MCJ COURTAGE — من الاثنين إلى الجمعة 09:00–18:00</p>
-			<p>الهاتف: <a href="tel:+33970713693" dir="ltr">09 70 71 36 93</a></p>
-			<p><a href="mailto:contact@mcj-courtage.com">contact@mcj-courtage.com</a></p>
+			<div class="eyebrow">اتصل بنا</div>
+			<h2 class="sec">سؤال قبل الاكتتاب؟</h2>
+			<div class="contact-grid">
+				<div class="contact-card"><div class="ico">📞</div><a href="tel:+33970713693" dir="ltr">09 70 71 36 93</a><br><small>الاثنين–الجمعة، 9:00–18:00</small></div>
+				<div class="contact-card"><div class="ico">✉️</div><a href="mailto:contact@mcj-courtage.com">contact@mcj-courtage.com</a><br><small>رد سريع</small></div>
+				<div class="contact-card"><div class="ico">🏢</div><span style="font-weight:700;color:var(--navy)">MCJ COURTAGE</span><br><small>وسيط ORIAS 26008651</small></div>
+			</div>
 		</div>
 	</section>
 
-	<footer>
-		<p>assurancetemporaireauto.com — ملك شركة MCJ COURTAGE — <a href="../mentions-legales.html">الشروط القانونية</a> — <a href="../">Version française</a></p>
+	<footer class="site">
+		<div class="wrap">
+			<div class="cols">
+				<div>
+					<h4>تأمين الحدود مرسيليا</h4>
+					<p>تأمين مؤقت وتأمين حدود للسيارات الأجنبية (DZ، TN، MA) القادمة بالباخرة إلى مرسيليا. فرنسا وأوروبا، من 1 إلى 90 يوماً.</p>
+				</div>
+				<div>
+					<h4>التنقل</h4>
+					<p><a href="#etapes">كيف يعمل</a><br><a href="#garanties">الضمانات</a><br><a href="#faq">الأسئلة الشائعة</a><br><a href="#contact">اتصل بنا</a></p>
+				</div>
+				<div>
+					<h4>الشركاء</h4>
+					<p><a href="https://www.jlassure.com" target="_blank" rel="noopener">JL Assure</a><br><a href="https://www.australdev.eu" target="_blank" rel="noopener">Australdev</a><br><a href="https://www.seguro-temporal.es/" target="_blank" rel="noopener">Seguro Temporal</a></p>
+				</div>
+				<div>
+					<h4>اللغة / Langue</h4>
+					<p><a href="../" lang="fr" hreflang="fr">🇫🇷 Version française</a><br><a href="../mentions-legales.html">الشروط القانونية</a></p>
+				</div>
+			</div>
+			<div class="legal">© <span id="y"></span> assurancetemporaireauto.com — ملك شركة MCJ COURTAGE — Création AUSTRALDEV</div>
+		</div>
 	</footer>
 
-	<!-- modal souscription -->
+	<!-- نافذة الاكتتاب -->
 	<div id="modal-souscription" class="modal-overlay" aria-hidden="true">
 		<div class="modal-content" role="dialog" aria-modal="true" aria-label="الاكتتاب عبر الإنترنت">
 			<div class="modal-header"><button type="button" id="btn-fermer-modal" aria-label="إغلاق">&times;</button></div>
@@ -211,6 +286,7 @@
 	</div>
 
 	<script>
+	document.getElementById('y').textContent=new Date().getFullYear();
 	(function(){
 		var modal=document.getElementById('modal-souscription');
 		var openBtns=document.querySelectorAll('.cta-open');
