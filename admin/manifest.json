@@ -1,0 +1,11 @@
+{
+	"name": "assurancetemporaireauto.com Admin",
+	"start_url": "https://assurancetemporaireauto.com/admin/",
+	"display": "standalone",
+	"background_color": "#E5E5E5",
+	"theme_color": "#F28D4F",
+	"scope": "https://assurancetemporaireauto.com/admin/",
+	"icons": [
+		{ "src": "https://assurancetemporaireauto.com/admin/images/logo_21jdgunf.png", "type": "image/png", "sizes": "126x126" }
+	]
+}

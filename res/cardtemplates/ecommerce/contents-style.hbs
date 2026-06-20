@@ -1,0 +1,421 @@
+
+    {{misc.rootSelector}} .im-cc-products-card [slot=contents] {
+        padding-top: 0px;
+        padding-bottom: {{card.txtBlock.margins.bottom}}px;
+        padding-inline-start: {{card.txtBlock.margins.left}}px;
+        padding-inline-end: {{card.txtBlock.margins.right}}px;
+    }
+
+    {{#if misc.isArrangeChangingHeightOrMasonry}}{{#if misc.isLayoutHorizontal}}
+        {{misc.rootSelector}} .im-cc-products-card [slot=contents] {
+            height: 100%;
+            box-sizing: border-box; 
+        }
+    {{/if}}{{/if}}
+
+    {{#if misc.isLayoutCoverAsBackground}}
+        {{misc.rootSelector}} .im-cc-products-card [slot=contents] {
+            background-color: rgba({{card.backgroundColor.r}},{{card.backgroundColor.g}},{{card.backgroundColor.b}},{{card.backgroundColor.a}}); 
+            margin-top: 0px;
+            margin-bottom: {{card.txtBlock.margins.bottom}}px;
+            margin-inline-start: {{card.txtBlock.margins.left}}px;
+            margin-inline-end: {{card.txtBlock.margins.right}}px;
+            padding-bottom: 20px;
+        }
+
+
+        {{misc.rootSelector}} 
+            .im-cc-products-cardlayout 
+                .im-cc-products-card 
+                    [slot=contents]    
+        {
+            position: relative;
+            z-index:1002;
+            {{#if misc.cardFixedHeight}}
+                height: {{card.txtBlock.height}}px;
+            {{/if}}
+        }
+
+    {{/if}}
+
+    {{#if misc.isArrangeChangingHeightOrMasonry}}{{#if misc.isLayoutHorizontal}}
+        {{{misc.layoutHorizontalMediaQueryStart}}}
+            {{misc.rootSelector}} .im-cc-products-cardlayout .im-cc-products-card .im-cc-products-description {
+                position: absolute;
+                bottom: 0px;
+                inset-inline-end: 0px;
+                top: 0px;
+                inset-inline-start: 0px;
+            }
+        {{#if misc.layoutHorizontalMediaQueryStart}}
+        }
+        {{/if}}
+    {{/if}}{{/if}}
+
+    {{#if misc.isArrangeChangingHeightOrMasonry}}{{#if misc.isLayoutCoverAsBackground}}
+        {{misc.rootSelector}} 
+            .im-cc-products-cardlayout 
+                .im-cc-products-card 
+                    [slot=contents] {
+            height: {{card.txtBlock.height}}px;
+        }
+    {{/if}}{{/if}}
+
+
+
+    {{misc.rootSelector}} .im-cc-products-card .im-cc-wrapper-contents {
+        max-height:100%;
+        display:grid;
+        grid-template-rows: {{#if misc.isLayoutHorizontal}}{{#if misc.isArrangeChangingHeightOrMasonry}}minmax(3lh, 1fr){{else}}1fr{{/if}}{{else}}1fr{{/if}} min-content min-content min-content min-content min-content min-content;
+        {{#if misc.isLayoutHorizontal}}
+		{{#if card.txtBlock.description.style.font.familyName}}font-family: '{{card.txtBlock.description.style.font.familyName}}';{{/if}}
+        font-size: {{card.txtBlock.description.style.font.size}};
+        font-style: {{card.txtBlock.description.style.font.style}}; 
+        font-weight: {{card.txtBlock.description.style.font.weight}}; 
+        {{/if}}
+    }
+
+    {{#if misc.isLayoutHorizontal}}
+        {{{misc.layoutHorizontalMediaQueryStart}}}
+    {{/if}}
+        {{misc.rootSelector}} .im-cc-products-card .im-cc-wrapper-contents {
+            {{#if misc.isRelatedProductCard}}{{else}}height: 100%;{{/if}}
+            position: relative;
+        }
+    {{#if misc.isLayoutHorizontal}}{{#if misc.layoutHorizontalMediaQueryStart}}
+        }
+    {{/if}}{{/if}}
+
+    {{#if misc.isLayoutCoverAsBackground}}
+        {{misc.rootSelector}} .im-cc-products-card .im-cc-wrapper-contents {
+            padding-top: 0px;
+            padding-bottom: 20px;
+            padding-inline-start: 20px;
+            padding-inline-end: 20px;
+        }
+    {{else}}
+        {{misc.rootSelector}} .im-cc-products-card .im-cc-wrapper-contents {
+            width: 100%;
+        }
+    {{/if}}
+
+    {{#if misc.isArrangeChangingHeightOrMasonry}}
+        {{#if misc.isLayoutVerticalCoverTop}}{{#if misc.layoutVerticalMediaQueryStart}}{{else}}
+            {{{misc.layoutHorizontalMediaQueryStart}}}
+                {{misc.rootSelector}} .im-cc-products-cardlayout .im-cc-products-card .im-cc-wrapper-contents {
+                    height: {{card.txtBlock.height}}px; 
+                }
+            {{#if misc.layoutHorizontalMediaQueryStart}}
+            }
+            {{/if}}
+        {{/if}}{{/if}}
+        {{#if misc.isLayoutVerticalTitleTop}}
+            {{{misc.layoutHorizontalMediaQueryStart}}}
+                {{misc.rootSelector}} .im-cc-products-cardlayout .im-cc-products-card .im-cc-wrapper-contents {
+                    height: {{card.txtBlock.height}}px; 
+                }
+            {{#if misc.layoutHorizontalMediaQueryStart}}
+            }
+            {{/if}}
+        {{/if}}
+    {{/if}}
+
+    {{#if misc.isArrangeSlideshow}}
+        {{{misc.layoutVerticalMediaQueryStart}}}
+            {{misc.rootSelector}} .im-cc-products-cardlayout .im-cc-products-card .im-cc-wrapper-contents {
+                height: 100%;
+            }
+            {{misc.rootSelector}} .im-cc-products-cardlayout .im-cc-products-card .im-cc-products-description {
+                overflow: hidden;
+            }
+        {{#if misc.layoutVerticalMediaQueryStart}}
+        }
+        {{/if}}
+    {{/if}}
+
+    {{#if card.txtBlock.description.show}}
+    {{misc.rootSelector}} .im-cc-products-card .im-cc-products-description { 
+        grid-row:1/2;
+        grid-column:1/1;
+        position: relative;
+		{{#if card.txtBlock.description.style.font.familyName}}font-family: '{{card.txtBlock.description.style.font.familyName}}';{{/if}}
+        font-size: {{card.txtBlock.description.style.font.size}};
+        font-style: {{card.txtBlock.description.style.font.style}}; 
+        font-weight: {{card.txtBlock.description.style.font.weight}}; 
+        color: rgb({{card.txtBlock.description.style.textColor.r}},{{card.txtBlock.description.style.textColor.g}},{{card.txtBlock.description.style.textColor.b}}); 
+        text-align: {{card.txtBlock.align}};
+        overflow: auto;
+        -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 85%, rgba(0,0,0,0.0));
+        margin-bottom: 14px;
+        -ms-overflow-style: none;  /* Hide the scrollbar - Internet Explorer 10+ */
+        scrollbar-width: none;  /* Hide the scrollbar - Firefox */
+    }
+    @-moz-document url-prefix() {
+        {{misc.rootSelector}} .im-cc-products-card .im-cc-products-description { 
+            scrollbar-width: none;
+        }
+        {{misc.rootSelector}} .im-cc-products-card .im-cc-products-description:hover { 
+            scrollbar-width: thin;  /* Show the scrollbar - Firefox */
+        }
+    }
+    {{misc.rootSelector}} .im-cc-products-card .im-cc-products-description:hover { 
+        overflow: auto;
+        -webkit-mask-image: none;
+        -ms-overflow-style: auto;  /* Show the scrollbar - Internet Explorer 10+ */
+        scrollbar-width: thin;
+    }
+    {{misc.rootSelector}} .im-cc-products-card .im-cc-products-description::-webkit-scrollbar { 
+          width: 8px;
+    }
+    {{misc.rootSelector}} .im-cc-products-card .im-cc-products-description::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 2px rgba(220,220,220,0); 
+        border-radius: 4px;
+    }
+    {{misc.rootSelector}} .im-cc-products-card .im-cc-products-description:hover::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 2px grey; 
+    }
+    {{misc.rootSelector}} .im-cc-products-card .im-cc-products-description::-webkit-scrollbar-thumb {
+        background: rgba(220,220,220,0); 
+        border-radius: 4px;
+    }
+    {{misc.rootSelector}} .im-cc-products-card .im-cc-products-description:hover::-webkit-scrollbar-thumb {
+        background: #d4d4d4; 
+    }
+    {{misc.rootSelector}} .im-cc-products-card .im-cc-products-description::-webkit-scrollbar-thumb:hover {
+        background: #b3b3b3; 
+    }
+    
+    {{misc.rootSelector}} .im-cc-products-card .im-cc-products-description .im-cc-products-description-fade {      
+        position: -webkit-sticky; 
+        position: sticky; 
+        width: 100%; 
+        height: {{misc.descFadeHeightPx}}px; 
+        inset-inline-start: 0; 
+        bottom: -{{card.txtBlock.margins.bottom}}px; 
+        box-shadow: inset 0px -20px 44px rgba({{card.backgroundColor.r}},{{card.backgroundColor.g}},{{card.backgroundColor.b}},{{card.backgroundColor.a}}); 
+        display:none;
+    }
+    {{/if}}
+
+    {{misc.rootSelector}} .im-cc-products-card .im-cc-products-separator { 
+        grid-row:2/3;
+        grid-column:1/1;
+        margin: 0px;
+        border-bottom: 1px solid rgb({{card.txtBlock.details.style.textColor.r}},{{card.txtBlock.details.style.textColor.g}},{{card.txtBlock.details.style.textColor.b}}); 
+    }
+
+    {{misc.rootSelector}} .im-cc-products-card-with-availability .im-cc-products-separator { 
+        display: block; 
+    }
+
+    {{misc.rootSelector}} .im-cc-products-card-with-options .im-cc-products-separator { 
+        display: block; 
+    }
+
+    {{#if card.txtBlock.details.showAvailability}}    
+    {{misc.rootSelector}} .im-cc-products-card .im-cc-products-availability {
+        display: flex;
+        align-items: center;
+        grid-row:3/4;
+        grid-column:1/1;
+        font-family: '{{card.txtBlock.details.style.font.familyName}}';
+        font-size: {{card.txtBlock.details.style.font.size}};
+        font-style: {{card.txtBlock.details.style.font.style}};
+        font-weight: {{card.txtBlock.details.style.font.weight}};
+        color: rgb({{card.txtBlock.details.style.textColor.r}},{{card.txtBlock.details.style.textColor.g}},{{card.txtBlock.details.style.textColor.b}}); 
+        overflow: hidden; 
+    }
+    {{/if}}
+
+    {{#if card.txtBlock.details.showPrice}}
+    {{misc.rootSelector}} .im-cc-products-card .im-cc-products-qty-discount { 
+        display: inline-block;
+        vertical-align: middle;
+        font-family: '{{card.txtBlock.details.style.font.familyName}}';
+        font-size: {{card.txtBlock.details.style.font.size}};
+        font-style: {{card.txtBlock.details.style.font.style}};
+        font-weight: normal;
+        color: rgb({{card.txtBlock.details.style.textColor.r}},{{card.txtBlock.details.style.textColor.g}},{{card.txtBlock.details.style.textColor.b}}); 
+        overflow: hidden; 
+    }
+    {{misc.rootSelector}} .im-cc-products-card .im-cc-products-qty-discount img {
+        vertical-align: sub;
+    }
+    {{/if}}
+
+    {{#if card.txtBlock.details.showOptions}}
+    {{misc.rootSelector}} .im-cc-products-card .im-cc-products-options { 
+        grid-row:5/6;
+        grid-column:1/1;
+        font-family: '{{card.txtBlock.details.style.font.familyName}}';
+        font-size: {{card.txtBlock.details.style.font.size}};
+        font-style: {{card.txtBlock.details.style.font.style}};
+        font-weight: {{card.txtBlock.details.style.font.weight}};
+        color: rgb({{card.txtBlock.details.style.textColor.r}},{{card.txtBlock.details.style.textColor.g}},{{card.txtBlock.details.style.textColor.b}}) !important; 
+        overflow: hidden; 
+        border-radius: 0px !important; 
+        -webkit-border-radius: 0px !important; 
+        -moz-border-radius: 0px !important; 
+        padding-bottom:4px;
+    }
+    {{/if}}
+
+    {{misc.rootSelector}} .im-cc-products-card select {
+        font-family: '{{card.txtBlock.details.style.font.familyName}}';
+        font-size: {{card.txtBlock.details.style.font.size}};
+        font-style: {{card.txtBlock.details.style.font.style}};
+        font-weight: {{card.txtBlock.details.style.font.weight}};
+        border: 1px solid rgb({{card.txtBlock.details.style.textColor.r}},{{card.txtBlock.details.style.textColor.g}},{{card.txtBlock.details.style.textColor.b}}); 
+        display: inline-block; 
+        height: {{misc.productOptionsSelectHeight}}px;
+        background-color: rgba({{card.txtBlock.details.style.backgroundColor.r}},{{card.txtBlock.details.style.backgroundColor.g}},{{card.txtBlock.details.style.backgroundColor.b}},{{card.txtBlock.details.style.backgroundColor.a}}) !important; 
+        color: rgb({{card.txtBlock.details.style.textColor.r}},{{card.txtBlock.details.style.textColor.g}},{{card.txtBlock.details.style.textColor.b}}) !important; 
+        border-radius: 0px !important; 
+        -webkit-border-radius: 0px !important; 
+        -moz-border-radius: 0px !important; 
+    }
+
+    {{misc.rootSelector}} .im-cc-products-card select option {
+        background-color: rgba({{card.txtBlock.details.style.backgroundColor.r}},{{card.txtBlock.details.style.backgroundColor.g}},{{card.txtBlock.details.style.backgroundColor.b}},{{card.txtBlock.details.style.backgroundColor.a}}) !important; 
+        color: rgb({{card.txtBlock.details.style.textColor.r}},{{card.txtBlock.details.style.textColor.g}},{{card.txtBlock.details.style.textColor.b}}) !important; 
+        border-radius: 0px !important; 
+        -webkit-border-radius: 0px !important; 
+        -moz-border-radius: 0px !important; 
+    }
+
+    {{misc.rootSelector}} .im-cc-products-card .product-available-quantity { 
+        display: inline-block; 
+    }
+
+    {{misc.rootSelector}} .im-cc-products-card .im-cc-wrapper-row {
+        grid-row: 6/7;
+        grid-column: 1/1;
+        display: grid;
+        position: relative; 
+        grid-template-columns: 1fr auto auto auto;
+        grid-template-rows: auto auto auto;
+        align-items: center;
+    }
+
+    {{#if card.txtBlock.details.showPrice}}
+    {{misc.rootSelector}} .im-cc-products-card .im-cc-products-price {
+        grid-column: 1/5;
+        grid-row: 1/2;
+        {{#if card.txtBlock.details.priceStyle.font.familyName}}font-family: '{{card.txtBlock.details.priceStyle.font.familyName}}';{{/if}}
+        font-size: {{card.txtBlock.details.priceStyle.font.size}};
+        font-style: {{card.txtBlock.details.priceStyle.font.style}};
+        font-weight: {{card.txtBlock.details.priceStyle.font.weight}};
+        color: rgb({{card.txtBlock.details.priceStyle.textColor.r}},{{card.txtBlock.details.priceStyle.textColor.g}},{{card.txtBlock.details.priceStyle.textColor.b}}); 
+        overflow: hidden; 
+        white-space: nowrap;
+        text-align: {{card.txtBlock.details.priceStyle.align}};
+        margin-bottom: 10px;
+    }
+    {{misc.rootSelector}} .im-cc-products-card .im-cc-products-price .full-price {
+        margin-inline-start: 2px;
+        text-decoration: line-through;
+        color: rgb({{card.txtBlock.details.priceStrikedColor.r}},{{card.txtBlock.details.priceStrikedColor.g}},{{card.txtBlock.details.priceStrikedColor.b}}); 
+    }
+    {{#if misc.noFullPriceLineThrough}}
+        {{misc.rootSelector}} .im-cc-products-card .im-cc-products-price .full-price--hidden {
+            display: none;
+        }
+    {{/if}}
+    {{misc.rootSelector}} .im-cc-products-card .im-cc-products-price .lowest-price {
+        font-size: 8pt;
+        color: rgba({{card.txtBlock.details.priceStyle.textColor.r}},{{card.txtBlock.details.priceStyle.textColor.g}},{{card.txtBlock.details.priceStyle.textColor.b}}, 0.75); 
+        display: block;
+    }
+    {{misc.rootSelector}} .im-cc-products-card .im-cc-products-price .lowest-price a {
+        color: rgba({{card.txtBlock.details.priceStyle.textColor.r}},{{card.txtBlock.details.priceStyle.textColor.g}},{{card.txtBlock.details.priceStyle.textColor.b}}, 0.75); 
+        text-decoration: none;
+    }
+    {{misc.rootSelector}} .im-cc-products-card .im-cc-products-price .lowest-price a:hover {
+        text-decoration: underline;
+    }
+    {{/if}}
+
+    {{misc.rootSelector}} .im-cc-products-card .im-cc-products-ppcp-pay-later {
+        grid-column: 1/5;
+        grid-row: 2/3;
+    }
+        
+    {{#if card.txtBlock.button.show}}
+    {{#if card.txtBlock.details.showQuantity}}
+    {{misc.rootSelector}} .im-cc-products-card input.im-cc-products-qty { 
+        grid-column: 2/3;
+        grid-row: 3/4;
+        border-radius: 0px; 
+        box-shadow: none; 
+        margin-inline-start: 5px;
+        margin-inline-end: 5px;
+        max-width: 3em; 
+        padding-top: 2px;
+        padding-bottom: 2px;
+        padding-inline-start: 0px;
+        padding-inline-end: 5px;
+        border: 1px solid rgb({{card.txtBlock.details.style.textColor.r}},{{card.txtBlock.details.style.textColor.g}},{{card.txtBlock.details.style.textColor.b}});
+        text-align: start; 
+        overflow: hidden; 
+        background-color: rgba(255,255,255,0.8); 
+        color: rgb({{card.txtBlock.details.style.textColor.r}},{{card.txtBlock.details.style.textColor.g}},{{card.txtBlock.details.style.textColor.b}}); 
+        font-family: '{{card.txtBlock.details.style.font.familyName}}';
+        font-size: {{card.txtBlock.details.style.font.size}};
+        font-style: {{card.txtBlock.details.style.font.style}};
+        font-weight: {{card.txtBlock.details.style.font.weight}};
+    }
+    {{/if}}
+    {{/if}}
+
+    {{#if card.txtBlock.button.show}}
+    {{#if misc.isAddToCartButtonTypeText}}            
+    {{misc.rootSelector}} .im-cc-products-card .im-cc-products-button {
+        grid-column: 3/4;
+        grid-row: 3/4;
+        border-style: solid;
+        border-top-width: {{card.txtBlock.button.border.widths.top}}px;
+        border-inline-end-width: {{card.txtBlock.button.border.widths.right}}px;
+        border-bottom-width: {{card.txtBlock.button.border.widths.bottom}}px;
+        border-inline-start-width: {{card.txtBlock.button.border.widths.left}}px;
+		border-top-color: rgba({{card.txtBlock.button.border.colors.top.r}},{{card.txtBlock.button.border.colors.top.g}},{{card.txtBlock.button.border.colors.top.b}},{{card.txtBlock.button.border.colors.top.a}}); 
+        border-inline-end-color: rgba({{card.txtBlock.button.border.colors.right.r}},{{card.txtBlock.button.border.colors.right.g}},{{card.txtBlock.button.border.colors.right.b}},{{card.txtBlock.button.border.colors.right.a}}); 
+		border-bottom-color: rgba({{card.txtBlock.button.border.colors.bottom.r}},{{card.txtBlock.button.border.colors.bottom.g}},{{card.txtBlock.button.border.colors.bottom.b}},{{card.txtBlock.button.border.colors.bottom.a}}); 
+        border-inline-start-color: rgba({{card.txtBlock.button.border.colors.left.r}},{{card.txtBlock.button.border.colors.left.g}},{{card.txtBlock.button.border.colors.left.b}},{{card.txtBlock.button.border.colors.left.a}});
+        border-start-start-radius: {{card.txtBlock.button.border.radius.topLeft}}px;
+        border-start-end-radius: {{card.txtBlock.button.border.radius.topRight}}px;
+        border-end-start-radius: {{card.txtBlock.button.border.radius.bottomLeft}}px;
+        border-end-end-radius: {{card.txtBlock.button.border.radius.bottomRight}}px;
+        padding: {{card.txtBlock.button.margins.top}}px {{card.txtBlock.button.margins.left}}px; 
+		background-color: rgba({{card.txtBlock.button.style.backgroundColor.r}},{{card.txtBlock.button.style.backgroundColor.g}},{{card.txtBlock.button.style.backgroundColor.b}},{{card.txtBlock.button.style.backgroundColor.a}}); 
+        font-family: '{{card.txtBlock.button.style.font.familyName}}';
+        font-size: {{card.txtBlock.button.style.font.size}};
+        font-style: {{card.txtBlock.button.style.font.style}};
+        font-weight: {{card.txtBlock.button.style.font.weight}};
+        color: rgb({{card.txtBlock.button.style.textColor.r}},{{card.txtBlock.button.style.textColor.g}},{{card.txtBlock.button.style.textColor.b}}); 
+        cursor: pointer; 
+        overflow: hidden; 
+    }
+    {{else}}
+    {{misc.rootSelector}} .im-cc-products-card .im-cc-products-button {
+        grid-column: 3/4;
+        grid-row: 3/4;
+        cursor: pointer; 
+        overflow: hidden; 
+    }
+    {{/if}}
+    {{/if}}
+
+    {{#if card.wishlist.show}}
+    {{misc.rootSelector}} .im-cc-products-card .im-cc-wishlist-button {
+        grid-column: 4/5;
+        grid-row: 3/4;
+        cursor: pointer; 
+        width: 20px; 
+        height: 20px; 
+        margin-inline-start: 5px;
+        margin-inline-end: 5px;
+    }
+    {{misc.rootSelector}} .im-cc-products-card .im-cc-wishlist-button svg { 
+        fill: rgb({{card.wishlist.color.r}},{{card.wishlist.color.g}},{{card.wishlist.color.b}}); 
+    }
+    {{/if}}

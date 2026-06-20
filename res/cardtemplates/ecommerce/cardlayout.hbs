@@ -1,0 +1,36 @@
+
+{{#if misc.isArrangeSlideshow}}
+    <!-- Slider main container -->
+    <div 
+        class="swiper" 
+        style="overflow: hidden; padding-top:10px; padding-bottom:30px;"
+    >
+        <!-- Additional required wrapper -->
+        <div 
+            class="swiper-wrapper im-cc-products-cardlayout" 
+            {{#if misc.cardLayoutCardArrangement}}cardarrangement="{{misc.cardLayoutCardArrangement}}" {{/if}}
+        >
+            <!-- Slides -->
+{{else}}
+    <x5engine-cardlayout 
+        class="im-cc-products-cardlayout" 
+        {{#if misc.cardLayoutCardArrangement}}cardarrangement="{{misc.cardLayoutCardArrangement}}" {{/if}}
+        {{#if card.height}}cardheight="{{card.height}}" {{/if}}
+        {{#if misc.cardLayoutCardsPerRow}}cardsperrow="{{misc.cardLayoutCardsPerRow}}" {{/if}}
+        {{#if misc.isLayoutHorizontal}}{{#if misc.layoutHorizontalMediaQueryStart}}layouthorizontalmediaquerystart="{{misc.layoutHorizontalMediaQueryStart}}" {{/if}}{{/if}}
+    >
+{{/if}}
+
+{{#each products}}
+{{>cardEcommerceCardPartial product=. l10n=../l10n card=../card misc=../misc}}
+{{/each}}
+
+{{#if misc.isArrangeSlideshow}}
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+{{else}}
+    </x5engine-cardlayout>
+{{/if}}

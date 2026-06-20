@@ -1,0 +1,179 @@
+
+    {{#if misc.isArrangeSameHeightOrChangingHeight}}
+        {{misc.rootSelector}} .im-cc-products-cardlayout {
+            row-gap:{{card.margin}}px;
+            column-gap:{{card.margin}}px;
+        }
+    {{/if}}
+
+    {{#if misc.isArrangeMasonry}}
+        {{misc.rootSelector}} .im-cc-products-cardlayout {
+            padding:0px;
+            margin-inline-end:-10px;
+        }
+    {{/if}}
+
+    {{#if misc.isArrangeSlideshow}}
+        {{misc.rootSelector}} .swiper-pagination-bullet-active {
+            background: rgb({{card.txtBlock.description.style.textColor.r}},{{card.txtBlock.description.style.textColor.g}},{{card.txtBlock.description.style.textColor.b}}) !important;
+        }
+        {{misc.rootSelector}} .swiper-button-next, {{misc.rootSelector}} .swiper-button-prev {
+            color: #000000 !important;
+        }
+        {{misc.rootSelector}} .swiper-button-next:after {
+            text-shadow: -3px 0px #FFFFFF;
+        }
+        {{misc.rootSelector}} .swiper-button-prev:after {
+            text-shadow: 3px 0px #FFFFFF;
+        }
+        {{misc.rootSelector}} > div > .swiper > .swiper-wrapper > x5engine-card {
+            display: grid;
+        }
+    {{/if}}
+
+
+
+    {{misc.rootSelector}} .im-cc-products-card {
+
+        margin: 0px;
+
+        {{#if card.shadow.enabled}}
+        box-shadow: 
+            {{card.shadow.offset.x}}px 
+            {{card.shadow.offset.y}}px 
+            {{card.shadow.blur}}px 
+            {{card.shadow.spread}}px 
+            rgba({{card.shadow.color.r}},{{card.shadow.color.g}},{{card.shadow.color.b}},{{card.shadow.color.a}}); 
+        {{/if}}
+        position: relative;
+        box-sizing: {{#if misc.cardFixedHeight}}{{#if misc.isLayoutHorizontal}}content-box{{else}}border-box{{/if}}{{else}}border-box{{/if}};
+
+        background-color: rgba({{card.backgroundColor.r}},{{card.backgroundColor.g}},{{card.backgroundColor.b}},{{card.backgroundColor.a}}); 
+        
+        border-style: solid;
+
+        border-top-width: {{card.border.widths.top}}px;
+        border-inline-end-width: {{card.border.widths.right}}px;
+        border-bottom-width: {{card.border.widths.bottom}}px;
+        border-inline-start-width: {{card.border.widths.left}}px;
+
+        border-top-color: rgba({{card.border.colors.top.r}},{{card.border.colors.top.g}},{{card.border.colors.top.b}},{{card.border.colors.top.a}}); 
+        border-inline-end-color: rgba({{card.border.colors.right.r}},{{card.border.colors.right.g}},{{card.border.colors.right.b}},{{card.border.colors.right.a}}); 
+        border-bottom-color: rgba({{card.border.colors.bottom.r}},{{card.border.colors.bottom.g}},{{card.border.colors.bottom.b}},{{card.border.colors.bottom.a}}); 
+        border-inline-start-color: rgba({{card.border.colors.left.r}},{{card.border.colors.left.g}},{{card.border.colors.left.b}},{{card.border.colors.left.a}}); 
+
+        border-start-start-radius: {{card.border.radius.topLeft}}px;
+        border-start-end-radius: {{card.border.radius.topRight}}px;
+        border-end-start-radius: {{card.border.radius.bottomLeft}}px;
+        border-end-end-radius: {{card.border.radius.bottomRight}}px;
+
+        text-align: start; 
+        line-height: 1.5; 
+        overflow: hidden; 
+        z-index: 1;
+        
+    }
+
+    {{#if misc.isArrangeChangingHeight}}
+        {{misc.rootSelector}} .im-cc-products-cardlayout .im-cc-products-card {
+            align-items: start;
+            align-content:start;
+        }
+    {{/if}}
+
+    {{#if misc.isArrangeSlideshow}}
+        {{misc.rootSelector}} .im-cc-products-cardlayout .im-cc-products-card {
+            margin-inline-start: {{card.margin}}px;
+            {{#if misc.isRelatedProductCard}}{{else}}
+            height: {{card.height}}px !important;
+            {{/if}}
+        }
+        {{misc.rootSelector}} .im-cc-products-cardlayout .im-cc-products-card:first-of-type {
+            margin-inline-start: 0px;
+        }
+    {{/if}}
+
+    {{#if misc.isArrangeMasonry}}
+        {{misc.rootSelector}} .im-cc-products-cardlayout .im-cc-products-card {
+            margin: {{card.margin}}px;
+            margin-inline-start: 0px;
+            align-items: start;
+            align-content:start;
+        }
+        {{misc.rootSelector}} .im-cc-products-cardlayout .im-cc-products-card:first-of-type {
+            margin-top: 0px;
+        }
+    {{/if}}
+
+    {{#if misc.isArrangeChangingHeightOrMasonry}}{{#if misc.isLayoutCoverAsBackground}}
+        {{misc.rootSelector}} .im-cc-products-cardlayout .im-cc-products-card {
+            align-items: end;
+            align-content:start;
+        }
+    {{/if}}{{/if}}
+
+    {{#if misc.isLayoutHorizontalCoverLeft}}
+        {{misc.rootSelector}} .im-cc-products-card {
+            grid-template-columns: {{card.image.percentSize}}% auto;
+            grid-template-rows: auto minmax(10%, 1fr);
+        }
+    {{/if}}
+
+    {{#if misc.isLayoutHorizontalCoverRight}}
+        {{misc.rootSelector}} .im-cc-products-card {
+            grid-template-columns: auto {{card.image.percentSize}}%;
+            grid-template-rows: auto minmax(10%, 1fr);
+        }
+    {{/if}}
+
+    {{#if misc.isLayoutVerticalCoverTop}}
+        {{{misc.layoutVerticalMediaQueryStart}}}
+        {{misc.rootSelector}} .im-cc-products-card {
+            grid-template-columns: 100%;
+            grid-template-rows: {{#if misc.layoutVerticalMediaQueryStart}}{{#if card.image.percentSize}}auto{{else}}0px{{/if}}{{else}}auto{{/if}} auto minmax(10%, 1fr);
+        }
+
+        {{#if misc.layoutVerticalMediaQueryStart}}{{else}}
+            {{#if misc.cardFixedHeight}}
+                {{misc.rootSelector}} .im-cc-products-cardlayout .im-cc-products-card {
+                    grid-template-rows: {{misc.verticalImageHeight}}px auto minmax(0%, 1fr);
+                }
+            {{/if}}
+        {{/if}}
+        {{#if misc.layoutVerticalMediaQueryStart}}
+        }
+        {{/if}}
+    {{/if}}
+
+    {{#if misc.isLayoutVerticalTitleTop}}
+        {{misc.rootSelector}} .im-cc-products-card {
+            grid-template-columns: 100%;
+            grid-template-rows: {{#if misc.isArrangeSlideshow}}auto 40% minmax(10%, 1fr){{else}}auto auto minmax(10%, 1fr){{/if}};
+        }
+
+        {{#if misc.cardFixedHeight}}
+            {{misc.rootSelector}} .im-cc-products-cardlayout .im-cc-products-card {
+                grid-template-rows: auto {{misc.verticalImageHeight}}px minmax(0%, 1fr);
+            }
+        {{/if}}
+    {{/if}}
+
+
+
+    {{#if misc.isLayoutCoverAsBackground}}
+        {{misc.rootSelector}} .im-cc-products-card {
+            background-color: transparent;
+            grid-template-columns: 100%;
+        }
+
+        {{#if misc.isArrangeChangingHeightOrMasonry}}
+            {{misc.rootSelector}} .im-cc-products-cardlayout .im-cc-products-card {
+                grid-template-rows: auto minmax(10%, 1fr);
+            }
+        {{/if}}
+    {{/if}}
+
+{{>cardEcommerceImageStylePartial card=card misc=misc}}
+{{>cardEcommerceTitleStylePartial card=card misc=misc}}
+{{>cardEcommerceContentsStylePartial card=card misc=misc}}
+{{>cardEcommerceCockadesStylePartial card=card misc=misc}}

@@ -1,0 +1,253 @@
+
+    {{#if misc.isLayoutCoverAsBackground}}
+        {{misc.rootSelector}} .im-cc-products-card [slot=cover] {
+            width: 100%;
+            height: 100%;
+        }
+
+        {{#if misc.cardFixedHeight}}
+            {{misc.rootSelector}}
+                .im-cc-products-cardlayout 
+                    .im-cc-products-card 
+                        [slot=cover]
+            {
+                height: calc({{card.height}}px - {{card.border.widths.top}}px - {{card.border.widths.bottom}}px);
+            }
+        {{/if}}
+    {{/if}}
+
+    {{#if misc.isLayoutCoverAsBackground}}{{else}}
+        {{misc.rootSelector}} .im-cc-products-cardlayout .im-cc-products-card [slot=cover] {
+            overflow: hidden;
+        }
+    {{/if}}
+
+    {{#if misc.cardFixedHeight}}{{#if misc.isLayoutVertical}}
+        {{misc.rootSelector}} 
+            .im-cc-products-cardlayout 
+                .im-cc-products-card 
+                    [slot=cover] 
+        {
+            overflow: hidden;
+            {{#if misc.isRelatedProductCard}}
+            margin-block: 0px 0px;
+            margin-inline: 0px 0px;
+            {{else}}
+            margin-block: {{card.image.margins.top}}px {{card.image.margins.bottom}}px;
+            margin-inline: {{card.image.margins.left}}px {{card.image.margins.right}}px;
+            {{/if}}
+        }
+    {{/if}}{{/if}}
+
+    {{#if misc.isArrangeChangingHeightOrMasonry}}{{#if misc.isLayoutHorizontal}}
+        {{misc.rootSelector}} .im-cc-products-card [slot=cover] {
+            height: 100%;
+        }
+    {{/if}}{{/if}}
+
+    {{misc.rootSelector}} .im-cc-products-card .im-cc-wrapper-products-image {
+        width: 100%;
+        height: 100%;
+        {{#if misc.isArrangeChangingHeightOrMasonry}}{{#if misc.isLayoutVertical}}min-height: 40px;{{/if}}{{/if}}
+        position: relative;
+    }
+    {{#if misc.isArrangeChangingHeightOrMasonry}}
+        {{#if misc.isLayoutCoverAsBackground}}
+            {{misc.rootSelector}} .im-cc-products-cardlayout .im-cc-products-card .im-cc-wrapper-products-image {
+                position: static;
+            }
+        {{/if}}
+
+        {{#if misc.isLayoutHorizontal}}
+            {{misc.rootSelector}} .im-cc-products-cardlayout .im-cc-products-card .im-cc-wrapper-products-image {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        {{/if}}
+    {{/if}}
+
+
+    {{misc.rootSelector}} .im-cc-products-card .im-cc-products-image { 
+        box-sizing: border-box; 
+
+        max-width: 100%;
+        width: 100%;
+
+        margin:auto;
+        padding-top: {{card.image.margins.top}}px;
+        padding-bottom: {{card.image.margins.bottom}}px;
+        padding-inline-start: {{card.image.margins.left}}px;
+        padding-inline-end: {{card.image.margins.right}}px;
+
+        {{#if card.image.isLink}}cursor: pointer; {{/if}}
+
+        display:block;
+        
+        object-fit: {{#if card.image.sizeAdapted}}cover; max-height: 100%{{else}}{{#if misc.isArrangeChangingHeightOrMasonry}}cover; max-height: 100%{{else}}scale-down{{/if}}{{/if}};
+
+        {{#if misc.imageOverRule}}transition: transform 300ms; z-index: 1; {{/if}}
+    }
+
+    {{#if misc.isLayoutVertical}}
+        {{{misc.layoutVerticalMediaQueryStart}}}
+        {{misc.rootSelector}} .im-cc-products-card .im-cc-products-image { 
+            min-height: {{card.image.percentSize}}%;
+        }
+        {{#if misc.layoutVerticalMediaQueryStart}}
+        }
+        {{/if}}
+    {{/if}}
+
+    {{#if misc.isLayoutVerticalCoverTop}}
+        {{misc.rootSelector}} .im-cc-products-card .im-cc-products-image { 
+            min-height: {{card.image.percentSize}}%;
+        }
+    {{/if}}
+
+    {{#if misc.isLayoutCoverAsBackground}}
+        {{misc.rootSelector}} .im-cc-products-card .im-cc-products-image { 
+            object-position: center top;
+            padding: 0px;
+        }
+    {{/if}}
+
+    {{#if misc.cardFixedHeight}}{{#if misc.isLayoutVertical}}
+        {{misc.rootSelector}} 
+            .im-cc-products-cardlayout 
+                .im-cc-products-card 
+                    .im-cc-products-image 
+        {
+            padding: 0px !important;
+            {{#if card.image.sizeAdapted}}{{else}}max-height: 100%;{{/if}}
+        }
+    {{/if}}{{/if}}
+
+    {{#if misc.cardFixedHeight}}{{#if misc.isLayoutCoverAsBackground}}
+        {{misc.rootSelector}} 
+            .im-cc-products-cardlayout 
+                .im-cc-products-card 
+                    .im-cc-products-image     
+        { 
+            {{#if card.image.sizeAdapted}}
+                object-fit: cover; 
+                height: 100%;
+            {{else}}
+                object-fit: scale-down;
+                max-height: {{card.height}}px;    
+            {{/if}}
+        }
+    {{/if}}{{/if}}
+
+    {{#if misc.cardFixedHeight}}{{#if misc.isLayoutHorizontal}}
+        {{misc.rootSelector}} 
+            .im-cc-products-cardlayout 
+                .im-cc-products-card 
+                    .im-cc-products-image     
+        { 
+            height: 100%;
+        }
+    {{/if}}{{/if}}
+
+    {{#if misc.isArrangeChangingHeightOrMasonry}}{{#if misc.isLayoutVertical}}
+        {{{misc.layoutVerticalMediaQueryStart}}}
+        {{misc.rootSelector}} 
+            .im-cc-products-cardlayout 
+                .im-cc-products-card 
+                    .im-cc-products-image 
+        { 
+            width: auto;
+        }
+        {{#if misc.layoutVerticalMediaQueryStart}}
+        }
+        {{/if}}
+    {{/if}}{{/if}}
+
+    {{#if misc.isArrangeChangingHeightOrMasonry}}{{#if misc.isLayoutCoverAsBackground}}
+        {{misc.rootSelector}} 
+            .im-cc-products-cardlayout 
+                .im-cc-products-card 
+                    .im-cc-products-image 
+        { 
+            object-fit: cover;
+        }
+    {{/if}}{{/if}}
+
+    {{#if misc.imageOverRule}}
+        {{misc.rootSelector}} .im-cc-products-card .im-cc-products-image:hover { 
+            {{misc.imageOverRule}}
+        }
+    {{/if}}
+
+    {{misc.rootSelector}} .im-cc-products-card .im-cc-products-image.contain {
+        object-fit: scale-down;
+        height: 100%;
+    }
+    
+    {{#if misc.isLayoutVerticalCoverTop}}{{#if misc.layoutVerticalMediaQueryStart}}
+        {{{misc.layoutVerticalMediaQueryStart}}}
+            {{misc.rootSelector}} .im-cc-products-card .im-cc-products-image {
+                object-fit: scale-down;
+                max-height: 30vh;
+                width: auto;
+            }
+        }
+    {{/if}}{{/if}}
+
+    {{#if misc.isRelatedProductCard}}
+        {{misc.rootSelector}} .im-cc-wrapper-products-image {
+            height: initial !important;
+            aspect-ratio: 1/1;
+        }
+        {{misc.rootSelector}} .swiper-slide > div[slot="cover"] .im-cc-products-image {
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+        }
+    {{/if}}
+
+    {{misc.rootSelector}} .im-cc-products-card .im-cc-wrapper-products-image .im-cc-wrapper-image-icons{
+        display: block;
+        position: absolute;
+        inset-inline-end: 2px;
+        bottom: -26px;
+        padding: 0px 6px;
+        text-align: end;
+        opacity: 0;
+        transition: bottom 0.25s ease-in, top 0.25s ease-in, opacity 0.2s ease-in;
+    }
+    {{#if misc.isLayoutCoverAsBackground}}
+        {{misc.rootSelector}} .im-cc-products-card .im-cc-wrapper-products-image .im-cc-wrapper-image-icons{
+            top: -26px;
+            bottom: auto;
+            inset-inline-end: 0px;
+        }
+    {{/if}}
+    {{misc.rootSelector}} .im-cc-products-card .im-cc-wrapper-products-image:hover .im-cc-wrapper-image-icons, 
+    {{misc.rootSelector}} .im-cc-products-card .im-cc-wrapper-products-image .im-cc-wrapper-image-icons:has(button:focus) {
+        z-index:1000;
+        bottom:5px;
+        opacity:1;
+    }
+    {{#if misc.isLayoutCoverAsBackground}}
+        {{misc.rootSelector}} .im-cc-products-card .im-cc-wrapper-products-image:hover .im-cc-wrapper-image-icons, 
+        {{misc.rootSelector}} .im-cc-products-card .im-cc-wrapper-products-image .im-cc-wrapper-image-icons:has(button:focus) {
+            z-index:1000;
+            top:5px;
+            opacity:1;
+        }
+    {{/if}}
+
+
+    {{misc.rootSelector}} .im-cc-products-card .im-cc-wrapper-products-image .im-cc-wrapper-image-icons svg {
+        margin:0px;
+        padding:4px;
+        width: 24px; 
+        height: 24px; 
+        position: relative;
+        top:3px;
+        inset-inline-start:0px;
+        cursor: pointer;
+        background-color:rgba(255,255,255,0.85);
+        border-radius:6px;
+    }

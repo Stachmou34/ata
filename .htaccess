@@ -1,0 +1,79 @@
+# WebSite X5 - Start Code [do not edit]
+
+ErrorDocument 404 /erreur-404.html
+
+# WebSite X5 - End Code
+
+# Australdev
+
+RewriteEngine On
+
+
+
+# Australdev - End Code
+
+<IfModule mod_deflate.c>
+SetOutputFilter DEFLATE
+</IfModule>
+
+<IfModule mod_rewrite.c>
+ RewriteEngine On
+<IfModule mod_rewrite.c>
+
+<IfModule mod_autoindex.c>
+ IndexIgnore *
+ Options +FollowSymLinks -Indexes
+</IfModule>
+
+<IfModule mod_filter.c>
+AddOutputFilterByType DEFLATE text/html text/plain text/xml application/xml application/xhtml+xml text/css text/javascript application/javascript application/x-javascript
+</IfModule>
+
+# Tell to the browser that .gz files should be first unzip then processed as html/css/js depending on the first extension
+<IfModule mod_headers.c>
+   <FilesMatch "\.html\.gz$">
+     ForceType text/html
+     Header set Content-Encoding: gzip
+   </FilesMatch>
+
+   <FilesMatch "\.js\.gz$">
+     ForceType text/javascript
+     Header set Content-Encoding: gzip
+   </FilesMatch>
+
+   <FilesMatch "\.css\.gz$">
+     ForceType text/css
+     Header set Content-Encoding: gzip
+   </FilesMatch>
+</IfModule>
+
+# Ajout de protection
+#Options All -Indexes
+#ServerSignature Off
+#Options +FollowSymLinks
+AddDefaultCharset UTF-8
+
+#Protection XSS, clickJacking et Mime-Type
+<ifModule mod_headers.c>
+Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+Header always append X-Frame-Options SAMEORIGIN
+Header set X-XSS-Protection "1; mode=block"
+Header set X-Content-Type-Options nosniff
+Header set Content-Security-Policy "base-uri 'self';script-src''"
+Header always set Referrer-Policy "strict-origin-when-cross-origin"
+Header set Permissions-Policy "accelerometer=(), payment=('self'), geolocation=('self'), fullscreen=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), display-capture=('self')" 
+</ifModule>
+
+# protection contre les injections de fichiers
+RewriteCond %{REQUEST_METHOD} GET
+RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=http:// [OR]
+RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=(\.\.//?)+ [OR]
+RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=/([a-z0-9_.]//?)+ [NC]
+RewriteRule .* - [F]
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Définissez le package « ea-php72 » comme langage de programmation « PHP » par défaut.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php72 .php .php7 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit

@@ -1,0 +1,171 @@
+
+#pluginAppObj_44_container{
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+    box-sizing: border-box;
+    position: relative;
+    width: 225px;
+    max-width: 100%;
+    height: 60px;
+    
+}
+
+#pluginAppObj_44_container.rem-highlight {
+    -webkit-tap-highlight-color: transparent; /* for removing the highlight */
+}
+
+#pluginAppObj_44 .pluginAppObj_44-button,
+#pluginAppObj_44_container > a {
+    box-sizing: border-box;
+    width: 100%;
+    height: 60px;
+    color: rgba(64, 64, 64, 1);
+    background-color: rgba(230, 230, 230, 1);
+    font-family: PT Sans Narrow;
+    font-size: 14pt;
+    font-weight: normal;
+    font-style: normal;
+
+
+    border-width: 2px; ;
+
+    border-style: solid;
+    border-color: rgba(214, 214, 214, 1);
+
+    border-radius: 0px; ;
+
+    text-align: center;
+    text-decoration: none;
+    line-height: 16pt;
+    display:block;
+    position: relative;
+    overflow:hidden;
+    
+}
+
+
+
+#pluginAppObj_44 .flex-container {
+    height: 100%;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction:   row 
+}
+
+#pluginAppObj_44 .flex-item {
+    max-height:100%;    
+    max-width: 100%;
+}
+
+#pluginAppObj_44 .item-txt {
+    order:1;
+    display: block;
+}
+
+#pluginAppObj_44 .item-icon {
+    order:2;
+    flex: 0 0 18.62px;
+    display: none;
+
+    margin: 5px; ;
+}
+
+#pluginAppObj_44 .div-icon {
+    background-image: url('../../');
+    background-repeat: no-repeat;
+    background-size: contain;
+        
+}
+
+#pluginAppObj_44 .button-wrapper-over {
+    background-color: rgba(255, 255, 255, 1);
+    border-style: solid;
+    border-color: rgba(255, 101, 1, 1);
+    color: rgba(255, 103, 1, 1);
+    font-weight:normal;
+	
+}
+
+#pluginAppObj_44 .button-wrapper-over.fade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 300ms;
+}
+
+#pluginAppObj_44 .button-wrapper-over.fade.animated {
+    opacity: 1;
+}
+
+#pluginAppObj_44 .sweeper {
+    position: absolute;
+    bottom: 0; left: 0; width: 100%; height: 0;
+    overflow: hidden;
+    transition: all 300ms;
+}
+
+#pluginAppObj_44 .sweeper .button-wrapper-over{
+    position: absolute;
+    bottom:0;
+}
+
+#pluginAppObj_44 .sweeper.animated {
+    height: 100%;
+}
+
+#pluginAppObj_44 .shutter {
+    position: absolute;
+    overflow: hidden;
+    transition: all 300ms;
+    transform: translate3d(0, 0, 0);
+    	top: 50%; left: 50%; border-radius: 100%; width: 0; height: 0;
+}
+
+#pluginAppObj_44 .shutter .button-wrapper-over {
+    position: absolute;    
+    transition: all 300ms;
+    top: 0; left: 0; transform: translate3d(-50%, -50%, 0);
+}
+
+#pluginAppObj_44 .shutter.animated {
+    left: 0; width: 100%; top: 0; height: 100%; border-radius: 0;
+}
+
+#pluginAppObj_44 .shutter.animated .button-wrapper-over {
+    transform: translate3d(0, 0, 0);
+}
+
+#pluginAppObj_44 .button-wrapper-over.rotate-under {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+#pluginAppObj_44 .rotate-u:not(.rotate-under) {
+    transform-origin: 50% 100%;
+    transform: rotate3d(0, 0, 0, 0deg);
+    transition: all 300ms;
+}
+
+#pluginAppObj_44 .rotate-u:not(.rotate-under).animated {
+    transform: rotate3d(-1, 0, 0, 85deg);
+}
+
+#pluginAppObj_44 .button-wrapper-over.rotate-over {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: 50% 0;
+    transform: rotateX(270deg);
+    transition: all 300ms;
+}
+
+#pluginAppObj_44 .button-wrapper-over.rotate-over.animated {
+    transform: rotateX(0);
+}

@@ -1,0 +1,142 @@
+
+    {{misc.rootSelector}} .im-cc-products-card [slot=title] {
+        padding-top: {{card.txtBlock.margins.top}}px;
+        padding-bottom: 7px;
+        padding-inline-start: {{card.txtBlock.margins.left}}px;
+        padding-inline-end: {{card.txtBlock.margins.right}}px;
+    }
+
+    {{#if misc.isLayoutCoverAsBackground}}
+        {{misc.rootSelector}} .im-cc-products-card [slot=title] {
+            background-color: rgba({{card.backgroundColor.r}},{{card.backgroundColor.g}},{{card.backgroundColor.b}},{{card.backgroundColor.a}}); 
+            margin-top: {{card.txtBlock.margins.top}}px;
+            margin-bottom: 0px;
+            margin-inline-start: {{card.txtBlock.margins.left}}px;
+            margin-inline-end: {{card.txtBlock.margins.right}}px;
+        }
+
+
+        {{misc.rootSelector}} .im-cc-products-cardlayout .im-cc-products-card [slot=title] {
+            position: relative;
+            z-index: 1001;
+        }
+
+    {{/if}}
+
+
+
+    {{misc.rootSelector}} .im-cc-products-card .im-cc-wrapper-title {
+        display:grid;
+        grid-template-rows: auto auto;
+        align-items: center;
+    }
+    {{#if misc.isLayoutCoverAsBackground}}
+        {{misc.rootSelector}} .im-cc-products-card .im-cc-wrapper-title {
+            padding-top: 20px;
+            padding-bottom: 0px;
+            padding-inline-start: 20px;
+            padding-inline-end: 20px;
+        }
+    {{else}}
+        {{misc.rootSelector}} .im-cc-products-card .im-cc-wrapper-title {
+            width: 100%;
+        }
+    {{/if}}
+
+
+
+    {{#if card.txtBlock.name.show}}
+        {{misc.rootSelector}} .im-cc-products-card .im-cc-products-name {
+            grid-row:1/2;
+            grid-column:1/2;
+            font-family: '{{card.txtBlock.name.style.font.familyName}}';
+            font-size: {{card.txtBlock.name.style.font.size}};
+            font-style: {{card.txtBlock.name.style.font.style}}; 
+            font-weight: {{card.txtBlock.name.style.font.weight}}; 
+            color: rgb({{card.txtBlock.name.style.textColor.r}},{{card.txtBlock.name.style.textColor.g}},{{card.txtBlock.name.style.textColor.b}}); 
+            text-align: {{card.txtBlock.align}};
+            line-height: 1.15; 
+            overflow-wrap: anywhere;
+        }
+
+        {{misc.rootSelector}} .im-cc-products-card .im-cc-products-name a {
+            font-family: '{{card.txtBlock.name.style.font.familyName}}';
+            font-size: {{card.txtBlock.name.style.font.size}};
+            font-style: {{card.txtBlock.name.style.font.style}}; 
+            font-weight: {{card.txtBlock.name.style.font.weight}}; 
+            color: rgb({{card.txtBlock.name.style.textColor.r}},{{card.txtBlock.name.style.textColor.g}},{{card.txtBlock.name.style.textColor.b}}); 
+            text-align: {{card.txtBlock.align}};
+            text-decoration: none;
+            overflow-wrap: anywhere;
+        }
+    {{/if}}
+
+    {{#if card.txtBlock.details.showCategory}}
+    {{misc.rootSelector}} .im-cc-products-card .im-cc-products-category { 
+        grid-row:2/3;
+        grid-column:1/2;
+        padding-top:1px;
+        font-family: '{{card.txtBlock.details.style.font.familyName}}';
+        font-size: {{card.txtBlock.details.style.font.size}};
+        font-style: {{card.txtBlock.details.style.font.style}}; 
+        font-weight: {{card.txtBlock.details.style.font.weight}}; 
+        color: rgb({{card.txtBlock.details.style.textColor.r}},{{card.txtBlock.details.style.textColor.g}},{{card.txtBlock.details.style.textColor.b}}); 
+        text-align: {{card.txtBlock.align}};
+        overflow-wrap: anywhere;
+    }        
+    {{/if}}
+
+    {{#if card.txtBlock.details.showRating}}
+    {{misc.rootSelector}} .im-cc-products-card .im-cc-products-rating-jump {
+        border-width: 0px;
+        text-decoration: none;
+    }
+    html {
+        scroll-behavior: smooth;
+    }
+    {{misc.rootSelector}} .im-cc-products-card .im-cc-products-rating {
+        grid-row:3/4;
+        grid-column:1/2;
+        font-family: '{{card.txtBlock.details.style.font.familyName}}';
+        font-size: {{card.txtBlock.details.style.font.size}}; 
+        font-style: {{card.txtBlock.details.style.font.style}}; 
+        font-weight: {{card.txtBlock.details.style.font.weight}}; 
+        color: rgb({{card.txtBlock.details.style.textColor.r}},{{card.txtBlock.details.style.textColor.g}},{{card.txtBlock.details.style.textColor.b}}); 
+        text-align: {{card.txtBlock.align}};
+        --size: 1em;
+        --scale: 1.2;
+    }
+
+    {{misc.rootSelector}} .im-cc-products-card .im-cc-products-rating .im-cc-products-rating-average {
+        margin-inline-end: 6px;
+    }  
+
+    {{misc.rootSelector}} .im-cc-products-card .im-cc-products-rating .im-cc-products-rating-star-ext {  
+        padding:0px;
+        margin-bottom:-2px;
+        position: relative;
+        display: inline-block;
+        height: calc(var(--scale) * var(--size));
+        width: calc(5 * var(--scale) * var(--size));
+        background-position: left top;
+        background-repeat: repeat-x;
+        background-size: calc(var(--scale) * var(--size)) calc(var(--scale)* var(--size));
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke-width='2' stroke='rgb({{card.txtBlock.details.ratingStarColor.r}}%2C{{card.txtBlock.details.ratingStarColor.g}}%2C{{card.txtBlock.details.ratingStarColor.b}})' d='m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z'/%3E%3C/svg%3E");
+    }
+
+    {{misc.rootSelector}} .im-cc-products-card .im-cc-products-rating .im-cc-products-rating-star-ext .im-cc-products-rating-star-int {
+        display: block;
+        height: calc(var(--scale) * var(--size));
+        position: absolute;
+        top: 0;
+        inset-inline-start: 0px;
+        background-position: left top;
+        background-repeat: repeat-x;
+        background-size: calc(var(--scale) * var(--size)) calc(var(--scale)* var(--size));
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='rgb({{card.txtBlock.details.ratingStarColor.r}}%2C{{card.txtBlock.details.ratingStarColor.g}}%2C{{card.txtBlock.details.ratingStarColor.b}})' stroke-width='2' stroke='rgb({{card.txtBlock.details.ratingStarColor.r}}%2C{{card.txtBlock.details.ratingStarColor.g}}%2C{{card.txtBlock.details.ratingStarColor.b}})' d='m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z'/%3E%3C/svg%3E");
+    }
+
+    {{misc.rootSelector}} .im-cc-products-card .im-cc-products-rating .im-cc-products-rating-count {
+        margin-inline-start: 6px;
+    }  
+    {{/if}}
