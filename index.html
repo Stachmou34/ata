@@ -172,6 +172,8 @@
 	.port-continue:disabled{background:#c9d0dc;cursor:not-allowed}
 	.route-reopen{position:fixed;bottom:16px;left:16px;z-index:8000;background:var(--navy);color:#fff;border:none;border-radius:999px;padding:11px 16px;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.3)}
 	.route-reopen:hover{background:var(--navy-2)}
+	.nav-globe{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;border:1.5px solid #dfe4ee;background:#fff;font-size:18px;cursor:pointer;line-height:1;padding:0;transition:all .15s}
+	.nav-globe:hover{border-color:var(--orange);transform:translateY(-1px)}
 	</style>
 </head>
 <body>
@@ -183,6 +185,7 @@
 				<a class="lk" href="#garanties">Garanties</a>
 				<a class="lk" href="#faq">FAQ</a>
 				<a class="lk" href="#contact">Contact</a>
+				<button type="button" class="nav-globe route-open" aria-label="Mon trajet" title="Mon trajet">🌍</button>
 				<a class="lang" href="ar/" lang="ar" hreflang="ar">🇸🇦 العربية</a>
 				<a class="nav-cta cta-open" href="#souscrire">Souscrire</a>
 			</nav>
@@ -308,7 +311,7 @@
 	</footer>
 
 	<!-- SPLASH CHOIX DU PORT -->
-	<button type="button" class="route-reopen" id="route-reopen">🚢 Mon trajet</button>
+	<button type="button" class="route-reopen route-open" id="route-reopen">🚢 Mon trajet</button>
 	<div id="port-splash" class="port-splash" aria-hidden="true">
 		<div class="port-splash-box">
 			<button type="button" class="port-splash-close" aria-label="Fermer">&times;</button>
@@ -348,7 +351,7 @@
 		contBtn.addEventListener('click',function(){if(!selArr)return;try{localStorage.setItem(KEY,selArr);}catch(e){}if(selArr===CURRENT)hide();else window.location.href=URLS[selArr];});
 		document.querySelector('.port-splash-close').addEventListener('click',hide);
 		splash.addEventListener('click',function(e){if(e.target===splash)hide();});
-		if(reopen)reopen.addEventListener('click',function(){selDep=null;selArr=null;refresh();showSplash();});
+		document.querySelectorAll('.route-open').forEach(function(el){el.addEventListener('click',function(){selDep=null;selArr=null;refresh();showSplash();});});
 		var chosen=null;try{chosen=localStorage.getItem(KEY);}catch(e){}
 		buildChips();refresh();if(!chosen)showSplash();
 		function loadLeaflet(cb){if(window.L){cb();return;}var c=document.createElement('link');c.rel='stylesheet';c.href='https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';document.head.appendChild(c);var s=document.createElement('script');s.src='https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';s.onload=cb;document.head.appendChild(s);}
