@@ -145,6 +145,20 @@
 	.port-btn:hover{background:var(--orange-d);transform:translateY(-2px)}
 	.port-btn small{font-weight:500;font-size:12.5px;opacity:.92}
 	@media(max-width:520px){.port-choices{grid-template-columns:1fr}#portmap{height:230px}}
+
+	/* ROUTE SELECTOR */
+	.route-sel{display:grid;gap:14px;margin-bottom:16px;text-align:start}
+	.route-group label{display:block;font-weight:700;color:var(--navy);margin-bottom:8px;font-size:15px}
+	.chips{display:flex;flex-wrap:wrap;gap:8px}
+	.chip{border:1.5px solid #dfe4ee;background:#fff;color:var(--navy);border-radius:999px;padding:8px 14px;font-size:14px;font-weight:600;cursor:pointer;transition:all .15s}
+	.chip:hover{border-color:var(--orange)}
+	.chip.active{background:var(--orange);color:#fff;border-color:var(--orange)}
+	.chip.dim{opacity:.32;pointer-events:none}
+	.port-continue{width:100%;background:var(--orange);color:#fff;border:none;border-radius:12px;padding:15px;font-size:17px;font-weight:700;cursor:pointer}
+	.port-continue:hover{background:var(--orange-d)}
+	.port-continue:disabled{background:#c9d0dc;cursor:not-allowed}
+	.route-reopen{position:fixed;bottom:16px;left:16px;z-index:8000;background:var(--navy);color:#fff;border:none;border-radius:999px;padding:11px 16px;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.3)}
+	.route-reopen:hover{background:var(--navy-2)}
 	</style>
 </head>
 <body>
@@ -281,43 +295,65 @@
 	</footer>
 
 	<!-- SPLASH CHOIX DU PORT -->
+	<button type="button" class="route-reopen" id="route-reopen">🚢 Mon trajet</button>
 	<div id="port-splash" class="port-splash" aria-hidden="true">
 		<div class="port-splash-box">
 			<button type="button" class="port-splash-close" aria-label="Fermer">&times;</button>
-			<h2>D'où arrivez-vous&nbsp;?<span>Choisissez votre port de débarquement en France</span></h2>
+			<h2>Planifiez votre trajet<span>Choisissez votre port de départ, puis votre port d'arrivée</span></h2>
 			<div id="portmap"></div>
-			<div class="port-choices">
-				<button type="button" class="port-btn" data-port="marseille">🚢 J'arrive à Marseille<small>Algérie · Tunisie</small></button>
-				<button type="button" class="port-btn" data-port="sete">🚢 J'arrive à Sète<small>Maroc</small></button>
+			<div class="route-sel">
+				<div class="route-group"><label>🌍 Je viens de :</label><div class="chips" id="dep-chips"></div></div>
+				<div class="route-group"><label>📍 J'arrive à :</label><div class="chips" id="arr-chips"></div></div>
 			</div>
+			<button type="button" class="port-continue" id="port-continue" disabled>Continuer</button>
 		</div>
 	</div>
 	<script>
 	(function(){
 		var CURRENT='sete';
-		var URLS={marseille:'/',sete:'/sete/'};
-		var KEY='ata_port';
-		var splash=document.getElementById('port-splash');
+		var URLS={"marseille": "/", "sete": "/sete/"};
+		var ARR={"marseille": "Marseille", "sete": "Sète"};
+		var DEPS=[{"id": "alger", "name": "Alger", "co": [36.77, 3.06], "arr": ["marseille", "sete"]}, {"id": "oran", "name": "Oran", "co": [35.71, -0.63], "arr": ["marseille"]}, {"id": "bejaia", "name": "Béjaïa", "co": [36.75, 5.08], "arr": ["marseille", "sete"]}, {"id": "skikda", "name": "Skikda", "co": [36.88, 6.91], "arr": ["marseille"]}, {"id": "annaba", "name": "Annaba", "co": [36.9, 7.77], "arr": ["marseille"]}, {"id": "tunis", "name": "Tunis", "co": [36.81, 10.3], "arr": ["marseille"]}, {"id": "nador", "name": "Nador", "co": [35.27, 2.93], "arr": ["sete"]}, {"id": "tanger", "name": "Tanger Med", "co": [35.88, -5.51], "arr": ["sete"]}];
+		var ARRCO={marseille:[43.30,5.37],sete:[43.40,3.70]};
+		var KEY='ata_port',CONTPRE="Continuer vers ",CONT="Continuer";
+		var splash=document.getElementById('port-splash'),depBox=document.getElementById('dep-chips'),arrBox=document.getElementById('arr-chips'),contBtn=document.getElementById('port-continue'),reopen=document.getElementById('route-reopen');
+		var selDep=null,selArr=null,map=null,hi=null;
+		function depById(id){for(var i=0;i<DEPS.length;i++)if(DEPS[i].id===id)return DEPS[i];}
 		function hide(){splash.classList.remove('show');splash.setAttribute('aria-hidden','true');document.body.classList.remove('no-scroll');}
-		function choose(p){try{localStorage.setItem(KEY,p);}catch(e){}if(p===CURRENT){hide();}else{window.location.href=URLS[p];}}
-		document.querySelectorAll('.port-btn').forEach(function(b){b.addEventListener('click',function(){choose(b.getAttribute('data-port'));});});
-		splash.querySelector('.port-splash-close').addEventListener('click',hide);
+		function showSplash(){splash.classList.add('show');splash.setAttribute('aria-hidden','false');document.body.classList.add('no-scroll');loadLeaflet(initMap);}
+		function buildChips(){depBox.innerHTML='';arrBox.innerHTML='';
+			DEPS.forEach(function(d){var b=document.createElement('button');b.type='button';b.className='chip';b.textContent=d.name;b.setAttribute('data-id',d.id);b.addEventListener('click',function(){selectDep(d.id);});depBox.appendChild(b);});
+			Object.keys(ARR).forEach(function(a){var b=document.createElement('button');b.type='button';b.className='chip';b.textContent=ARR[a];b.setAttribute('data-arr',a);b.addEventListener('click',function(){selectArr(a);});arrBox.appendChild(b);});
+		}
+		function selectDep(id){selDep=id;var d=depById(id);if(selArr&&d.arr.indexOf(selArr)<0)selArr=null;if(!selArr&&d.arr.length===1)selArr=d.arr[0];refresh();}
+		function selectArr(a){selArr=a;if(selDep){var d=depById(selDep);if(d.arr.indexOf(a)<0)selDep=null;}refresh();}
+		function refresh(){
+			depBox.querySelectorAll('.chip').forEach(function(c){var d=depById(c.getAttribute('data-id'));c.classList.toggle('active',d.id===selDep);c.classList.toggle('dim',selArr?d.arr.indexOf(selArr)<0:false);});
+			arrBox.querySelectorAll('.chip').forEach(function(c){var a=c.getAttribute('data-arr');c.classList.toggle('active',a===selArr);var dim=false;if(selDep){dim=depById(selDep).arr.indexOf(a)<0;}c.classList.toggle('dim',dim);});
+			contBtn.disabled=!selArr;contBtn.textContent=selArr?(CONTPRE+ARR[selArr]):CONT;updateMap();
+		}
+		contBtn.addEventListener('click',function(){if(!selArr)return;try{localStorage.setItem(KEY,selArr);}catch(e){}if(selArr===CURRENT)hide();else window.location.href=URLS[selArr];});
+		document.querySelector('.port-splash-close').addEventListener('click',hide);
 		splash.addEventListener('click',function(e){if(e.target===splash)hide();});
+		if(reopen)reopen.addEventListener('click',function(){selDep=null;selArr=null;refresh();showSplash();});
 		var chosen=null;try{chosen=localStorage.getItem(KEY);}catch(e){}
-		if(!chosen){show();}
-		function show(){splash.classList.add('show');splash.setAttribute('aria-hidden','false');document.body.classList.add('no-scroll');loadLeaflet(initMap);}
+		buildChips();refresh();if(!chosen)showSplash();
 		function loadLeaflet(cb){if(window.L){cb();return;}var c=document.createElement('link');c.rel='stylesheet';c.href='https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';document.head.appendChild(c);var s=document.createElement('script');s.src='https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';s.onload=cb;document.head.appendChild(s);}
-		function initMap(){if(initMap.done||!window.L)return;initMap.done=true;
-			var map=L.map('portmap',{scrollWheelZoom:false}).setView([39.6,3.5],4);
+		function initMap(){if(map||!window.L)return;
+			map=L.map('portmap',{scrollWheelZoom:false}).setView([39.6,3.5],4);
 			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:9,attribution:'&copy; OpenStreetMap'}).addTo(map);
-			var arr={marseille:[43.30,5.37],sete:[43.40,3.70]};
-			var dep={'Alger':[36.77,3.06],'Oran':[35.71,-0.63],'Béjaïa':[36.75,5.08],'Skikda':[36.88,6.91],'Mostaganem':[35.93,0.09],'Tunis':[36.81,10.30],'Nador':[35.27,2.93],'Tanger Med':[35.88,-5.51]};
-			var routes={marseille:['Alger','Oran','Béjaïa','Skikda','Mostaganem','Tunis'],sete:['Nador','Tanger Med']};
-			Object.keys(routes).forEach(function(port){var col=port==='marseille'?'#ff6701':'#1f78d1';routes[port].forEach(function(d){L.polyline([dep[d],arr[port]],{color:col,weight:2,opacity:.65,dashArray:'5,6'}).addTo(map);});});
-			Object.keys(dep).forEach(function(d){L.circleMarker(dep[d],{radius:5,color:'#0f1b3d',fillColor:'#fdbb28',fillOpacity:1,weight:1}).addTo(map).bindTooltip(d);});
-			function arrival(port,label,col){var m=L.circleMarker(arr[port],{radius:10,color:'#fff',fillColor:col,fillOpacity:1,weight:3}).addTo(map);m.bindTooltip(label,{permanent:true,direction:'top'});m.on('click',function(){choose(port);});}
-			arrival('marseille','Marseille','#ff6701');arrival('sete','Sète','#1f78d1');
-			setTimeout(function(){map.invalidateSize();},250);
+			var base=L.layerGroup().addTo(map);
+			DEPS.forEach(function(d){d.arr.forEach(function(a){L.polyline([d.co,ARRCO[a]],{color:'#9fb0cc',weight:1.5,opacity:.5}).addTo(base);});});
+			DEPS.forEach(function(d){var m=L.circleMarker(d.co,{radius:5,color:'#0f1b3d',fillColor:'#fdbb28',fillOpacity:1,weight:1}).addTo(map).bindTooltip(d.name);m.on('click',function(){selectDep(d.id);});});
+			Object.keys(ARRCO).forEach(function(a){var m=L.circleMarker(ARRCO[a],{radius:9,color:'#fff',fillColor:'#ff6701',fillOpacity:1,weight:3}).addTo(map).bindTooltip(ARR[a],{permanent:true,direction:'top'});m.on('click',function(){selectArr(a);});});
+			hi=L.layerGroup().addTo(map);
+			setTimeout(function(){map.invalidateSize();updateMap();},250);
+		}
+		function updateMap(){if(!map||!hi)return;hi.clearLayers();var pts=[];
+			if(selDep&&selArr){var d=depById(selDep);L.polyline([d.co,ARRCO[selArr]],{color:'#ff6701',weight:4,opacity:.95}).addTo(hi);pts=[d.co,ARRCO[selArr]];}
+			else if(selArr){DEPS.forEach(function(d){if(d.arr.indexOf(selArr)>=0){L.polyline([d.co,ARRCO[selArr]],{color:'#ff6701',weight:3,opacity:.85}).addTo(hi);pts.push(d.co);}});pts.push(ARRCO[selArr]);}
+			else if(selDep){var d2=depById(selDep);d2.arr.forEach(function(a){L.polyline([d2.co,ARRCO[a]],{color:'#ff6701',weight:3,opacity:.85}).addTo(hi);pts.push(ARRCO[a]);});pts.push(d2.co);}
+			if(pts.length>1){try{map.fitBounds(L.latLngBounds(pts).pad(0.3));}catch(e){}}
 		}
 	})();
 	</script>
