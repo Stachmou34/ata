@@ -1,7 +1,4 @@
 User-agent: *
-Disallow: /admin
-Disallow: /captcha
-Disallow: /menu
-Disallow: /imemail
+Allow: /
 
 Sitemap: https://assurancetemporaireauto.com/sitemap.xml
