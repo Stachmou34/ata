@@ -2,7 +2,7 @@
 <html lang="fr-FR" dir="ltr" prefix="og: http://ogp.me/ns#">
 <head>
 	<meta charset="utf-8" />
-	<title>Assurance frontière Marseille : voiture plaque DZ, TN, MA | 30 ou 90 jours</title>
+	<title>Assurance frontière Marseille : voiture plaque DZ, TN, MA | dès 140 €</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="description" content="Vous débarquez en ferry à Marseille avec une voiture étrangère (plaque algérienne DZ, tunisienne TN ou marocaine MA) ? Souscrivez votre assurance frontière temporaire obligatoire en ligne : attestation immédiate, de 30 ou 90 jours, France et Europe." />
 	<meta name="keywords" content="assurance frontière Marseille, assurance temporaire voiture étrangère, plaque DZ, plaque TN, assurance frontière Algérie, assurance frontière Tunisie, assurance ferry Marseille, assurance plaque étrangère France" />
@@ -34,6 +34,12 @@
 	"address": { "@type": "PostalAddress", "streetAddress": "12 rue Clément Ader", "addressLocality": "Abeilhan", "addressRegion": "Hérault", "addressCountry": "FR", "postalCode": "34290" },
 	"areaServed": [ { "@type": "City", "name": "Marseille" }, { "@type": "AdministrativeArea", "name": "Bouches-du-Rhône" }, { "@type": "Country", "name": "France" } ],
 	"knowsLanguage": ["fr", "ar"],
+	"makesOffer": [
+		{ "@type": "Offer", "name": "Assurance frontière 30 jours (véhicule ≤ 30 CV)", "price": "140", "priceCurrency": "EUR" },
+		{ "@type": "Offer", "name": "Assurance frontière 90 jours (véhicule ≤ 30 CV)", "price": "340", "priceCurrency": "EUR" },
+		{ "@type": "Offer", "name": "Assurance frontière 30 jours (véhicule > 30 CV)", "price": "150", "priceCurrency": "EUR" },
+		{ "@type": "Offer", "name": "Assurance frontière 90 jours (véhicule > 30 CV)", "price": "370", "priceCurrency": "EUR" }
+	],
 	"priceRange": "€€",
 	"openingHoursSpecification": { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "18:00" }
 }</script>
@@ -43,7 +49,7 @@
 	"mainEntity": [
 		{ "@type": "Question", "name": "Qu'est-ce qu'une assurance frontière à Marseille ?", "acceptedAnswer": { "@type": "Answer", "text": "L'assurance frontière est un contrat d'assurance temporaire obligatoire pour circuler en France avec un véhicule immatriculé à l'étranger (plaque algérienne DZ, tunisienne TN ou marocaine MA) non couvert par la carte verte. Dès la sortie du ferry à Marseille, votre voiture doit être assurée pour passer le contrôle de la police et des douanes." } },
 		{ "@type": "Question", "name": "Peut-on rouler en France avec une voiture immatriculée en Algérie ou en Tunisie ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui. Un véhicule immatriculé en Algérie, en Tunisie ou au Maroc peut circuler en France jusqu'à 6 mois maximum sans immatriculation française, à condition d'être assuré avec une assurance frontière valide pendant toute la durée du séjour." } },
-		{ "@type": "Question", "name": "Combien de temps puis-je assurer mon véhicule ?", "acceptedAnswer": { "@type": "Answer", "text": "Vous pouvez souscrire votre assurance frontière pour une durée de 30 ou 90 jours. L'attestation d'assurance est délivrée immédiatement après la souscription en ligne." } },
+		{ "@type": "Question", "name": "Combien de temps puis-je assurer mon véhicule ?", "acceptedAnswer": { "@type": "Answer", "text": "Vous pouvez souscrire votre assurance frontière pour une durée de 30 ou 90 jours, aux tarifs les plus bas du marché : 140 € (30 jours) et 340 € (90 jours) pour un véhicule jusqu'à 30 CV, 150 € et 370 € au-delà. L'attestation d'assurance est délivrée immédiatement après la souscription en ligne." } },
 		{ "@type": "Question", "name": "Comment souscrire avant de débarquer à Marseille ?", "acceptedAnswer": { "@type": "Answer", "text": "La souscription se fait 100 % en ligne, avant ou après la traversée. Vous remplissez le formulaire, vous réglez et vous recevez votre attestation par e-mail immédiatement, à présenter dès le contrôle à la sortie du ferry." } },
 		{ "@type": "Question", "name": "Quels documents faut-il pour assurer une voiture à plaque étrangère ?", "acceptedAnswer": { "@type": "Answer", "text": "Il vous faut la carte grise du véhicule étranger, une pièce d'identité du conducteur et votre permis de conduire. La souscription ne prend que quelques minutes." } }
 	]
@@ -174,6 +180,33 @@
 	.route-reopen:hover{background:var(--navy-2)}
 	.nav-globe{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;border:1.5px solid #dfe4ee;background:#fff;font-size:18px;cursor:pointer;line-height:1;padding:0;transition:all .15s}
 	.nav-globe:hover{border-color:var(--orange);transform:translateY(-1px)}
+
+	/* PRICING */
+	.pricing-band{background:linear-gradient(135deg,var(--navy),var(--navy-2));color:#fff}
+	.eyebrow-light{color:var(--gold)}
+	.sec-light{color:#fff}
+	.sec-intro-light{color:#c6d0e2}
+	.price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;max-width:780px;margin:0 auto 44px}
+	.price-card{background:#fff;color:var(--ink);border-radius:var(--radius);padding:28px 24px 24px;text-align:center;box-shadow:var(--shadow);position:relative}
+	.price-card.best{outline:3px solid var(--gold)}
+	.price-tag{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--gold);color:#15233f;font-size:12.5px;font-weight:800;border-radius:999px;padding:5px 14px;white-space:nowrap}
+	.price-card h3{margin:6px 0 14px;color:var(--navy);font-size:18px}
+	.price-line{display:flex;justify-content:space-between;align-items:baseline;padding:10px 4px;border-bottom:1px dashed #e3e7ef}
+	.price-line .dur{color:var(--muted);font-weight:600}
+	.price-line .amount{font-size:30px;font-weight:800;color:var(--orange)}
+	.mkt{font-size:13.5px;color:var(--muted);margin:12px 0 16px}
+	.compare{max-width:660px;margin:0 auto}
+	.compare-title{text-align:center;font-size:18px;margin:0 0 18px;color:#fff}
+	.bar-row{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+	.bar-label{flex:0 0 112px;font-size:14px;font-weight:600;color:#c6d0e2;text-align:end}
+	.bar-track{flex:1;display:flex;align-items:center;gap:10px}
+	.bar-fill{height:26px;border-radius:6px;background:rgba(255,255,255,.25)}
+	.bar-row.us .bar-fill{background:var(--orange)}
+	.bar-val{font-size:14px;font-weight:700;color:#fff;white-space:nowrap}
+	.bar-row.us .bar-label,.bar-row.us .bar-val{color:var(--gold);font-weight:800}
+	.compare-note{text-align:center;font-size:16.5px;color:#fff;margin:20px 0 10px}
+	.compare-note b{color:var(--gold)}
+	.legal-note{font-size:11.5px;color:#8fa0bd;text-align:center;line-height:1.55;max-width:640px;margin:0 auto}
 	</style>
 </head>
 <body>
@@ -182,6 +215,7 @@
 			<a class="brand" href="/"><img src="images/logo_small_orange_fuxxxh4q.png" alt="Logo Assurance Frontière Marseille" /> <span>Assurance Frontière Marseille</span></a>
 			<nav class="nav-links">
 				<a class="lk" href="#etapes">Comment ça marche</a>
+				<a class="lk" href="#tarifs">Tarifs</a>
 				<a class="lk" href="#garanties">Garanties</a>
 				<a class="lk" href="#faq">FAQ</a>
 				<a class="lk" href="#contact">Contact</a>
@@ -201,6 +235,7 @@
 				<a class="btn btn-ghost" href="tel:+33970713693">📞 09 70 71 36 93</a>
 			</div>
 			<div class="badges">
+				<span>💶 30 jours dès 140 €</span>
 				<span>✅ Attestation immédiate</span>
 				<span>🛡️ Souscription 100% en ligne</span>
 				<span>📅 30 ou 90 jours</span>
@@ -232,6 +267,40 @@
 				<div class="plate"><b>TN</b> Voiture tunisienne</div>
 				<div class="plate"><b>MA</b> Voiture marocaine</div>
 				<div class="plate"><b>WW</b> Véhicule en transit / importé</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="tarifs" class="pricing-band">
+		<div class="wrap">
+			<div class="eyebrow eyebrow-light">💶 Les moins chers du marché</div>
+			<h2 class="sec sec-light">Des tarifs imbattables, sans mauvaise surprise</h2>
+			<p class="sec-intro sec-intro-light">Comparez : à garanties équivalentes, personne ne fait mieux. Prix fixes, tout compris, attestation immédiate.</p>
+			<div class="price-grid">
+				<div class="price-card best">
+					<div class="price-tag">⭐ Le plus choisi</div>
+					<h3>Véhicule jusqu'à 30 CV</h3>
+					<div class="price-line"><span class="dur">30 jours</span><span class="amount">140 €</span></div>
+					<div class="price-line"><span class="dur">90 jours</span><span class="amount">340 €</span></div>
+					<div class="mkt">Ailleurs : de 169 € à 182 € les 30 jours*</div>
+					<button type="button" class="btn btn-primary cta-open">⚡ Souscrire au meilleur prix</button>
+				</div>
+				<div class="price-card">
+					<h3>Véhicule de plus de 30 CV</h3>
+					<div class="price-line"><span class="dur">30 jours</span><span class="amount">150 €</span></div>
+					<div class="price-line"><span class="dur">90 jours</span><span class="amount">370 €</span></div>
+					<div class="mkt">Toujours en dessous des prix constatés ailleurs*</div>
+					<button type="button" class="btn btn-primary cta-open">⚡ Souscrire</button>
+				</div>
+			</div>
+			<div class="compare">
+				<h3 class="compare-title">Assurance frontière 30 jours — nous vs le marché</h3>
+				<div class="bar-row us"><span class="bar-label">Nous</span><div class="bar-track"><div class="bar-fill" style="width:62%"></div><span class="bar-val">140 €</span></div></div>
+				<div class="bar-row"><span class="bar-label">Concurrent 1</span><div class="bar-track"><div class="bar-fill" style="width:75%"></div><span class="bar-val">171,30 €</span></div></div>
+				<div class="bar-row"><span class="bar-label">Concurrent 2</span><div class="bar-track"><div class="bar-fill" style="width:77%"></div><span class="bar-val">175 €</span></div></div>
+				<div class="bar-row"><span class="bar-label">Concurrent 3</span><div class="bar-track"><div class="bar-fill" style="width:80%"></div><span class="bar-val">182 €</span></div></div>
+				<p class="compare-note">Jusqu'à <b>42 € d'économie</b> sur 30 jours — et jusqu'à <b>36 €</b> sur 90 jours.</p>
+				<p class="legal-note">* Tarifs concurrents constatés en ligne le 24/07/2026 sur les sites de courtiers spécialisés en assurance frontière, pour un véhicule équivalent, formule 30 jours. Nos tarifs TTC : véhicule ≤ 30 CV : 140 € (30 j) / 340 € (90 j) ; véhicule > 30 CV : 150 € (30 j) / 370 € (90 j).</p>
 			</div>
 		</div>
 	</section>
@@ -268,7 +337,7 @@
 			<h2 class="sec">Questions fréquentes</h2>
 			<details><summary>Qu'est-ce qu'une assurance frontière à Marseille ?</summary><div class="faq-a">L'assurance frontière est un contrat d'assurance temporaire obligatoire pour circuler en France avec un véhicule immatriculé à l'étranger (plaque algérienne DZ, tunisienne TN ou marocaine MA) non couvert par la carte verte. Dès la sortie du ferry à Marseille, votre voiture doit être assurée pour passer le contrôle de la police et des douanes.</div></details>
 			<details><summary>Peut-on rouler en France avec une voiture immatriculée en Algérie ou en Tunisie ?</summary><div class="faq-a">Oui. Un véhicule immatriculé en Algérie, en Tunisie ou au Maroc peut circuler en France jusqu'à 6 mois maximum sans immatriculation française, à condition d'être assuré avec une assurance frontière valide pendant toute la durée du séjour.</div></details>
-			<details><summary>Combien de temps puis-je assurer mon véhicule ?</summary><div class="faq-a">Vous pouvez souscrire votre assurance frontière pour une durée de 30 ou 90 jours. L'attestation d'assurance est délivrée immédiatement après la souscription en ligne.</div></details>
+			<details><summary>Combien de temps puis-je assurer mon véhicule ?</summary><div class="faq-a">Vous pouvez souscrire votre assurance frontière pour une durée de 30 ou 90 jours, aux tarifs les plus bas du marché : 140 € (30 jours) et 340 € (90 jours) pour un véhicule jusqu'à 30 CV, 150 € et 370 € au-delà. L'attestation d'assurance est délivrée immédiatement après la souscription en ligne.</div></details>
 			<details><summary>Comment souscrire avant de débarquer à Marseille ?</summary><div class="faq-a">La souscription se fait 100 % en ligne, avant ou après la traversée. Vous remplissez le formulaire, vous réglez et vous recevez votre attestation par e-mail immédiatement, à présenter dès le contrôle à la sortie du ferry.</div></details>
 			<details><summary>Quels documents faut-il pour assurer une voiture à plaque étrangère ?</summary><div class="faq-a">Il vous faut la carte grise du véhicule étranger, une pièce d'identité du conducteur et votre permis de conduire. La souscription ne prend que quelques minutes.</div></details>
 		</div>
