@@ -207,6 +207,23 @@
 	.compare-note{text-align:center;font-size:16.5px;color:#fff;margin:20px 0 10px}
 	.compare-note b{color:var(--gold)}
 	.legal-note{font-size:11.5px;color:#8fa0bd;text-align:center;line-height:1.55;max-width:640px;margin:0 auto}
+
+	/* HERO DUEL */
+	.hl{color:var(--gold)}
+	.duel{display:flex;align-items:stretch;justify-content:center;gap:14px;margin:26px auto 10px;flex-wrap:wrap}
+	.duel-card{background:rgba(255,255,255,.10);border:1.5px solid rgba(255,255,255,.28);border-radius:16px;padding:16px 26px;min-width:168px;display:flex;flex-direction:column;gap:2px;align-items:center}
+	.duel-card.us{background:#fff;border-color:var(--gold);box-shadow:0 12px 34px rgba(0,0,0,.35);transform:scale(1.06)}
+	.duel-t{font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#c6d0e2}
+	.duel-card.us .duel-t{color:var(--orange)}
+	.duel-p{font-size:30px;font-weight:800;color:#fff;white-space:nowrap}
+	.duel-p.strike{text-decoration:line-through;text-decoration-color:#ff5a5a;text-decoration-thickness:3px;opacity:.85;font-size:24px;padding-top:6px}
+	.duel-card.us .duel-p{color:var(--navy);font-size:40px}
+	.duel-d{font-size:13.5px;color:#c6d0e2}
+	.duel-card.us .duel-d{color:var(--muted)}
+	.duel-arrow{align-self:center;font-size:30px;color:var(--gold);font-weight:800}
+	.duel-save{font-size:16.5px;font-weight:700;color:var(--gold);margin:8px 0 24px}
+	.duel-save a{color:#fff;text-decoration:underline;font-weight:600;font-size:14px}
+	@media(max-width:480px){.duel{flex-direction:column;align-items:center}.duel-arrow{transform:rotate(90deg)}}
 	</style>
 </head>
 <body>
@@ -228,14 +245,19 @@
 
 	<section class="hero">
 		<div class="wrap">
-			<h1>Assurance frontière à Marseille pour votre voiture étrangère</h1>
-			<p class="lead">Vous débarquez du ferry avec une plaque <strong>DZ, TN ou MA</strong> ? Roulez en règle en France : attestation immédiate, de 30 ou 90 jours.</p>
+			<h1>Assurance frontière à Marseille <span class="hl">au meilleur prix du marché</span></h1>
+			<p class="lead">Vous débarquez du ferry avec une plaque <strong>DZ, TN ou MA</strong> ? Attestation immédiate, 30 ou 90 jours, France &amp; Europe.</p>
+			<div class="duel">
+				<div class="duel-card them"><span class="duel-t">Ailleurs</span><span class="duel-p strike">jusqu'à 182 €</span><span class="duel-d">30 jours*</span></div>
+				<div class="duel-arrow" aria-hidden="true">→</div>
+				<div class="duel-card us"><span class="duel-t">Chez nous</span><span class="duel-p">140 €</span><span class="duel-d">30 jours</span></div>
+			</div>
+			<p class="duel-save">💰 Jusqu'à 42 € d'économie — <a href="#tarifs">voir tous les tarifs</a></p>
 			<div class="hero-cta">
 				<button type="button" class="btn btn-primary cta-open">⚡ Souscrire en ligne</button>
 				<a class="btn btn-ghost" href="tel:+33970713693">📞 09 70 71 36 93</a>
 			</div>
 			<div class="badges">
-				<span>💶 30 jours dès 140 €</span>
 				<span>✅ Attestation immédiate</span>
 				<span>🛡️ Souscription 100% en ligne</span>
 				<span>📅 30 ou 90 jours</span>

@@ -203,6 +203,23 @@
 	.compare-note{text-align:center;font-size:16.5px;color:#fff;margin:20px 0 10px}
 	.compare-note b{color:var(--gold)}
 	.legal-note{font-size:11.5px;color:#8fa0bd;text-align:center;line-height:1.55;max-width:640px;margin:0 auto}
+
+	/* HERO DUEL */
+	.hl{color:var(--gold)}
+	.duel{display:flex;align-items:stretch;justify-content:center;gap:14px;margin:26px auto 10px;flex-wrap:wrap}
+	.duel-card{background:rgba(255,255,255,.10);border:1.5px solid rgba(255,255,255,.28);border-radius:16px;padding:16px 26px;min-width:168px;display:flex;flex-direction:column;gap:2px;align-items:center}
+	.duel-card.us{background:#fff;border-color:var(--gold);box-shadow:0 12px 34px rgba(0,0,0,.35);transform:scale(1.06)}
+	.duel-t{font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#c6d0e2}
+	.duel-card.us .duel-t{color:var(--orange)}
+	.duel-p{font-size:30px;font-weight:800;color:#fff;white-space:nowrap}
+	.duel-p.strike{text-decoration:line-through;text-decoration-color:#ff5a5a;text-decoration-thickness:3px;opacity:.85;font-size:24px;padding-top:6px}
+	.duel-card.us .duel-p{color:var(--navy);font-size:40px}
+	.duel-d{font-size:13.5px;color:#c6d0e2}
+	.duel-card.us .duel-d{color:var(--muted)}
+	.duel-arrow{align-self:center;font-size:30px;color:var(--gold);font-weight:800}
+	.duel-save{font-size:16.5px;font-weight:700;color:var(--gold);margin:8px 0 24px}
+	.duel-save a{color:#fff;text-decoration:underline;font-weight:600;font-size:14px}
+	@media(max-width:480px){.duel{flex-direction:column;align-items:center}.duel-arrow{transform:rotate(-90deg)}}
 	</style>
 </head>
 <body>
@@ -224,14 +241,19 @@
 
 	<section class="hero">
 		<div class="wrap">
-			<h1>تأمين الحدود في مرسيليا لسيارتك الأجنبية</h1>
-			<p class="lead">هل نزلت من الباخرة بلوحة <strong>DZ أو TN أو MA</strong>؟ سِر بشكل قانوني في فرنسا: شهادة فورية، 30 أو 90 يوماً.</p>
+			<h1>تأمين الحدود في مرسيليا <span class="hl">بأفضل سعر في السوق</span></h1>
+			<p class="lead">نزلت من الباخرة بلوحة <strong>DZ أو TN أو MA</strong>؟ شهادة فورية، 30 أو 90 يوماً، فرنسا وأوروبا.</p>
+			<div class="duel">
+				<div class="duel-card them"><span class="duel-t">عند الآخرين</span><span class="duel-p strike">حتى 182 €</span><span class="duel-d">30 يوماً*</span></div>
+				<div class="duel-arrow" aria-hidden="true">←</div>
+				<div class="duel-card us"><span class="duel-t">عندنا</span><span class="duel-p">140 €</span><span class="duel-d">30 يوماً</span></div>
+			</div>
+			<p class="duel-save">💰 وفّر حتى 42 € — <a href="#tarifs">شاهد كل الأسعار</a></p>
 			<div class="hero-cta">
 				<button type="button" class="btn btn-primary cta-open">⚡ اكتتب عبر الإنترنت</button>
 				<a class="btn btn-ghost" href="tel:+33970713693" dir="ltr">📞 09 70 71 36 93</a>
 			</div>
 			<div class="badges">
-				<span>💶 30 يوماً ابتداءً من 140 €</span>
 				<span>✅ شهادة فورية</span>
 				<span>🛡️ اكتتاب 100% عبر الإنترنت</span>
 				<span>📅 30 أو 90 يوماً</span>
