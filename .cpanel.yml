@@ -1,0 +1,10 @@
+---
+deployment:
+  tasks:
+    # 1) Adapte UNE SEULE FOIS ce chemin vers ton dossier public (garde /public_html a la fin)
+    - export DEPLOYPATH=/home/CPANEL_USER/public_html
+    # 2) Creation des sous-dossiers si besoin
+    - /bin/mkdir -p "$DEPLOYPATH/ar" "$DEPLOYPATH/assets" "$DEPLOYPATH/images"
+    # 3) Copie des fichiers du site (pas les docs internes .md)
+    - /bin/cp -f index.html mentions-legales.html erreur-404.html favicon.png robots.txt sitemap.xml .htaccess google5cf29f286db93f8c.html "$DEPLOYPATH/"
+    - /bin/cp -Rf ar assets images "$DEPLOYPATH/"
