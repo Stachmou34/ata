@@ -39,21 +39,18 @@ img,svg{max-width:100%;display:block}
 .btn-navy:hover{background:var(--navy-l);transform:translateY(-2px)}
 
 /* ---------- header ---------- */
-header.site{position:sticky;top:0;z-index:900;background:rgba(253,250,243,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:14px;height:72px}
-.brand{display:flex;align-items:center;gap:11px;min-width:0}
-.brand svg,.brand img{height:44px;width:auto;flex:none}
-.brand-txt{display:flex;flex-direction:column;line-height:1.05;min-width:0}
-.brand-name{font-size:19px;font-weight:800;color:var(--navy);letter-spacing:.14em}
-.brand-sub{font-size:10.5px;font-weight:700;color:var(--or-d);letter-spacing:.24em;text-transform:uppercase}
+header.site{position:sticky;top:0;z-index:900;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:14px;height:84px}
+.brand{display:flex;align-items:center;min-width:0}
+.brand svg,.brand img{height:66px;width:auto;flex:none;object-fit:contain}
 .nav-links{display:flex;align-items:center;gap:22px}
 .nav-links a.lk{color:var(--navy);font-weight:600;font-size:15px}
 .nav-links a.lk:hover{color:var(--or-d)}
 .lang{font-weight:700;font-size:14px;border:1.5px solid var(--line);border-radius:999px;padding:7px 13px;color:var(--navy);background:#fff;white-space:nowrap}
 .lang:hover{border-color:var(--or);color:var(--or-d)}
 .nav-cta{background:linear-gradient(180deg,var(--or-l),var(--or));color:#20180a;border-radius:999px;padding:10px 18px;font-weight:800;font-size:14px;white-space:nowrap}
-@media(max-width:960px){.nav-links a.lk{display:none}.brand-name{font-size:17px}}
-@media(max-width:420px){.brand-sub{display:none}}
+@media(max-width:960px){.nav-links a.lk{display:none}}
+@media(max-width:560px){.nav{height:72px}.brand svg,.brand img{height:54px}}
 
 /* ---------- hero ---------- */
 .hero{position:relative;color:#fff;text-align:center;padding:84px 20px 74px;overflow:hidden;
@@ -194,7 +191,7 @@ details[open] summary::after{content:"\2212"}
 footer.site{background:var(--navy-d);color:#a9b7cd;padding:44px 0 26px;font-size:14px}
 footer.site .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:26px;margin-bottom:26px}
 footer.site h4{color:#fff;font-size:15px;margin:0 0 12px}
-footer.site .foot-logo{max-width:210px;width:100%;height:auto;margin:0 0 16px;background:#fdfaf3;border-radius:12px;padding:12px}
+footer.site .foot-logo{max-width:215px;width:100%;height:auto;margin:0 0 16px;background:#fff;border-radius:14px;padding:14px}
 [dir="rtl"] footer.site .foot-logo{margin-inline:0 auto}
 footer.site a{color:#d9c48a}
 footer.site .legal{border-top:1px solid rgba(201,162,39,.25);padding-top:18px;text-align:center;font-size:12.5px;color:#8593ab}
