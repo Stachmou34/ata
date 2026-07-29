@@ -1,23 +1,37 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Aman Frontière">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 140" role="img" aria-label="Aman Frontière">
   <defs>
-    <linearGradient id="or" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#e6c65c"/>
-      <stop offset="0.5" stop-color="#c9a227"/>
-      <stop offset="1" stop-color="#a8821b"/>
+    <linearGradient id="or" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0" stop-color="#e8cd6d"/>
+      <stop offset="0.45" stop-color="#c9a227"/>
+      <stop offset="1" stop-color="#9c7717"/>
+    </linearGradient>
+    <linearGradient id="bleu" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1c3f74"/>
+      <stop offset="1" stop-color="#0f2a52"/>
     </linearGradient>
   </defs>
-  <!-- arche orientale -->
-  <path d="M60 12c-9 9-20 15-20 30v40h40V42c0-15-11-21-20-30z" fill="none" stroke="url(#or)" stroke-width="5" stroke-linejoin="round"/>
-  <!-- etoile a 8 branches -->
-  <g transform="translate(60 50)" fill="none" stroke="url(#or)" stroke-width="3.4" stroke-linejoin="round">
-    <rect x="-13" y="-13" width="26" height="26"/>
-    <rect x="-13" y="-13" width="26" height="26" transform="rotate(45)"/>
+
+  <!-- arche ogivale -->
+  <path d="M58 112V64c0-16 13-24 22-34 7-8 13-14 20-22 7 8 13 14 20 22 9 10 22 18 22 34v48"
+        fill="none" stroke="url(#or)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- rosace geometrique 8 branches -->
+  <g transform="translate(100 62)" fill="none" stroke="url(#or)" stroke-width="3.2" stroke-linejoin="round">
+    <rect x="-19" y="-19" width="38" height="38" rx="2"/>
+    <rect x="-19" y="-19" width="38" height="38" rx="2" transform="rotate(45)"/>
+    <rect x="-9" y="-9" width="18" height="18" transform="rotate(45)"/>
   </g>
-  <!-- route + vehicule stylise -->
-  <path d="M14 92c22-10 44-14 62-14s30 3 30 3" fill="none" stroke="url(#or)" stroke-width="4" stroke-linecap="round"/>
-  <path d="M22 84c8-9 20-13 32-13 10 0 18 3 24 8-6 3-14 5-24 5-12 0-24-1-32 0z" fill="#12305c"/>
-  <!-- porte / rempart -->
-  <path d="M86 66h20v16H86z" fill="#12305c"/>
-  <path d="M92 82v-8a4 4 0 0 1 8 0v8z" fill="url(#or)"/>
-  <path d="M86 66v-4h4v4M94 62h4v4M102 62h4v4" stroke="#12305c" stroke-width="3" fill="none"/>
+
+  <!-- porte de rempart creneles -->
+  <path d="M146 76h34v34h-34z" fill="url(#bleu)"/>
+  <path d="M146 76v-7h6v7M156 69h6v7M166 69h6v7M176 69h4v7" fill="url(#bleu)"/>
+  <path d="M158 110V92a7 7 0 0 1 14 0v18z" fill="url(#or)"/>
+
+  <!-- route -->
+  <path d="M26 122c26-14 58-20 88-20 24 0 44 3 60 8" fill="none" stroke="url(#or)" stroke-width="5" stroke-linecap="round"/>
+  <path d="M40 128c30-11 62-16 92-16 20 0 36 2 50 5" fill="none" stroke="url(#bleu)" stroke-width="4" stroke-linecap="round" opacity=".85"/>
+
+  <!-- voiture profilee -->
+  <path d="M28 108c3-11 15-18 30-22 16-5 36-7 50-3 13 4 24 11 31 19-14 4-40 7-68 7-19 0-33 0-43-1z" fill="url(#bleu)"/>
+  <path d="M52 92c9-6 21-9 33-9 9 0 17 2 24 6-11 2-25 3-38 3-7 0-13 0-19 0z" fill="#fff" opacity=".9"/>
 </svg>
