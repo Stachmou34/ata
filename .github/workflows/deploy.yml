@@ -1,0 +1,39 @@
+name: Déploiement FTP
+
+# Déploie automatiquement le site sur l'hébergement à chaque push sur main.
+# Peut aussi être lancé à la main : onglet Actions → "Déploiement FTP" → "Run workflow".
+#
+# Secrets à créer dans GitHub (Settings → Secrets and variables → Actions) :
+#   FTP_SERVER    ex. 91.216.107.49
+#   FTP_USERNAME  ex. aman-2838522
+#   FTP_PASSWORD  le mot de passe FTP
+#   FTP_DIR       (optionnel) dossier cible, ex. ./public_html/  — défaut : ./
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Envoyer les fichiers en FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ${{ secrets.FTP_DIR || './' }}
+          protocol: ftp
+          # Ne pas envoyer les fichiers de travail / documentation interne
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            .cpanel.yml
+            *.md
+            **/node_modules/**
