@@ -37,7 +37,7 @@ Priorités :
 | 3 | Site = 1 seule page de contenu (sitemap = 2 URL) | 🔴 Majeur | Architecture multi-pages (§2) |
 | 4 | Aucune donnée structurée Schema.org | 🟠 Important | JSON-LD `InsuranceAgency` + `FAQPage` (§3.3) |
 | 5 | Pas de version arabe, pas de `hreflang` | 🟠 Important | Sous-dossier `/ar/` + hreflang (§5) |
-| 6 | NAP incohérent : tél. accueil `04 67 36 72 01` ≠ mentions `09 70 71 36 93` | 🟠 Important | Un seul numéro partout (NAP unique) |
+| 6 | NAP incohérent : tél. accueil `04 67 36 72 01` ≠ mentions `09 74 19 00 73` | 🟠 Important | Un seul numéro partout (NAP unique) |
 | 7 | `canonical` en `www.` mais `og:url` en non-`www` | 🟡 Moyen | Choisir UNE version (recommandé : sans `www`) et rediriger l'autre en 301 |
 | 8 | `og:title` = « ACCEUIL » (+ faute « ACCEUIL » dans le menu) | 🟡 Moyen | Corriger en « Accueil » + og:title descriptif |
 | 9 | Hiérarchie Hn faible (plusieurs H2 sans H1 clair) | 🟡 Moyen | 1 seul H1 par page, structure logique |
@@ -115,7 +115,7 @@ Passer du one-pager à une arborescence claire. Chaque **page pilier** cible une
   "@type": "InsuranceAgency",
   "name": "Assurance Temporaire Auto — MCJ Courtage",
   "url": "https://assurancetemporaireauto.com/",
-  "telephone": "+33970713693",
+  "telephone": "+33974190073",
   "image": "https://assurancetemporaireauto.com/logo.png",
   "address": {
     "@type": "PostalAddress",
