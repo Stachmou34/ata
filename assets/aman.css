@@ -57,40 +57,41 @@ header.site{position:sticky;top:0;z-index:900;background:rgba(255,255,255,.97);b
 @media(max-width:960px){.nav-links a.lk{display:none}}
 @media(max-width:560px){.nav{height:72px}.brand svg,.brand img{height:54px}}
 
-/* ---------- hero clair (maquette premium) ---------- */
-.hero{position:relative;color:var(--navy);padding:0;overflow:hidden;
-  background:linear-gradient(180deg,#eaf2fb 0%,#f4f9fe 55%,var(--creme) 100%)}
-.hero::before{content:"";position:absolute;inset:0;background-image:var(--pattern-bleu);opacity:.85;pointer-events:none}
-.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);
-  align-items:center;gap:12px;max-width:1180px;margin:0 auto;padding:44px 20px 40px;min-height:520px}
-.hero-txt{text-align:center;padding-inline:8px}
+/* ---------- hero (image de fond : colonnes + port de Marseille) ---------- */
+.hero{position:relative;color:var(--navy);padding:0;overflow:hidden;background:#e8f2fb}
+.hero::before{content:"";position:absolute;inset:0;z-index:0;
+  background-image:url("../images/hero-bg.jpg");
+  background-size:cover;background-position:center right;background-repeat:no-repeat}
+/* voile clair cote texte pour garantir la lisibilite */
+.hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(90deg,rgba(233,243,252,.92) 0%,rgba(233,243,252,.80) 34%,rgba(233,243,252,.18) 56%,rgba(233,243,252,0) 70%)}
+[dir="rtl"] .hero::before{transform:scaleX(-1)}
+[dir="rtl"] .hero::after{background:linear-gradient(270deg,rgba(233,243,252,.92) 0%,rgba(233,243,252,.80) 34%,rgba(233,243,252,.18) 56%,rgba(233,243,252,0) 70%)}
 
-/* colonnes andalouses */
-.hero-col{position:absolute;top:0;bottom:0;width:96px;z-index:3;pointer-events:none;
-  background:url("../images/colonne.svg") no-repeat bottom center;background-size:contain;
-  filter:drop-shadow(0 6px 16px rgba(120,90,20,.22))}
-.hero-col.left{left:0}
-.hero-col.right{right:0;transform:scaleX(-1)}
-@media(max-width:1280px){.hero-col{width:64px}}
-@media(max-width:900px){.hero-col{display:none}}
+.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.85fr);
+  align-items:center;max-width:1240px;margin:0 auto;padding:56px 20px 52px;min-height:560px}
+.hero-txt{text-align:center;padding-inline:min(3vw,34px)}
 
 .hero-badge{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid rgba(201,162,39,.45);
   color:var(--or-d);font-weight:800;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;border-radius:999px;
-  padding:9px 20px;margin-bottom:20px;box-shadow:0 4px 14px rgba(15,42,82,.07)}
-.hero h1{font-size:clamp(30px,4.4vw,50px);line-height:1.1;margin:0 auto 8px;max-width:620px;font-weight:800;color:var(--navy);letter-spacing:-.01em}
+  padding:9px 20px;margin-bottom:20px;box-shadow:0 4px 14px rgba(15,42,82,.10)}
+.hero h1{font-size:clamp(29px,3.9vw,46px);line-height:1.1;margin:0 auto 8px;max-width:600px;font-weight:800;
+  color:var(--navy);letter-spacing:-.01em;text-shadow:0 1px 0 rgba(255,255,255,.6)}
 .hero h1 .or{display:block;color:var(--or-d);margin-top:6px;font-size:1.06em}
-.hero .lead{font-size:clamp(15.5px,1.5vw,17.5px);max-width:560px;margin:14px auto 0;color:#41506b;line-height:1.55}
+.hero .lead{font-size:clamp(15px,1.4vw,17px);max-width:520px;margin:14px auto 0;color:#3b4a63;line-height:1.55}
 .hero .lead strong{color:var(--navy)}
 .hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:22px}
 
-/* visuel de droite */
-.hero-media{position:relative;z-index:2;border-radius:20px;overflow:hidden;min-height:400px;
-  box-shadow:0 20px 46px rgba(15,42,82,.16);background:url("../images/hero-visuel-fallback.svg") center/cover no-repeat}
-.hero-media img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
-@media(max-width:980px){
-  .hero-grid{grid-template-columns:1fr;padding:36px 20px 32px;min-height:0}
-  .hero-media{min-height:230px;order:-1;margin-bottom:22px}
+/* la colonne de droite reste vide : elle laisse voir la photo */
+.hero-media{display:none}
+
+@media(max-width:1080px){
+  .hero-grid{grid-template-columns:1fr;padding:44px 20px;min-height:520px}
+  .hero::before{background-position:center bottom;background-image:url("../images/hero-bg-mobile.jpg")}
+  .hero::after{background:linear-gradient(180deg,rgba(233,243,252,.94) 0%,rgba(233,243,252,.86) 52%,rgba(233,243,252,.55) 100%)}
+  [dir="rtl"] .hero::after{background:linear-gradient(180deg,rgba(233,243,252,.94) 0%,rgba(233,243,252,.86) 52%,rgba(233,243,252,.55) 100%)}
 }
+@media(max-width:560px){.hero-grid{padding:36px 16px;min-height:0}}
 
 /* filet ornemental */
 .orn{display:flex;align-items:center;justify-content:center;gap:12px;margin:0 auto 18px;max-width:340px;color:var(--or)}
