@@ -45,9 +45,9 @@ img,svg{max-width:100%;display:block}
 
 /* ---------- header ---------- */
 header.site{position:sticky;top:0;z-index:900;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:14px;height:84px}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:14px;height:100px}
 .brand{display:flex;align-items:center;min-width:0}
-.brand svg,.brand img{height:66px;width:auto;flex:none;object-fit:contain}
+.brand svg,.brand img{height:86px;width:auto;flex:none;object-fit:contain}
 .nav-links{display:flex;align-items:center;gap:22px}
 .nav-links a.lk{color:var(--navy);font-weight:600;font-size:15px}
 .nav-links a.lk:hover{color:var(--or-d)}
@@ -55,21 +55,34 @@ header.site{position:sticky;top:0;z-index:900;background:rgba(255,255,255,.97);b
 .lang:hover{border-color:var(--or);color:var(--or-d)}
 .nav-cta{background:linear-gradient(180deg,var(--or-l),var(--or));color:#20180a;border-radius:999px;padding:10px 18px;font-weight:800;font-size:14px;white-space:nowrap}
 @media(max-width:960px){.nav-links a.lk{display:none}}
-@media(max-width:560px){.nav{height:72px}.brand svg,.brand img{height:54px}}
+@media(max-width:860px){.nav{height:84px}.brand svg,.brand img{height:70px}}
+@media(max-width:560px){.nav{height:74px}.brand svg,.brand img{height:60px}}
 
 /* ---------- hero (image de fond : colonnes + port de Marseille) ---------- */
 .hero{position:relative;color:var(--navy);padding:0;overflow:hidden;background:#e8f2fb}
 .hero::before{content:"";position:absolute;inset:0;z-index:0;
   background-image:url("../images/hero-bg.jpg");
-  background-size:cover;background-position:center right;background-repeat:no-repeat}
+  background-size:cover;background-position:50% 32%;background-repeat:no-repeat}
 /* voile clair cote texte pour garantir la lisibilite */
 .hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:linear-gradient(90deg,rgba(233,243,252,.92) 0%,rgba(233,243,252,.80) 34%,rgba(233,243,252,.18) 56%,rgba(233,243,252,0) 70%)}
+  background:linear-gradient(90deg,
+    rgba(233,243,252,0) 0%,
+    rgba(233,243,252,0) 8%,
+    rgba(233,243,252,.72) 17%,
+    rgba(233,243,252,.80) 40%,
+    rgba(233,243,252,.22) 58%,
+    rgba(233,243,252,0) 70%)}
 [dir="rtl"] .hero::before{transform:scaleX(-1)}
-[dir="rtl"] .hero::after{background:linear-gradient(270deg,rgba(233,243,252,.92) 0%,rgba(233,243,252,.80) 34%,rgba(233,243,252,.18) 56%,rgba(233,243,252,0) 70%)}
+[dir="rtl"] .hero::after{background:linear-gradient(270deg,
+    rgba(233,243,252,0) 0%,
+    rgba(233,243,252,0) 8%,
+    rgba(233,243,252,.72) 17%,
+    rgba(233,243,252,.80) 40%,
+    rgba(233,243,252,.22) 58%,
+    rgba(233,243,252,0) 70%)}
 
 .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.85fr);
-  align-items:center;max-width:1240px;margin:0 auto;padding:56px 20px 52px;min-height:560px}
+  align-items:center;max-width:1240px;margin:0 auto;padding:60px 20px 56px;min-height:600px}
 .hero-txt{text-align:center;padding-inline:min(3vw,34px)}
 
 .hero-badge{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid rgba(201,162,39,.45);
