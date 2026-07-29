@@ -153,14 +153,13 @@ h2.sec{text-align:center;font-size:clamp(25px,3.6vw,35px);font-weight:800;color:
 .sec-intro{text-align:center;color:var(--muted);max-width:740px;margin:0 auto 42px;font-size:17px}
 
 /* étapes */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.step{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:34px 24px 28px;text-align:center;box-shadow:0 8px 24px rgba(15,42,82,.07);position:relative;overflow:hidden;transition:transform .18s ease,box-shadow .18s ease}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:26px}
+.step{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:40px 24px 28px;text-align:center;box-shadow:0 8px 24px rgba(15,42,82,.07);position:relative;transition:transform .18s ease,box-shadow .18s ease}
 .step:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(15,42,82,.12)}
 .step::before{content:"";position:absolute;right:12px;bottom:10px;width:26px;height:26px;opacity:.5;pointer-events:none;
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Cg fill='none' stroke='%23c9a227' stroke-width='1'%3E%3Crect x='6' y='6' width='14' height='14'/%3E%3Crect x='6' y='6' width='14' height='14' transform='rotate(45 13 13)'/%3E%3C/g%3E%3C/svg%3E") no-repeat}
 [dir="rtl"] .step::before{right:auto;left:12px}
-.step .num{position:absolute;top:-17px;inset-inline-start:50%;transform:translateX(-50%);width:36px;height:36px;border-radius:50%;background:linear-gradient(180deg,var(--or-l),var(--or));color:#20180a;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 6px 14px rgba(201,162,39,.4)}
-[dir="rtl"] .step .num{transform:translateX(50%)}
+.step .num{position:absolute;top:-19px;left:50%;transform:translateX(-50%);width:38px;height:38px;z-index:2;border-radius:50%;background:linear-gradient(180deg,var(--or-l),var(--or));color:#20180a;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:15.5px;line-height:1;border:3px solid var(--creme-2);box-shadow:0 5px 14px rgba(168,130,27,.35)}
 .step .ico{font-size:40px;margin:4px 0 12px}
 .step h3{margin:0 0 8px;font-size:19px;color:var(--navy)}
 .step p{margin:0;color:var(--muted);font-size:15.5px}
