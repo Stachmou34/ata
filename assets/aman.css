@@ -47,7 +47,7 @@ img,svg{max-width:100%;display:block}
 header.site{position:sticky;top:0;z-index:900;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:14px;height:88px}
 .brand{display:flex;align-items:center;min-width:0}
-.brand svg,.brand img{height:62px;width:auto;flex:none;object-fit:contain}
+.brand svg,.brand img{height:60px;width:auto;flex:none;object-fit:contain}
 .nav-links{display:flex;align-items:center;gap:22px}
 .nav-links a.lk{color:var(--navy);font-weight:600;font-size:15px}
 .nav-links a.lk:hover{color:var(--or-d)}
