@@ -1,78 +1,70 @@
-# WebSite X5 - Start Code [do not edit]
-
+AddDefaultCharset UTF-8
 ErrorDocument 404 /erreur-404.html
 
-# WebSite X5 - End Code
+<IfModule mod_rewrite.c>
+  RewriteEngine On
 
-# Australdev
+  # 1) Ancien domaine -> nouveau domaine (301 permanente, conserve le chemin)
+  RewriteCond %{HTTP_HOST} ^(www\.)?assurancetemporaireauto\.com$ [NC]
+  RewriteRule ^(.*)$ https://aman-frontiere.com/$1 [R=301,L]
 
-RewriteEngine On
+  # 2) Forcer HTTPS
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
 
+  # 3) Forcer la version sans www
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
 
+  # 4) Anciennes pages Sete (supprimees) -> pages equivalentes
+  RewriteRule ^ar/sete/?$ /ar/ [R=301,L]
+  RewriteRule ^sete/?$ / [R=301,L]
 
-# Australdev - End Code
+  # 5) Ancienne URL WebSite X5
+  RewriteRule ^index\.html$ / [R=301,L]
 
-<IfModule mod_deflate.c>
-SetOutputFilter DEFLATE
+  # 6) Protection contre les injections via query string
+  RewriteCond %{REQUEST_METHOD} GET
+  RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=http:// [OR]
+  RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=(\.\.//?)+ [OR]
+  RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=/([a-z0-9_.]//?)+ [NC]
+  RewriteRule .* - [F]
 </IfModule>
-
-<IfModule mod_rewrite.c>
- RewriteEngine On
-<IfModule mod_rewrite.c>
 
 <IfModule mod_autoindex.c>
- IndexIgnore *
- Options +FollowSymLinks -Indexes
+  IndexIgnore *
+  Options +FollowSymLinks -Indexes
 </IfModule>
 
-<IfModule mod_filter.c>
-AddOutputFilterByType DEFLATE text/html text/plain text/xml application/xml application/xhtml+xml text/css text/javascript application/javascript application/x-javascript
+# Compression
+<IfModule mod_deflate.c>
+  <IfModule mod_filter.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml application/xml application/xhtml+xml text/css text/javascript application/javascript application/x-javascript image/svg+xml
+  </IfModule>
 </IfModule>
 
-# Tell to the browser that .gz files should be first unzip then processed as html/css/js depending on the first extension
+# Cache navigateur
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
+  ExpiresByType image/svg+xml "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType text/html "access plus 1 hours"
+</IfModule>
+
+# En-tetes de securite
 <IfModule mod_headers.c>
-   <FilesMatch "\.html\.gz$">
-     ForceType text/html
-     Header set Content-Encoding: gzip
-   </FilesMatch>
-
-   <FilesMatch "\.js\.gz$">
-     ForceType text/javascript
-     Header set Content-Encoding: gzip
-   </FilesMatch>
-
-   <FilesMatch "\.css\.gz$">
-     ForceType text/css
-     Header set Content-Encoding: gzip
-   </FilesMatch>
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+  Header always append X-Frame-Options SAMEORIGIN
+  Header set X-XSS-Protection "1; mode=block"
+  Header set X-Content-Type-Options nosniff
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set Permissions-Policy "accelerometer=(), geolocation=(), camera=(), microphone=()"
 </IfModule>
-
-# Ajout de protection
-#Options All -Indexes
-#ServerSignature Off
-#Options +FollowSymLinks
-AddDefaultCharset UTF-8
-
-#Protection XSS, clickJacking et Mime-Type
-<ifModule mod_headers.c>
-Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
-Header always append X-Frame-Options SAMEORIGIN
-Header set X-XSS-Protection "1; mode=block"
-Header set X-Content-Type-Options nosniff
-Header set Content-Security-Policy "base-uri 'self';script-src''"
-Header always set Referrer-Policy "strict-origin-when-cross-origin"
-Header set Permissions-Policy "accelerometer=(), payment=('self'), geolocation=('self'), fullscreen=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), display-capture=('self')" 
-</ifModule>
-
-# protection contre les injections de fichiers
-RewriteCond %{REQUEST_METHOD} GET
-RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=http:// [OR]
-RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=(\.\.//?)+ [OR]
-RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=/([a-z0-9_.]//?)+ [NC]
-RewriteRule .* - [F]
 
 # php -- BEGIN cPanel-generated handler, do not edit
-# Définissez le package « ea-php72 » comme langage de programmation « PHP » par défaut.
 <IfModule mime_module>
   AddHandler application/x-httpd-ea-php72 .php .php7 .phtml
 </IfModule>

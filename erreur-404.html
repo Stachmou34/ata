@@ -2,33 +2,32 @@
 <html lang="fr-FR" dir="ltr">
 <head>
 	<meta charset="utf-8" />
-	<title>Page introuvable (404) | assurancetemporaireauto.com</title>
+	<title>Page introuvable (404) | Aman Frontière</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="robots" content="noindex, follow" />
-	<link rel="icon" href="favicon.png" type="image/png" />
+	<meta name="theme-color" content="#0f2a52" />
+	<link rel="icon" href="/favicon.png" type="image/png" />
+	<link rel="stylesheet" href="/assets/aman.css" />
 	<style>
-	:root{--orange:#ff6701;--orange-d:#e05d00;--navy:#0f1b3d;--navy-2:#1f2a44;--ink:#1d2433;--muted:#5b6577}
-	*{box-sizing:border-box}
-	body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#fff;background:linear-gradient(135deg,#0f1b3d,#26406f 60%,#356a9c)}
-	.box{max-width:560px}
-	.code{font-size:clamp(70px,18vw,130px);font-weight:800;line-height:1;margin:0;text-shadow:0 4px 20px rgba(0,0,0,.35)}
-	h1{font-size:clamp(22px,4vw,30px);margin:6px 0 12px}
-	p{font-size:17px;opacity:.92;margin:0 0 26px}
+	body{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;color:#fff;
+	     background:linear-gradient(165deg,var(--navy-d),var(--navy) 55%,var(--navy-l));position:relative;overflow-x:hidden}
+	body::before{content:"";position:absolute;inset:0;background-image:var(--pattern);opacity:.5;pointer-events:none}
+	.box{max-width:580px;position:relative;z-index:1}
+	.box img{margin:0 auto 18px;height:76px;width:auto}
+	.code{font-size:clamp(66px,17vw,124px);font-weight:800;line-height:1;margin:0;color:var(--or-l);text-shadow:0 4px 22px rgba(0,0,0,.35)}
+	.box h1{font-size:clamp(22px,4vw,30px);margin:4px 0 12px}
+	.box p{font-size:17px;color:#cdd8e8;margin:0 0 26px}
 	.btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-	.btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:16px;border-radius:999px;padding:14px 24px;cursor:pointer;text-decoration:none;transition:transform .15s,background .15s}
-	.btn-primary{background:var(--orange);color:#fff;box-shadow:0 8px 20px rgba(255,103,1,.35)}
-	.btn-primary:hover{background:var(--orange-d);transform:translateY(-2px)}
-	.btn-ghost{background:rgba(255,255,255,.14);color:#fff;border:1.5px solid rgba(255,255,255,.55)}
-	.btn-ghost:hover{background:rgba(255,255,255,.24)}
 	</style>
 </head>
 <body>
 	<div class="box">
+		<img src="/images/aman-mark.svg" alt="Aman Frontière" />
 		<p class="code">404</p>
-		<h1>Oups, cette page n'existe pas</h1>
-		<p>La page que vous cherchez a peut-être été déplacée ou supprimée. Retournez à l'accueil pour souscrire votre assurance frontière.</p>
+		<h1>Cette page n'existe pas</h1>
+		<p>La page que vous cherchez a peut-être été déplacée ou supprimée. Retournez à l'accueil pour souscrire votre assurance frontière à partir de 140 €.</p>
 		<div class="btns">
-			<a class="btn btn-primary" href="/">🏠 Retour à l'accueil</a>
+			<a class="btn btn-or" href="/">🏠 Retour à l'accueil</a>
 			<a class="btn btn-ghost" href="tel:+33970713693">📞 09 70 71 36 93</a>
 		</div>
 	</div>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Aman Frontière">
+  <defs>
+    <linearGradient id="or" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e6c65c"/>
+      <stop offset="0.5" stop-color="#c9a227"/>
+      <stop offset="1" stop-color="#a8821b"/>
+    </linearGradient>
+  </defs>
+  <!-- arche orientale -->
+  <path d="M60 12c-9 9-20 15-20 30v40h40V42c0-15-11-21-20-30z" fill="none" stroke="url(#or)" stroke-width="5" stroke-linejoin="round"/>
+  <!-- etoile a 8 branches -->
+  <g transform="translate(60 50)" fill="none" stroke="url(#or)" stroke-width="3.4" stroke-linejoin="round">
+    <rect x="-13" y="-13" width="26" height="26"/>
+    <rect x="-13" y="-13" width="26" height="26" transform="rotate(45)"/>
+  </g>
+  <!-- route + vehicule stylise -->
+  <path d="M14 92c22-10 44-14 62-14s30 3 30 3" fill="none" stroke="url(#or)" stroke-width="4" stroke-linecap="round"/>
+  <path d="M22 84c8-9 20-13 32-13 10 0 18 3 24 8-6 3-14 5-24 5-12 0-24-1-32 0z" fill="#12305c"/>
+  <!-- porte / rempart -->
+  <path d="M86 66h20v16H86z" fill="#12305c"/>
+  <path d="M92 82v-8a4 4 0 0 1 8 0v8z" fill="url(#or)"/>
+  <path d="M86 66v-4h4v4M94 62h4v4M102 62h4v4" stroke="#12305c" stroke-width="3" fill="none"/>
+</svg>
