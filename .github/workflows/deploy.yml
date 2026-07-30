@@ -21,17 +21,13 @@ jobs:
       - name: Récupérer le code
         uses: actions/checkout@v4
 
-      # L'hebergeur ne compresse a la volee que le text/html. On depose donc une
-      # version .gz a cote de chaque CSS/JS ; le .htaccess la sert quand le
-      # navigateur accepte gzip, et retombe sur le fichier normal sinon.
-      - name: Pre-compresser les CSS et JS
-        run: |
-          find . -path ./.git -prune -o \( -name '*.css' -o -name '*.js' \) -print \
-            | grep -v '^./.github/' \
-            | while read -r f; do
-                gzip -9 -k -f "$f"
-                printf '%s : %s -> %s octets\n' "$f" "$(stat -c%s "$f")" "$(stat -c%s "$f.gz")"
-              done
+      # L'hebergeur ne compresse a la volee que le text/html : un CSS externe
+      # part en 27 Ko non compresses et bloque le rendu. On l'integre donc dans
+      # le <head> de chaque page au moment du deploiement : il beneficie du gzip
+      # du HTML et la requete bloquante disparait. La source reste
+      # assets/aman.css, jamais dupliquee dans le depot.
+      - name: Integrer le CSS dans les pages
+        run: python3 .github/scripts/inline-css.py
 
       - name: Envoyer les fichiers en FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
