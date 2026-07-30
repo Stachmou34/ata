@@ -37,21 +37,43 @@ ErrorDocument 404 /erreur-404.html
 </IfModule>
 
 # Compression
+# NB : AddOutputFilterByType doit rester en dehors de <IfModule mod_filter.c>.
+# Quand mod_filter n'est pas charge, le bloc imbrique est ignore et rien n'est compresse.
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/xml application/xml application/xhtml+xml text/css text/javascript application/javascript application/x-javascript application/json image/svg+xml
+</IfModule>
 <IfModule mod_deflate.c>
-  <IfModule mod_filter.c>
-    AddOutputFilterByType DEFLATE text/html text/plain text/xml application/xml application/xhtml+xml text/css text/javascript application/javascript application/x-javascript image/svg+xml
-  </IfModule>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml application/xml application/xhtml+xml text/css text/javascript application/javascript application/x-javascript application/json image/svg+xml
 </IfModule>
 
 # Cache navigateur
+# Les CSS/JS sont appeles avec un parametre de version (?v=...), on peut donc
+# les mettre en cache un an : changer la version suffit a forcer le rechargement.
 <IfModule mod_expires.c>
   ExpiresActive On
-  ExpiresByType text/css "access plus 7 days"
-  ExpiresByType application/javascript "access plus 7 days"
-  ExpiresByType image/svg+xml "access plus 30 days"
-  ExpiresByType image/png "access plus 30 days"
-  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
   ExpiresByType text/html "access plus 1 hours"
+</IfModule>
+
+<IfModule mod_headers.c>
+  # CSS/JS : appeles avec ?v=..., donc "immutable" sans risque
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  # Images : cache long mais sans "immutable", pour pouvoir en remplacer une
+  # sans renommer le fichier si besoin
+  <FilesMatch "\.(png|jpe?g|webp|svg|woff2?)$">
+    Header set Cache-Control "public, max-age=31536000"
+  </FilesMatch>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "public, max-age=3600"
+  </FilesMatch>
 </IfModule>
 
 # En-tetes de securite
