@@ -21,9 +21,12 @@
 	<link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" />
 	<link rel="apple-touch-icon" href="/favicon.svg" />
 	<meta name="application-name" content="Aman Frontière" />
-	<link rel="stylesheet" href="assets/aman.css" />
-	<link rel="preload" as="image" href="images/hero-bg.jpg" media="(min-width:1081px)" />
-	<link rel="preload" as="image" href="images/hero-bg-mobile.jpg" media="(max-width:1080px)" />
+	<link rel="stylesheet" href="assets/aman.css?v=20260730" />
+	<link rel="preload" as="image" href="images/hero-bg.jpg" media="(min-width:1081px)" fetchpriority="high" />
+	<link rel="preload" as="image" href="images/hero-bg-mobile.jpg" media="(max-width:1080px)" fetchpriority="high" />
+	<link rel="preconnect" href="https://www.clarity.ms" />
+	<link rel="preconnect" href="https://scripts.clarity.ms" crossorigin />
+	<link rel="preconnect" href="https://e.clarity.ms" crossorigin />
 	<meta name="google-site-verification" content="ap5CeK-5f5jNaBi7mlChnpQAaWyzlkTUU026ExQ-rxM" />
 	<script type="application/ld+json">{
 	"@context": "https://schema.org",
@@ -86,7 +89,11 @@
 	<header class="site">
 		<div class="wrap nav">
 			<a class="brand" href="/" aria-label="Aman Frontière — accueil">
-				<img src="images/aman-logo-header.png" alt="Aman Frontière — assurance en toute confiance, sans frontière" />
+				<img src="images/aman-logo-header-320.png"
+					     srcset="images/aman-logo-header-320.png 320w, images/aman-logo-header-460.png 460w, images/aman-logo-header.png 620w"
+					     sizes="(max-width:560px) 175px, (max-width:860px) 206px, 229px"
+					     width="620" height="163" fetchpriority="high" decoding="async"
+					     alt="Aman Frontière — assurance en toute confiance, sans frontière" />
 			</a>
 			<nav class="nav-links">
 				<a class="lk" href="#etapes">Comment ça marche</a>
