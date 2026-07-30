@@ -235,7 +235,7 @@ svg.ic{fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;strok
 .dr-head{display:flex;gap:18px;align-items:flex-start}
 .dr-head h3{margin:0 0 7px;font-size:19px;line-height:1.3;color:var(--navy);text-wrap:balance}
 .dr-head p{margin:0;color:var(--muted);font-size:15.5px;line-height:1.55}
-.dr-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:15px;margin-top:22px}
+.dr-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:15px;margin-top:22px}
 .dr-item{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px}
 .dr-item h4{margin:0 0 6px;font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--or-d);font-weight:800;line-height:1.35}
 .dr-item p{margin:0;font-size:14.8px;line-height:1.5;color:#3b4a63}
@@ -274,55 +274,68 @@ summary::after{content:"+";color:var(--or-d);font-size:24px;line-height:1}
 details[open] summary::after{content:"\2212"}
 .faq-a{padding:0 0 18px;color:var(--muted)}
 
-/* ---------- contact ---------- */
-.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:20px}
-.contact-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px;text-align:center;box-shadow:var(--shadow)}
-.contact-card .ico{font-size:28px;margin-bottom:8px}
-.contact-card a{font-weight:700;color:var(--navy);font-size:18px}
-.contact-card small{color:var(--muted)}
+/* ---------- contact : bloc d'aide ---------- */
+.help-card{max-width:900px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:20px;
+  padding:34px 36px;box-shadow:var(--shadow)}
+.help-top{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:34px;align-items:start}
+.help-left{padding-inline-end:34px;border-inline-end:1px solid var(--line)}
+.help-title{display:flex;align-items:center;gap:15px;margin-bottom:18px}
+.help-title h3{margin:0;font-size:22px;color:var(--navy);line-height:1.2}
+.help-ico{display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;
+  background:#e8eefa;color:var(--navy);flex:none}
+.help-ico svg{width:25px;height:25px}
+.help-tel{display:inline-block;font-size:clamp(25px,3.4vw,31px);font-weight:800;color:var(--navy);
+  letter-spacing:.01em;line-height:1.15}
+.help-tel:hover{color:var(--or-d)}
+.help-hours{margin:8px 0 0;color:var(--muted);font-size:15px;line-height:1.55}
+.help-hours a{color:var(--navy);font-weight:600}
+.help-hours a:hover{color:var(--or-d)}
+.help-right>p{margin:0 0 14px;color:#3b4a63;font-size:15.5px;line-height:1.6}
+.help-right>p b{color:var(--navy)}
+.help-list{list-style:none;margin:0;padding:0;display:grid;gap:11px}
+.help-list li{display:flex;align-items:flex-start;gap:11px;color:#3b4a63;font-size:15px;line-height:1.5}
+.help-list li svg{width:19px;height:19px;color:var(--or);flex:none;margin-top:1px}
 
-/* ---------- contact : presentation en tableaux ---------- */
-.ct-tables{display:grid;gap:26px;max-width:980px;margin:0 auto}
-.ct-table{width:100%;border-collapse:separate;border-spacing:0;background:#fff;
-  border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);font-size:15.5px}
-.ct-table caption{caption-side:top;text-align:start;padding:16px 22px;background:linear-gradient(180deg,var(--navy),var(--navy-d));
-  color:#fff;font-weight:700;font-size:16.5px;letter-spacing:.01em}
-.ct-table caption span{color:var(--or-l);margin-inline-end:9px}
-.ct-table th,.ct-table td{padding:15px 22px;text-align:start;vertical-align:middle;border-top:1px solid var(--line)}
-.ct-table tr:first-child th,.ct-table tr:first-child td{border-top:0}
-.ct-table tbody tr:nth-child(even){background:#fbf8f1}
-.ct-table tbody tr:hover{background:#f6f1e6}
-.ct-table th{font-weight:700;color:var(--navy);white-space:nowrap;width:38%}
-.ct-table th span{margin-inline-end:9px;opacity:.9}
-.ct-table td{color:#3b4a63}
-.ct-table td a{font-weight:600;color:var(--navy)}
-.ct-table td a:hover{color:var(--or-d)}
-.ct-table td .big{display:inline-block;font-size:clamp(22px,2.6vw,28px);font-weight:800;color:var(--or-d);letter-spacing:.02em;line-height:1.2}
-.ct-table td .big:hover{color:var(--or)}
-.ct-table td em{font-style:normal;color:var(--muted);font-size:14px;display:block;margin-top:2px}
+.help-note{display:flex;align-items:flex-start;gap:15px;margin-top:28px;padding:18px 20px;border-radius:14px;
+  background:linear-gradient(180deg,#fffdf6,#fdf6e6);border:1px solid rgba(201,162,39,.42)}
+.help-note-ico{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;
+  background:linear-gradient(180deg,var(--or-l),var(--or));color:#20180a;flex:none}
+.help-note-ico svg{width:21px;height:21px}
+.help-note p{margin:0;font-size:15px;line-height:1.6;color:#3b4a63}
+.help-note b{color:var(--navy);display:block}
+.help-note .gold{display:inline;color:var(--or-d)}
 
-/* tableau a deux colonnes : ce que oui / ce que non */
-.ct-table.duo th{width:50%;color:var(--navy);white-space:normal}
-.ct-table.duo thead th{background:#f4efe3;border-top:0;font-size:14px;letter-spacing:.05em;text-transform:uppercase}
-.ct-table.duo thead th:first-child{color:#1e7a4f}
-.ct-table.duo thead th:last-child{color:#b32a26}
-.ct-table.duo td{width:50%;font-weight:500;color:#3b4a63;vertical-align:top}
-.ct-table.duo td+td{border-inline-start:1px solid var(--line)}
-.ct-table.duo td.yes::before{content:"✓";color:#1e7a4f;font-weight:800;margin-inline-end:9px}
-.ct-table.duo td.no::before{content:"✕";color:#c9302c;font-weight:800;margin-inline-end:9px}
+.help-cta{text-align:center;margin-top:26px}
+.help-cta .btn{font-size:16.5px;padding:16px 34px}
+.help-cta .btn svg{width:21px;height:21px}
+.help-secure{margin:12px 0 0;font-size:13.5px;color:var(--muted);text-align:center;line-height:1.5}
+.help-secure svg{width:14px;height:14px;color:var(--navy-l);display:inline-block;vertical-align:-2px;margin-inline-end:5px}
 
-.ct-foot{text-align:center;margin:22px 0 0;font-size:15px;color:#3b4a63}
-.ct-foot button{background:none;border:none;padding:0;font:inherit;color:var(--or-d);font-weight:700;
-  text-decoration:underline;cursor:pointer}
-.ct-foot button:hover{color:var(--or)}
+/* acces rapide */
+.quick-sep{display:flex;align-items:center;gap:16px;max-width:900px;margin:34px auto 20px;color:var(--navy)}
+.quick-sep::before,.quick-sep::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--line),transparent)}
+.quick-sep span{font-weight:700;font-size:16px}
+.quick{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;max-width:900px;margin:0 auto}
+.quick-c{display:flex;align-items:flex-start;gap:15px;background:#fff;border:1px solid var(--line);border-radius:16px;
+  padding:20px 22px;box-shadow:0 6px 18px rgba(15,42,82,.06);transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}
+.quick-c:hover{transform:translateY(-3px);border-color:rgba(201,162,39,.55);box-shadow:0 14px 30px rgba(15,42,82,.11)}
+.quick-c>svg{width:34px;height:34px;color:var(--navy);flex:none;margin-top:2px}
+.quick-c .qc-t{display:block;color:var(--muted);font-size:14px;line-height:1.45}
+.quick-c b{display:block;color:var(--navy);font-size:15.5px;line-height:1.3;margin-bottom:3px}
+.quick-c em{font-style:normal;display:block;margin-top:9px;color:var(--or-d);font-weight:800;font-size:16px;line-height:1}
+[dir="rtl"] .quick-c em{transform:scaleX(-1)}
 
-@media(max-width:680px){
-  .ct-table{font-size:14.5px}
-  .ct-table th,.ct-table td{padding:12px 16px}
-  .ct-table th{width:auto;white-space:normal}
-  .ct-table.duo,.ct-table.duo tbody,.ct-table.duo tr,.ct-table.duo td,.ct-table.duo th{display:block;width:100%}
-  .ct-table.duo thead{display:none}
-  .ct-table.duo td+td{border-inline-start:0}
+@media(max-width:760px){
+  .help-card{padding:26px 22px;border-radius:16px}
+  .help-top{grid-template-columns:1fr;gap:24px}
+  .help-left{padding-inline-end:0;padding-bottom:24px;border-inline-end:0;border-bottom:1px solid var(--line)}
+}
+@media(max-width:480px){
+  .help-card{padding:22px 17px}
+  .help-title h3{font-size:20px}
+  .help-ico{width:46px;height:46px}
+  .help-note{padding:15px 15px;gap:12px}
+  .help-cta .btn{width:100%;padding:15px 20px;font-size:15.5px}
 }
 
 /* ---------- footer ---------- */
