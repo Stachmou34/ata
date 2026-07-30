@@ -10,18 +10,19 @@
 	<link rel="stylesheet" href="/assets/aman.css" />
 	<style>
 	body{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;color:#fff;
-	     background:linear-gradient(165deg,var(--navy-d),var(--navy) 55%,var(--navy-l));position:relative;overflow-x:hidden}
+	     background-color:var(--navy-d);
+	     background-image:linear-gradient(165deg,var(--navy-d),var(--navy) 55%,var(--navy-l));position:relative;overflow-x:hidden}
 	body::before{content:"";position:absolute;inset:0;background-image:var(--pattern);opacity:.5;pointer-events:none}
 	.box{max-width:580px;position:relative;z-index:1}
 	.box img{margin:0 auto 18px;height:76px;width:auto}
-	.code{font-size:clamp(66px,17vw,124px);font-weight:800;line-height:1;margin:0;color:var(--or-l);text-shadow:0 4px 22px rgba(0,0,0,.35)}
+	.box p.code{margin:0;font-size:clamp(66px,17vw,124px);font-weight:800;line-height:1;margin:0;color:var(--or-l);text-shadow:0 4px 22px rgba(0,0,0,.35)}
 	.box h1{font-size:clamp(22px,4vw,30px);margin:4px 0 12px}
 	.box p{font-size:17px;color:#cdd8e8;margin:0 0 26px}
 	.btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 	</style>
 </head>
 <body>
-	<div class="box">
+	<main class="box">
 		<img src="/images/aman-logo.png" alt="Aman Frontière" />
 		<p class="code">404</p>
 		<h1>Cette page n'existe pas</h1>
@@ -30,6 +31,6 @@
 			<a class="btn btn-or" href="/">🏠 Retour à l'accueil</a>
 			<a class="btn btn-ghost" href="tel:+33974190073">📞 09 74 19 00 73</a>
 		</div>
-	</div>
+	</main>
 </body>
 </html>
