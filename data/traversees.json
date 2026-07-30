@@ -1,0 +1,67 @@
+{
+  "_lisezmoi": "Donnees des lignes ferry vers Marseille et Sete. Le tableau 'departs' est vide par defaut : renseignez-le a la main, ou indiquez une URL dans 'apiDeparts' pour que la page aille chercher les horaires ailleurs (meme structure d'objet que 'departs'). Tant qu'il est vide, la page affiche l'annuaire des lignes et renvoie vers les horaires officiels des compagnies.",
+  "maj": "2026-07-30",
+
+  "ports": {
+    "marseille":  { "fr": "Marseille",   "ar": "مرسيليا",        "pays": "FR", "arrivee": true },
+    "sete":       { "fr": "Sète",        "ar": "سيت",            "pays": "FR", "arrivee": true },
+    "alger":      { "fr": "Alger",       "ar": "الجزائر",        "pays": "DZ" },
+    "oran":       { "fr": "Oran",        "ar": "وهران",          "pays": "DZ" },
+    "bejaia":     { "fr": "Béjaïa",      "ar": "بجاية",          "pays": "DZ" },
+    "skikda":     { "fr": "Skikda",      "ar": "سكيكدة",         "pays": "DZ" },
+    "annaba":     { "fr": "Annaba",      "ar": "عنابة",          "pays": "DZ" },
+    "mostaganem": { "fr": "Mostaganem",  "ar": "مستغانم",        "pays": "DZ" },
+    "tunis":      { "fr": "Tunis",       "ar": "تونس",           "pays": "TN" },
+    "nador":      { "fr": "Nador",       "ar": "الناظور",        "pays": "MA" },
+    "tangermed":  { "fr": "Tanger Med",  "ar": "طنجة المتوسط",   "pays": "MA" }
+  },
+
+  "compagnies": {
+    "algerie-ferries": { "nom": "Algérie Ferries", "site": "https://www.algerieferries.dz/" },
+    "corsica-linea":   { "nom": "Corsica Linea",   "site": "https://www.corsicalinea.com/reserver/infos-lignes-et-horaires" },
+    "gnv":             { "nom": "GNV",             "site": "https://www.gnv.it/fr" },
+    "ctn":             { "nom": "CTN",             "site": "https://www.ctn.com.tn/" },
+    "balearia":        { "nom": "Baleària",        "site": "https://www.balearia.com/fr" }
+  },
+
+  "lignes": [
+    { "de": "alger",      "vers": "marseille", "compagnies": ["algerie-ferries", "corsica-linea"] },
+    { "de": "alger",      "vers": "sete",      "compagnies": ["algerie-ferries", "gnv"] },
+    { "de": "bejaia",     "vers": "marseille", "compagnies": ["algerie-ferries", "corsica-linea"] },
+    { "de": "bejaia",     "vers": "sete",      "compagnies": ["algerie-ferries", "gnv"] },
+    { "de": "skikda",     "vers": "marseille", "compagnies": ["algerie-ferries", "corsica-linea"] },
+    { "de": "oran",       "vers": "marseille", "compagnies": ["algerie-ferries"] },
+    { "de": "annaba",     "vers": "marseille", "compagnies": ["algerie-ferries"] },
+    { "de": "mostaganem", "vers": "sete",      "compagnies": ["algerie-ferries"] },
+    { "de": "tunis",      "vers": "marseille", "compagnies": ["ctn", "corsica-linea"] },
+    { "de": "nador",      "vers": "sete",      "compagnies": ["gnv", "balearia"] },
+    { "de": "tangermed",  "vers": "sete",      "compagnies": ["gnv", "balearia"] }
+  ],
+
+  "navires": [
+    { "nom": "Danielle Casanova", "compagnie": "corsica-linea", "mmsi": null },
+    { "nom": "Méditerranée",      "compagnie": "corsica-linea", "mmsi": null },
+    { "nom": "Pascal Paoli",      "compagnie": "corsica-linea", "mmsi": null },
+    { "nom": "Jean Nicoli",       "compagnie": "corsica-linea", "mmsi": null },
+    { "nom": "Paglia Orba",       "compagnie": "corsica-linea", "mmsi": null },
+    { "nom": "A Galeotta",        "compagnie": "corsica-linea", "mmsi": null },
+    { "nom": "Vizzavona",         "compagnie": "corsica-linea", "mmsi": null },
+    { "nom": "Tassili II",        "compagnie": "algerie-ferries", "mmsi": null },
+    { "nom": "Badji Mokhtar III", "compagnie": "algerie-ferries", "mmsi": null },
+    { "nom": "Djurdjura",         "compagnie": "algerie-ferries", "mmsi": null },
+    { "nom": "Excellent",         "compagnie": "gnv", "mmsi": null },
+    { "nom": "Splendid",          "compagnie": "gnv", "mmsi": null },
+    { "nom": "Carthage",          "compagnie": "ctn", "mmsi": null },
+    { "nom": "Tanit",             "compagnie": "ctn", "mmsi": null }
+  ],
+
+  "suivi": {
+    "_lisezmoi": "rechercheUrl sert tant qu'aucun MMSI n'est renseigne. Si vous prenez un fournisseur AIS qui propose une carte integrable, mettez son URL dans embedUrl avec le marqueur {mmsi} : la page affichera la carte au lieu du lien.",
+    "rechercheUrl": "https://www.vesselfinder.com/vessels?name={nom}",
+    "navireUrl": "https://www.vesselfinder.com/?mmsi={mmsi}",
+    "embedUrl": null
+  },
+
+  "apiDeparts": null,
+  "departs": []
+}

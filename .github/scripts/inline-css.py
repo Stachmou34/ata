@@ -17,7 +17,8 @@ import re
 import sys
 
 CSS_PATH = "assets/aman.css"
-PAGES = ["index.html", "ar/index.html", "mentions-legales.html", "erreur-404.html"]
+PAGES = ["index.html", "ar/index.html", "traversees.html", "ar/traversees.html",
+         "mentions-legales.html", "erreur-404.html"]
 
 # <link rel="stylesheet" href="...aman.css?v=..." /> quel que soit le chemin relatif
 LINK_RE = re.compile(

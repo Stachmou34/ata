@@ -19,6 +19,24 @@
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://aman-frontiere.com/" />
 	</url>
 	<url>
+		<loc>https://aman-frontiere.com/traversees.html</loc>
+		<lastmod>2026-07-30</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.8</priority>
+		<xhtml:link rel="alternate" hreflang="fr" href="https://aman-frontiere.com/traversees.html" />
+		<xhtml:link rel="alternate" hreflang="ar" href="https://aman-frontiere.com/ar/traversees.html" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://aman-frontiere.com/traversees.html" />
+	</url>
+	<url>
+		<loc>https://aman-frontiere.com/ar/traversees.html</loc>
+		<lastmod>2026-07-30</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.7</priority>
+		<xhtml:link rel="alternate" hreflang="ar" href="https://aman-frontiere.com/ar/traversees.html" />
+		<xhtml:link rel="alternate" hreflang="fr" href="https://aman-frontiere.com/traversees.html" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://aman-frontiere.com/traversees.html" />
+	</url>
+	<url>
 		<loc>https://aman-frontiere.com/mentions-legales.html</loc>
 		<lastmod>2026-07-24</lastmod>
 		<changefreq>yearly</changefreq>
