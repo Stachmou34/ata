@@ -1,0 +1,4 @@
+
+# Fichiers pre-compresses generes au deploiement
+*.css.gz
+*.js.gz
