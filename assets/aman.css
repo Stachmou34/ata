@@ -464,3 +464,9 @@ body.no-scroll{overflow:hidden}
   #aismap{height:340px}
   .tt td,.tt thead th{padding:12px 14px}
 }
+.tt-meta{max-width:980px;margin:0 auto 14px;font-size:13.5px;color:var(--muted);text-align:center;line-height:1.6}
+.tt-meta a{font-weight:600}
+.tt-meta b{color:var(--navy)}
+.tt-wrap:focus-visible{outline:3px solid var(--navy-l);outline-offset:3px}
+.tt-more{text-align:center;margin:20px 0 0}
+.tt-more .btn{font-size:15.5px;padding:13px 26px}

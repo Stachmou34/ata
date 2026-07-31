@@ -115,18 +115,21 @@
 				<button type="reset" class="btn btn-navy" id="f-reset">إعادة الضبط</button>
 			</form>
 
+			<p class="tt-meta" id="tt-meta" hidden></p>
+
 			<div id="tt-zone" aria-live="polite">
 				<div class="empty" id="tt-empty">
 					<h3>الجدول المفصّل غير موصول بعد</h3>
 					<p>المواعيد تتغيّر كل أسبوع وكل شركة تنشر مواعيدها الخاصة. في انتظار الوصل بمصدر بيانات، اطّلع على الخطوط أدناه: كل شركة تحيلك إلى مواعيدها الرسمية.</p>
 					<a class="btn btn-or" href="#lignes">عرض الخطوط</a>
 				</div>
-				<div class="tt-wrap" id="tt-wrap" hidden>
+				<div class="tt-wrap" id="tt-wrap" role="region" tabindex="0" aria-label="جدول الرحلات البحرية" hidden>
 					<table class="tt">
 						<thead><tr><th scope="col">الرحلة</th><th scope="col">المغادرة</th><th scope="col">الوصول</th><th scope="col">المدة</th><th scope="col">السفينة</th></tr></thead>
 						<tbody id="tt-body"></tbody>
 					</table>
 				</div>
+				<p class="tt-more"><button type="button" class="btn btn-navy" id="tt-more" hidden></button></p>
 			</div>
 		</div>
 	</section>
@@ -225,7 +228,8 @@
 	/* traversees : lignes, planning et suivi des navires */
 	(function(){
 		var LANG='ar', SHIP='<svg class=\"ic\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M3 18.6c1.5 0 1.5 1.3 3 1.3s1.5-1.3 3-1.3 1.5 1.3 3 1.3 1.5-1.3 3-1.3 1.5 1.3 3 1.3\"/><path d=\"M5.6 16.2 4 10.8h16l-3.1 5.4H5.6Z\"/><path d=\"M7.8 10.8V6.2h8.4v4.6\"/><path d=\"M12 6.2V3.4\"/></svg>', ANCHOR='<svg class=\"ic\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"4.6\" r=\"2.1\"/><path d=\"M12 6.7V21M6.6 10.2h10.8\"/><path d=\"M3.4 14.2c0 4 3.9 6.8 8.6 6.8s8.6-2.8 8.6-6.8\"/></svg>';
-		var T={track:'عرض الموقع', nores:'لا توجد رحلة مطابقة لبحثك.'};
+		var T={track:'عرض الموقع', nores:'لا توجد رحلة مطابقة لبحثك.', meta:'المواعيد محدّثة بتاريخ <b>{maj}</b>، وفق الجداول المنشورة من {sources}. الشركات الأخرى مذكورة ضمن الخطوط أدناه.', more:'عرض الرحلات الـ {n} التالية'};
+		var PAS=25, vus=PAS;
 		var D=null;
 
 		function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){
@@ -299,7 +303,8 @@
 			catch(e){ return esc(iso); }
 		}
 
-		function renderDeparts(){
+		function renderDeparts(reset){
+			if(reset!==false) vus=PAS;
 			var de=document.getElementById('f-de').value,
 			    vers=document.getElementById('f-vers').value,
 			    date=document.getElementById('f-date').value;
@@ -319,7 +324,10 @@
 					'<tr><td colspan="5" style="text-align:center">'+esc(T.nores)+'</td></tr>';
 				return;
 			}
-			document.getElementById('tt-body').innerHTML=list.map(function(x){
+			var suite=list.length-vus, plus=document.getElementById('tt-more');
+			if(suite>0){ plus.textContent=T.more.replace('{n}',Math.min(suite,PAS)); plus.hidden=false; }
+			else { plus.hidden=true; }
+			document.getElementById('tt-body').innerHTML=list.slice(0,vus).map(function(x){
 				var co=(D.compagnies[x.compagnie]||{}).nom||x.compagnie||'';
 				return '<tr>'
 					+'<td class="route">'+esc(portName(x.de))+'<i>→</i>'+esc(portName(x.vers))+'</td>'
@@ -331,12 +339,38 @@
 			}).join('');
 		}
 
+		function renderMeta(){
+			if(!(D.departs||[]).length) return;
+			var noms=Object.keys(D.sources||{}).map(function(k){
+				var co=D.compagnies[k]||{};
+				return '<a href="'+esc(D.sources[k])+'" target="_blank" rel="noopener">'+esc(co.nom||k)+'</a>';
+			}).join(', ');
+			if(!noms) return;
+			var el=document.getElementById('tt-meta');
+			el.innerHTML=T.meta.replace('{maj}',esc(D.maj||'')).replace('{sources}',noms);
+			el.hidden=false;
+		}
+
 		function start(){
-			fillSelects(); renderLignes(); renderFleet(); renderDeparts();
+			/* par defaut on n'affiche que les traversees a venir */
+			var d=new Date();
+			document.getElementById('f-date').value=
+				d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+			fillSelects(); renderLignes(); renderFleet(); renderMeta(); renderDeparts();
 			['f-de','f-vers','f-date'].forEach(function(id){
-				document.getElementById(id).addEventListener('change',renderDeparts);
+				document.getElementById(id).addEventListener('change',function(){renderDeparts(true);});
 			});
-			document.getElementById('filtres').addEventListener('reset',function(){setTimeout(renderDeparts,0);});
+			document.getElementById('tt-more').addEventListener('click',function(){
+				vus+=PAS; renderDeparts(false);
+			});
+			document.getElementById('filtres').addEventListener('reset',function(){
+				setTimeout(function(){
+					var n=new Date();
+					document.getElementById('f-date').value=
+						n.getFullYear()+'-'+String(n.getMonth()+1).padStart(2,'0')+'-'+String(n.getDate()).padStart(2,'0');
+					renderDeparts();
+				},0);
+			});
 		}
 
 		fetch('../data/traversees.json',{cache:'no-cache'}).then(function(r){return r.json();}).then(function(j){
