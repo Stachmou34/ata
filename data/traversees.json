@@ -1,6 +1,6 @@
 {
   "_lisezmoi": "Donnees des lignes ferry vers Marseille et Sete. Le tableau 'departs' est alimente automatiquement par .github/scripts/maj-traversees.py depuis la grille horaire officielle de Corsica Linea. Les departs des autres compagnies peuvent etre ajoutes a la main : mettez-leur un champ 'source' different de 'corsica-linea', le script ne les touchera pas. 'apiDeparts' permet en plus de brancher une source externe interrogee a l'affichage.",
-  "maj": "2026-08-07",
+  "maj": "2026-08-08",
   "ports": {
     "marseille": {
       "fr": "Marseille",
