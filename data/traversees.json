@@ -1,6 +1,6 @@
 {
   "_lisezmoi": "Donnees des lignes ferry vers Marseille et Sete. Le tableau 'departs' est alimente automatiquement par .github/scripts/maj-traversees.py depuis la grille horaire officielle de Corsica Linea. Les departs des autres compagnies peuvent etre ajoutes a la main : mettez-leur un champ 'source' different de 'corsica-linea', le script ne les touchera pas. 'apiDeparts' permet en plus de brancher une source externe interrogee a l'affichage.",
-  "maj": "2026-08-12",
+  "maj": "2026-08-13",
   "ports": {
     "marseille": {
       "fr": "Marseille",
@@ -261,16 +261,6 @@
   },
   "apiDeparts": null,
   "departs": [
-    {
-      "de": "alger",
-      "vers": "marseille",
-      "depart": "2026-08-12T10:00",
-      "arrivee": "2026-08-13T20:00",
-      "duree": "34 h",
-      "navire": "Méditerranée",
-      "compagnie": "corsica-linea",
-      "source": "corsica-linea"
-    },
     {
       "de": "tunis",
       "vers": "marseille",
@@ -692,11 +682,41 @@
       "source": "corsica-linea"
     },
     {
+      "de": "alger",
+      "vers": "marseille",
+      "depart": "2026-09-16T10:00",
+      "arrivee": "2026-09-17T16:00",
+      "duree": "30 h",
+      "navire": "Jean Nicoli",
+      "compagnie": "corsica-linea",
+      "source": "corsica-linea"
+    },
+    {
       "de": "tunis",
       "vers": "marseille",
       "depart": "2026-09-20T14:00",
       "arrivee": "2026-09-21T16:00",
       "duree": "26 h",
+      "navire": "Jean Nicoli",
+      "compagnie": "corsica-linea",
+      "source": "corsica-linea"
+    },
+    {
+      "de": "alger",
+      "vers": "sete",
+      "depart": "2026-09-23T10:00",
+      "arrivee": "2026-09-24T09:00",
+      "duree": "23 h",
+      "navire": "Jean Nicoli",
+      "compagnie": "corsica-linea",
+      "source": "corsica-linea"
+    },
+    {
+      "de": "bejaia",
+      "vers": "marseille",
+      "depart": "2026-09-25T12:00",
+      "arrivee": "2026-09-26T12:00",
+      "duree": "24 h",
       "navire": "Jean Nicoli",
       "compagnie": "corsica-linea",
       "source": "corsica-linea"
@@ -712,10 +732,40 @@
       "source": "corsica-linea"
     },
     {
+      "de": "alger",
+      "vers": "marseille",
+      "depart": "2026-09-30T10:00",
+      "arrivee": "2026-10-01T16:00",
+      "duree": "30 h",
+      "navire": "Jean Nicoli",
+      "compagnie": "corsica-linea",
+      "source": "corsica-linea"
+    },
+    {
       "de": "tunis",
       "vers": "marseille",
-      "depart": "2026-10-04T20:00",
-      "arrivee": "2026-10-05T20:00",
+      "depart": "2026-10-04T16:00",
+      "arrivee": "2026-10-05T18:00",
+      "duree": "26 h",
+      "navire": "Jean Nicoli",
+      "compagnie": "corsica-linea",
+      "source": "corsica-linea"
+    },
+    {
+      "de": "alger",
+      "vers": "sete",
+      "depart": "2026-10-07T10:00",
+      "arrivee": "2026-10-08T09:00",
+      "duree": "23 h",
+      "navire": "Jean Nicoli",
+      "compagnie": "corsica-linea",
+      "source": "corsica-linea"
+    },
+    {
+      "de": "bejaia",
+      "vers": "marseille",
+      "depart": "2026-10-09T12:00",
+      "arrivee": "2026-10-10T12:00",
       "duree": "24 h",
       "navire": "Jean Nicoli",
       "compagnie": "corsica-linea",
@@ -724,9 +774,19 @@
     {
       "de": "tunis",
       "vers": "marseille",
-      "depart": "2026-10-11T16:00",
-      "arrivee": "2026-10-12T18:00",
-      "duree": "26 h",
+      "depart": "2026-10-11T20:00",
+      "arrivee": "2026-10-12T20:00",
+      "duree": "24 h",
+      "navire": "Jean Nicoli",
+      "compagnie": "corsica-linea",
+      "source": "corsica-linea"
+    },
+    {
+      "de": "alger",
+      "vers": "marseille",
+      "depart": "2026-10-14T10:00",
+      "arrivee": "2026-10-15T16:00",
+      "duree": "30 h",
       "navire": "Jean Nicoli",
       "compagnie": "corsica-linea",
       "source": "corsica-linea"
@@ -742,11 +802,41 @@
       "source": "corsica-linea"
     },
     {
+      "de": "alger",
+      "vers": "sete",
+      "depart": "2026-10-21T10:00",
+      "arrivee": "2026-10-22T09:00",
+      "duree": "23 h",
+      "navire": "Jean Nicoli",
+      "compagnie": "corsica-linea",
+      "source": "corsica-linea"
+    },
+    {
+      "de": "bejaia",
+      "vers": "marseille",
+      "depart": "2026-10-23T12:00",
+      "arrivee": "2026-10-24T12:00",
+      "duree": "24 h",
+      "navire": "Jean Nicoli",
+      "compagnie": "corsica-linea",
+      "source": "corsica-linea"
+    },
+    {
       "de": "tunis",
       "vers": "marseille",
-      "depart": "2026-10-25T16:00",
-      "arrivee": "2026-10-26T18:00",
-      "duree": "26 h",
+      "depart": "2026-10-25T20:00",
+      "arrivee": "2026-10-26T20:00",
+      "duree": "24 h",
+      "navire": "Jean Nicoli",
+      "compagnie": "corsica-linea",
+      "source": "corsica-linea"
+    },
+    {
+      "de": "alger",
+      "vers": "marseille",
+      "depart": "2026-10-28T10:00",
+      "arrivee": "2026-10-29T16:00",
+      "duree": "30 h",
       "navire": "Jean Nicoli",
       "compagnie": "corsica-linea",
       "source": "corsica-linea"
@@ -762,11 +852,41 @@
       "source": "corsica-linea"
     },
     {
+      "de": "alger",
+      "vers": "sete",
+      "depart": "2026-11-04T10:00",
+      "arrivee": "2026-11-05T09:00",
+      "duree": "23 h",
+      "navire": "Jean Nicoli",
+      "compagnie": "corsica-linea",
+      "source": "corsica-linea"
+    },
+    {
+      "de": "bejaia",
+      "vers": "marseille",
+      "depart": "2026-11-06T12:00",
+      "arrivee": "2026-11-07T12:00",
+      "duree": "24 h",
+      "navire": "Jean Nicoli",
+      "compagnie": "corsica-linea",
+      "source": "corsica-linea"
+    },
+    {
       "de": "tunis",
       "vers": "marseille",
-      "depart": "2026-11-08T16:00",
-      "arrivee": "2026-11-09T18:00",
-      "duree": "26 h",
+      "depart": "2026-11-08T20:00",
+      "arrivee": "2026-11-09T20:00",
+      "duree": "24 h",
+      "navire": "Jean Nicoli",
+      "compagnie": "corsica-linea",
+      "source": "corsica-linea"
+    },
+    {
+      "de": "alger",
+      "vers": "marseille",
+      "depart": "2026-11-11T10:00",
+      "arrivee": "2026-11-12T16:00",
+      "duree": "30 h",
       "navire": "Jean Nicoli",
       "compagnie": "corsica-linea",
       "source": "corsica-linea"
@@ -782,11 +902,41 @@
       "source": "corsica-linea"
     },
     {
+      "de": "alger",
+      "vers": "sete",
+      "depart": "2026-11-18T10:00",
+      "arrivee": "2026-11-19T09:00",
+      "duree": "23 h",
+      "navire": "Jean Nicoli",
+      "compagnie": "corsica-linea",
+      "source": "corsica-linea"
+    },
+    {
+      "de": "bejaia",
+      "vers": "marseille",
+      "depart": "2026-11-20T12:00",
+      "arrivee": "2026-11-21T12:00",
+      "duree": "24 h",
+      "navire": "Jean Nicoli",
+      "compagnie": "corsica-linea",
+      "source": "corsica-linea"
+    },
+    {
       "de": "tunis",
       "vers": "marseille",
-      "depart": "2026-11-22T16:00",
-      "arrivee": "2026-11-23T18:00",
-      "duree": "26 h",
+      "depart": "2026-11-22T20:00",
+      "arrivee": "2026-11-23T20:00",
+      "duree": "24 h",
+      "navire": "Jean Nicoli",
+      "compagnie": "corsica-linea",
+      "source": "corsica-linea"
+    },
+    {
+      "de": "alger",
+      "vers": "marseille",
+      "depart": "2026-11-25T10:00",
+      "arrivee": "2026-11-26T16:00",
+      "duree": "30 h",
       "navire": "Jean Nicoli",
       "compagnie": "corsica-linea",
       "source": "corsica-linea"
@@ -802,11 +952,41 @@
       "source": "corsica-linea"
     },
     {
+      "de": "alger",
+      "vers": "sete",
+      "depart": "2026-12-02T10:00",
+      "arrivee": "2026-12-03T09:00",
+      "duree": "23 h",
+      "navire": "Danielle Casanova",
+      "compagnie": "corsica-linea",
+      "source": "corsica-linea"
+    },
+    {
+      "de": "bejaia",
+      "vers": "marseille",
+      "depart": "2026-12-04T12:00",
+      "arrivee": "2026-12-05T12:00",
+      "duree": "24 h",
+      "navire": "Danielle Casanova",
+      "compagnie": "corsica-linea",
+      "source": "corsica-linea"
+    },
+    {
       "de": "tunis",
       "vers": "marseille",
-      "depart": "2026-12-06T16:00",
-      "arrivee": "2026-12-07T18:00",
-      "duree": "26 h",
+      "depart": "2026-12-06T20:00",
+      "arrivee": "2026-12-07T20:00",
+      "duree": "24 h",
+      "navire": "Danielle Casanova",
+      "compagnie": "corsica-linea",
+      "source": "corsica-linea"
+    },
+    {
+      "de": "alger",
+      "vers": "marseille",
+      "depart": "2026-12-09T10:00",
+      "arrivee": "2026-12-10T16:00",
+      "duree": "30 h",
       "navire": "Danielle Casanova",
       "compagnie": "corsica-linea",
       "source": "corsica-linea"
@@ -822,11 +1002,41 @@
       "source": "corsica-linea"
     },
     {
+      "de": "alger",
+      "vers": "sete",
+      "depart": "2026-12-16T10:00",
+      "arrivee": "2026-12-17T09:00",
+      "duree": "23 h",
+      "navire": "Danielle Casanova",
+      "compagnie": "corsica-linea",
+      "source": "corsica-linea"
+    },
+    {
+      "de": "bejaia",
+      "vers": "marseille",
+      "depart": "2026-12-18T12:00",
+      "arrivee": "2026-12-19T12:00",
+      "duree": "24 h",
+      "navire": "Danielle Casanova",
+      "compagnie": "corsica-linea",
+      "source": "corsica-linea"
+    },
+    {
       "de": "tunis",
       "vers": "marseille",
-      "depart": "2026-12-20T16:00",
-      "arrivee": "2026-12-21T18:00",
-      "duree": "26 h",
+      "depart": "2026-12-20T20:00",
+      "arrivee": "2026-12-21T20:00",
+      "duree": "24 h",
+      "navire": "Danielle Casanova",
+      "compagnie": "corsica-linea",
+      "source": "corsica-linea"
+    },
+    {
+      "de": "alger",
+      "vers": "marseille",
+      "depart": "2026-12-23T10:00",
+      "arrivee": "2026-12-24T16:00",
+      "duree": "30 h",
       "navire": "Danielle Casanova",
       "compagnie": "corsica-linea",
       "source": "corsica-linea"
@@ -842,11 +1052,41 @@
       "source": "corsica-linea"
     },
     {
+      "de": "alger",
+      "vers": "sete",
+      "depart": "2026-12-30T10:00",
+      "arrivee": "2026-12-31T09:00",
+      "duree": "23 h",
+      "navire": "Danielle Casanova",
+      "compagnie": "corsica-linea",
+      "source": "corsica-linea"
+    },
+    {
+      "de": "bejaia",
+      "vers": "marseille",
+      "depart": "2027-01-01T12:00",
+      "arrivee": "2027-01-02T12:00",
+      "duree": "24 h",
+      "navire": "Danielle Casanova",
+      "compagnie": "corsica-linea",
+      "source": "corsica-linea"
+    },
+    {
       "de": "tunis",
       "vers": "marseille",
-      "depart": "2027-01-03T16:00",
-      "arrivee": "2027-01-04T18:00",
-      "duree": "26 h",
+      "depart": "2027-01-03T20:00",
+      "arrivee": "2027-01-04T20:00",
+      "duree": "24 h",
+      "navire": "Danielle Casanova",
+      "compagnie": "corsica-linea",
+      "source": "corsica-linea"
+    },
+    {
+      "de": "alger",
+      "vers": "marseille",
+      "depart": "2027-01-06T10:00",
+      "arrivee": "2027-01-07T16:00",
+      "duree": "30 h",
       "navire": "Danielle Casanova",
       "compagnie": "corsica-linea",
       "source": "corsica-linea"
@@ -862,11 +1102,41 @@
       "source": "corsica-linea"
     },
     {
+      "de": "alger",
+      "vers": "sete",
+      "depart": "2027-01-13T10:00",
+      "arrivee": "2027-01-14T09:00",
+      "duree": "23 h",
+      "navire": "Jean Nicoli",
+      "compagnie": "corsica-linea",
+      "source": "corsica-linea"
+    },
+    {
+      "de": "bejaia",
+      "vers": "marseille",
+      "depart": "2027-01-15T12:00",
+      "arrivee": "2027-01-16T12:00",
+      "duree": "24 h",
+      "navire": "Jean Nicoli",
+      "compagnie": "corsica-linea",
+      "source": "corsica-linea"
+    },
+    {
       "de": "tunis",
       "vers": "marseille",
-      "depart": "2027-01-17T16:00",
-      "arrivee": "2027-01-18T18:00",
-      "duree": "26 h",
+      "depart": "2027-01-17T20:00",
+      "arrivee": "2027-01-18T20:00",
+      "duree": "24 h",
+      "navire": "Jean Nicoli",
+      "compagnie": "corsica-linea",
+      "source": "corsica-linea"
+    },
+    {
+      "de": "alger",
+      "vers": "marseille",
+      "depart": "2027-01-20T10:00",
+      "arrivee": "2027-01-21T16:00",
+      "duree": "30 h",
       "navire": "Jean Nicoli",
       "compagnie": "corsica-linea",
       "source": "corsica-linea"
@@ -882,11 +1152,31 @@
       "source": "corsica-linea"
     },
     {
+      "de": "alger",
+      "vers": "sete",
+      "depart": "2027-01-27T10:00",
+      "arrivee": "2027-01-28T09:00",
+      "duree": "23 h",
+      "navire": "Jean Nicoli",
+      "compagnie": "corsica-linea",
+      "source": "corsica-linea"
+    },
+    {
+      "de": "bejaia",
+      "vers": "marseille",
+      "depart": "2027-01-29T12:00",
+      "arrivee": "2027-01-30T12:00",
+      "duree": "24 h",
+      "navire": "Jean Nicoli",
+      "compagnie": "corsica-linea",
+      "source": "corsica-linea"
+    },
+    {
       "de": "tunis",
       "vers": "marseille",
-      "depart": "2027-01-31T16:00",
-      "arrivee": "2027-02-01T18:00",
-      "duree": "26 h",
+      "depart": "2027-01-31T20:00",
+      "arrivee": "2027-02-01T20:00",
+      "duree": "24 h",
       "navire": "Jean Nicoli",
       "compagnie": "corsica-linea",
       "source": "corsica-linea"
