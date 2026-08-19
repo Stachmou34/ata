@@ -148,6 +148,21 @@ def collecte():
     return departs
 
 
+def maj_sitemap(chemin, jour):
+    """Aligne le <lastmod> des pages Traversees sur la date de collecte."""
+    if not os.path.exists(chemin):
+        return
+    xml = io.open(chemin, encoding="utf-8").read()
+    avant = xml
+    for url in ("https://aman-frontiere.com/traversees.html",
+                "https://aman-frontiere.com/ar/traversees.html"):
+        xml = re.sub(r"(<loc>%s</loc>\s*<lastmod>)[^<]*(</lastmod>)" % re.escape(url),
+                     lambda m: m.group(1) + jour + m.group(2), xml)
+    if xml != avant:
+        io.open(chemin, "w", encoding="utf-8").write(xml)
+        print("  sitemap.xml : lastmod des pages Traversees -> %s" % jour)
+
+
 def main():
     racine = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     chemin = os.path.join(racine, "data", "traversees.json")
@@ -181,6 +196,7 @@ def main():
     with io.open(chemin, "w", encoding="utf-8") as f:
         f.write(json.dumps(data, ensure_ascii=False, indent=2) + u"\n")
     print("  %s mis a jour" % chemin)
+    maj_sitemap(os.path.join(racine, "sitemap.xml"), data["maj"])
 
 
 if __name__ == "__main__":
