@@ -470,3 +470,11 @@ body.no-scroll{overflow:hidden}
 .tt-wrap:focus-visible{outline:3px solid var(--navy-l);outline-offset:3px}
 .tt-more{text-align:center;margin:20px 0 0}
 .tt-more .btn{font-size:15.5px;padding:13px 26px}
+
+/* prix par jour */
+.duel-day{font-size:13px;font-weight:800;color:var(--navy);margin-top:3px}
+.duel-card.us .duel-day{color:var(--or-txt)}
+.price-line .dur small{display:block;font-size:12.5px;font-weight:600;color:var(--muted);margin-top:1px}
+.price-card.best .price-line .dur small{color:var(--or-txt)}
+.perday{text-align:center;font-size:16px;color:#fff;margin:0 0 12px}
+.perday b{color:var(--or-l)}
