@@ -8,10 +8,14 @@ compagnie elle-meme et autorisee par son robots.txt. On n'en garde que les
 traversees qui ARRIVENT a Marseille ou a Sete depuis l'Algerie ou la Tunisie :
 ce sont les seules qui concernent nos clients.
 
+Les colonnes sont reperees par leur en-tete, pas par leur position : la
+compagnie a deja reorganise son tableau une fois (juillet 2026) et cela suffit
+a casser un parseur qui compte les colonnes.
+
 Les autres compagnies (Algerie Ferries, GNV, CTN, Balearia) ne publient pas de
 grille exploitable automatiquement : leurs departs restent a saisir a la main
-dans data/traversees.json, ou via une autre source branchee sur 'apiDeparts'.
-Ce script ne touche jamais aux departs dont la source n'est pas la sienne.
+dans data/traversees.json. Ce script ne touche jamais aux departs dont la
+source n'est pas la sienne.
 
 Usage : python3 .github/scripts/maj-traversees.py [--dry-run]
 """
@@ -21,6 +25,7 @@ import json
 import os
 import re
 import sys
+import unicodedata
 import urllib.request
 from datetime import datetime
 
@@ -38,27 +43,37 @@ PORTS = {
 ARRIVEES = {"marseille", "sete"}          # on ne garde que les arrivees en France
 COMPAGNIE = {"SNCM": "corsica-linea"}
 
-MOIS = {"janv": 1, "févr": 2, "fevr": 2, "mars": 3, "avr": 4, "mai": 5, "juin": 6,
-        "juil": 7, "août": 8, "aout": 8, "sept": 9, "oct": 10, "nov": 11, "déc": 12, "dec": 12}
+# En-tetes acceptes pour chaque donnee dont on a besoin (accents et casse ignores)
+COLONNES = {
+    "depart":      ("date de depart",),
+    "arrivee":     ("date d'arrivee",),
+    "navire":      ("navire",),
+    "code_depart": ("code depart",),
+    "code_arrivee": ("code arrivee",),
+    "code_cie":    ("code compagnie",),
+}
+# format "19.08.26 a 08:30"
+MOMENT_RE = re.compile(r"(\d{2})\.(\d{2})\.(\d{2}).{0,4}?(\d{1,2}):(\d{2})")
 
-DATE_RE = re.compile(r"le\s+(\d{1,2})\s+([A-Za-zÀ-ÿ]+)\.?\s+(\d{4})\s+à\s+(\d{1,2}):(\d{2})")
+
+def sans_accent(s):
+    s = unicodedata.normalize("NFD", s)
+    return u"".join(c for c in s if unicodedata.category(c) != "Mn").lower().strip()
 
 
 def texte(html):
-    return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", html)).replace("&#039;", "'").strip()
+    html = re.sub(r"<[^>]+>", " ", html)
+    html = html.replace("&#039;", "'").replace("&#39;", "'").replace("&amp;", "&")
+    return re.sub(r"\s+", " ", html).strip()
 
 
 def parse_moment(s):
-    """'Marseille le 31 juil. 2026 à 11:00' -> datetime, ou None."""
-    m = DATE_RE.search(s)
+    m = MOMENT_RE.search(s)
     if not m:
         return None
-    jour, mois, annee, h, mn = m.groups()
-    num = MOIS.get(mois.lower().rstrip("."))
-    if not num:
-        return None
+    j, mo, a, h, mn = (int(x) for x in m.groups())
     try:
-        return datetime(int(annee), num, int(jour), int(h), int(mn))
+        return datetime(2000 + a, mo, j, h, mn)
     except ValueError:
         return None
 
@@ -66,9 +81,24 @@ def parse_moment(s):
 def duree(depart, arrivee):
     if not (depart and arrivee) or arrivee <= depart:
         return None
-    total = int((arrivee - depart).total_seconds() // 60)
-    h, mn = divmod(total, 60)
+    h, mn = divmod(int((arrivee - depart).total_seconds() // 60), 60)
     return u"%d h %02d" % (h, mn) if mn else u"%d h" % h
+
+
+def indices(entete_html):
+    """Associe chaque donnee attendue a son numero de colonne, d'apres l'en-tete."""
+    titres = [sans_accent(texte(x)) for x in re.findall(r"<th[^>]*>(.*?)</th>", entete_html, re.S)]
+    idx = {}
+    for cle, libelles in COLONNES.items():
+        for i, titre in enumerate(titres):
+            if titre in libelles:
+                idx[cle] = i
+                break
+    manquantes = [c for c in COLONNES if c not in idx]
+    if manquantes:
+        sys.exit(u"Colonnes introuvables dans l'en-tete : %s\nEn-tete lu : %s"
+                 % (u", ".join(manquantes), titres))
+    return idx
 
 
 def collecte():
@@ -81,19 +111,25 @@ def collecte():
         sys.exit("Tableau des horaires introuvable : la page a change de structure.")
 
     lignes = re.findall(r"<tr[^>]*>(.*?)</tr>", html[i:], re.S)
-    departs, ignorees = [], 0
+    if not lignes:
+        sys.exit("Tableau vide.")
+    idx = indices(lignes[0])
+    besoin = max(idx.values()) + 1
 
+    departs, sans_date = [], 0
     for ligne in lignes[1:]:
-        cells = [texte(c) for c in re.findall(r"<td[^>]*>(.*?)</td>", ligne, re.S)]
-        if len(cells) < 10:
+        c = [texte(x) for x in re.findall(r"<td[^>]*>(.*?)</td>", ligne, re.S)]
+        if len(c) < besoin:
             continue
-        de, vers = PORTS.get(cells[6]), PORTS.get(cells[7])
+        de = PORTS.get(c[idx["code_depart"]])
+        vers = PORTS.get(c[idx["code_arrivee"]])
         if not de or not vers or vers not in ARRIVEES or de in ARRIVEES:
             continue
 
-        d, a = parse_moment(cells[0]), parse_moment(cells[1])
+        d = parse_moment(c[idx["depart"]])
+        a = parse_moment(c[idx["arrivee"]])
         if not d:
-            ignorees += 1
+            sans_date += 1
             continue
 
         departs.append({
@@ -102,13 +138,13 @@ def collecte():
             "depart": d.strftime("%Y-%m-%dT%H:%M"),
             "arrivee": a.strftime("%Y-%m-%dT%H:%M") if a else None,
             "duree": duree(d, a),
-            "navire": cells[3] or None,
-            "compagnie": COMPAGNIE.get(cells[8], cells[8].lower()),
+            "navire": c[idx["navire"]] or None,
+            "compagnie": COMPAGNIE.get(c[idx["code_cie"]], c[idx["code_cie"]].lower()),
             "source": SOURCE,
         })
 
-    if ignorees:
-        print("  %d ligne(s) sans date exploitable, ignorees" % ignorees)
+    if sans_date:
+        print("  %d ligne(s) sans date exploitable, ignorees" % sans_date)
     return departs
 
 
@@ -123,17 +159,18 @@ def main():
 
     # on ne remplace que ce qui vient de cette source, le reste est preserve
     autres = [d for d in data.get("departs", []) if d.get("source") != SOURCE]
-    tous = sorted(autres + nouveaux, key=lambda d: (d.get("depart") or ""))
-
-    data["departs"] = tous
+    data["departs"] = sorted(autres + nouveaux, key=lambda d: (d.get("depart") or ""))
     data["maj"] = datetime.utcnow().strftime("%Y-%m-%d")
-    data["sources"] = {SOURCE: URL}
+    sources = data.get("sources") or {}
+    sources[SOURCE] = URL
+    data["sources"] = sources
 
-    print("  %d traversees depuis %s, %d conservees d'autres sources" %
-          (len(nouveaux), SOURCE, len(autres)))
+    print("  %d traversees depuis %s, %d conservees d'autres sources"
+          % (len(nouveaux), SOURCE, len(autres)))
     par_ligne = {}
     for d in nouveaux:
-        par_ligne[d["de"] + u" → " + d["vers"]] = par_ligne.get(d["de"] + u" → " + d["vers"], 0) + 1
+        k = d["de"] + u" -> " + d["vers"]
+        par_ligne[k] = par_ligne.get(k, 0) + 1
     for k in sorted(par_ligne):
         print("    %-24s %d" % (k, par_ligne[k]))
 
