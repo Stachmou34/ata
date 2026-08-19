@@ -21,6 +21,13 @@ jobs:
       - name: Récupérer le code
         uses: actions/checkout@v4
 
+      # Le tableau des traversees, l'annuaire des lignes et la flotte sont
+      # construits en JavaScript : un moteur de recherche qui n'execute pas le JS
+      # ne verrait qu'une page vide. On ecrit ce contenu dans le HTML au
+      # deploiement ; le JS reprend la main pour le filtrage.
+      - name: Pre-rendre la page Traversees
+        run: python3 .github/scripts/prerender-traversees.py
+
       # L'hebergeur ne compresse a la volee que le text/html : un CSS externe
       # part en 27 Ko non compresses et bloque le rendu. On l'integre donc dans
       # le <head> de chaque page au moment du deploiement : il beneficie du gzip
