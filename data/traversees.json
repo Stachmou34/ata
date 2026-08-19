@@ -1,6 +1,6 @@
 {
   "_lisezmoi": "Donnees des lignes ferry vers Marseille et Sete. Le tableau 'departs' est alimente automatiquement par .github/scripts/maj-traversees.py depuis la grille horaire officielle de Corsica Linea. Les departs des autres compagnies peuvent etre ajoutes a la main : mettez-leur un champ 'source' different de 'corsica-linea', le script ne les touchera pas. 'apiDeparts' permet en plus de brancher une source externe interrogee a l'affichage.",
-  "maj": "2026-08-18",
+  "maj": "2026-08-19",
   "ports": {
     "marseille": {
       "fr": "Marseille",
@@ -96,6 +96,7 @@
       "vers": "sete",
       "compagnies": [
         "algerie-ferries",
+        "corsica-linea",
         "gnv"
       ]
     },
@@ -262,26 +263,6 @@
   "apiDeparts": null,
   "departs": [
     {
-      "de": "tunis",
-      "vers": "marseille",
-      "depart": "2026-08-18T11:30",
-      "arrivee": "2026-08-19T10:30",
-      "duree": "23 h",
-      "navire": "Danielle Casanova",
-      "compagnie": "corsica-linea",
-      "source": "corsica-linea"
-    },
-    {
-      "de": "skikda",
-      "vers": "sete",
-      "depart": "2026-08-18T13:00",
-      "arrivee": "2026-08-19T14:00",
-      "duree": "25 h",
-      "navire": "Jean Nicoli",
-      "compagnie": "corsica-linea",
-      "source": "corsica-linea"
-    },
-    {
       "de": "alger",
       "vers": "marseille",
       "depart": "2026-08-19T10:00",
@@ -358,16 +339,6 @@
       "arrivee": "2026-08-26T10:30",
       "duree": "23 h",
       "navire": "Danielle Casanova",
-      "compagnie": "corsica-linea",
-      "source": "corsica-linea"
-    },
-    {
-      "de": "skikda",
-      "vers": "sete",
-      "depart": "2026-08-25T13:00",
-      "arrivee": "2026-08-26T14:00",
-      "duree": "25 h",
-      "navire": "Jean Nicoli",
       "compagnie": "corsica-linea",
       "source": "corsica-linea"
     },
@@ -452,16 +423,6 @@
       "source": "corsica-linea"
     },
     {
-      "de": "skikda",
-      "vers": "sete",
-      "depart": "2026-09-01T13:00",
-      "arrivee": "2026-09-02T14:00",
-      "duree": "25 h",
-      "navire": "Jean Nicoli",
-      "compagnie": "corsica-linea",
-      "source": "corsica-linea"
-    },
-    {
       "de": "alger",
       "vers": "marseille",
       "depart": "2026-09-02T10:00",
@@ -538,16 +499,6 @@
       "arrivee": "2026-09-09T10:30",
       "duree": "23 h",
       "navire": "Danielle Casanova",
-      "compagnie": "corsica-linea",
-      "source": "corsica-linea"
-    },
-    {
-      "de": "skikda",
-      "vers": "sete",
-      "depart": "2026-09-08T13:00",
-      "arrivee": "2026-09-09T14:00",
-      "duree": "25 h",
-      "navire": "Jean Nicoli",
       "compagnie": "corsica-linea",
       "source": "corsica-linea"
     },
