@@ -1,6 +1,6 @@
 {
   "_lisezmoi": "Donnees des lignes ferry vers Marseille et Sete. Le tableau 'departs' est alimente automatiquement par .github/scripts/maj-traversees.py depuis la grille horaire officielle de Corsica Linea. Les departs des autres compagnies peuvent etre ajoutes a la main : mettez-leur un champ 'source' different de 'corsica-linea', le script ne les touchera pas. 'apiDeparts' permet en plus de brancher une source externe interrogee a l'affichage.",
-  "maj": "2026-08-20",
+  "maj": "2026-08-21",
   "ports": {
     "marseille": {
       "fr": "Marseille",
@@ -262,26 +262,6 @@
   },
   "apiDeparts": null,
   "departs": [
-    {
-      "de": "tunis",
-      "vers": "marseille",
-      "depart": "2026-08-20T14:00",
-      "arrivee": "2026-08-21T13:30",
-      "duree": "23 h 30",
-      "navire": "Danielle Casanova",
-      "compagnie": "corsica-linea",
-      "source": "corsica-linea"
-    },
-    {
-      "de": "bejaia",
-      "vers": "sete",
-      "depart": "2026-08-20T17:00",
-      "arrivee": "2026-08-21T18:00",
-      "duree": "25 h",
-      "navire": "Jean Nicoli",
-      "compagnie": "corsica-linea",
-      "source": "corsica-linea"
-    },
     {
       "de": "alger",
       "vers": "marseille",
