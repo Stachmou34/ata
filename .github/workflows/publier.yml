@@ -1,0 +1,55 @@
+name: Publier sur l'hébergement
+
+# Étapes de publication, factorisées ici pour être appelées par plusieurs
+# workflows (déploiement sur push, et mise à jour quotidienne des horaires).
+# Ne se lance jamais seule : elle est appelée via "uses:".
+#
+# Secrets attendus (Settings → Secrets and variables → Actions) :
+#   FTP_SERVER    ex. 91.216.107.49
+#   FTP_USERNAME  ex. aman-2838522
+#   FTP_PASSWORD  le mot de passe FTP
+#   FTP_DIR       (optionnel) dossier cible, ex. ./public_html/  — défaut : ./
+
+on:
+  workflow_call:
+
+jobs:
+  publier:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      # Le tableau des traversées, l'annuaire des lignes et la flotte sont
+      # construits en JavaScript : un moteur de recherche qui n'exécute pas le JS
+      # ne verrait qu'une page vide. On écrit ce contenu dans le HTML au
+      # déploiement ; le JS reprend la main pour le filtrage.
+      - name: Pré-rendre la page Traversées
+        run: python3 .github/scripts/prerender-traversees.py
+
+      # L'hébergeur ne compresse à la volée que le text/html : un CSS externe
+      # part en 27 Ko non compressés et bloque le rendu. On l'intègre donc dans
+      # le <head> de chaque page au moment du déploiement : il bénéficie du gzip
+      # du HTML et la requête bloquante disparaît. La source reste
+      # assets/aman.css, jamais dupliquée dans le dépôt.
+      - name: Intégrer le CSS dans les pages
+        run: python3 .github/scripts/inline-css.py
+
+      - name: Envoyer les fichiers en FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ${{ secrets.FTP_DIR || './' }}
+          protocol: ftp
+          # Ne pas envoyer les fichiers de travail / documentation interne
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            .cpanel.yml
+            *.md
+            **/node_modules/**

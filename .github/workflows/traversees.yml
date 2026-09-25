@@ -1,8 +1,13 @@
 name: Mise à jour des horaires ferry
 
 # Rafraîchit data/traversees.json depuis les grilles horaires publiées par les
-# compagnies. Si le fichier change, le commit sur main déclenche le déploiement.
+# compagnies, puis publie le site si les horaires ont changé.
 # Lançable à la main : onglet Actions → ce workflow → "Run workflow".
+#
+# Pourquoi la publication est appelée ici : GitHub ne déclenche pas de workflow
+# sur un push fait par un workflow (garde-fou contre les boucles). Le push de la
+# mise à jour ne réveillait donc jamais "Déploiement FTP", et le site restait
+# figé sur d'anciens horaires. On enchaîne explicitement.
 
 on:
   schedule:
@@ -19,6 +24,8 @@ concurrency:
 jobs:
   maj:
     runs-on: ubuntu-latest
+    outputs:
+      change: ${{ steps.commit.outputs.change }}
     steps:
       - name: Récupérer le code
         uses: actions/checkout@v4
@@ -27,14 +34,23 @@ jobs:
         run: python3 .github/scripts/maj-traversees.py
 
       - name: Commiter si les horaires ont changé
+        id: commit
         run: |
-          if git diff --quiet -- data/traversees.json; then
+          if git diff --quiet -- data/traversees.json sitemap.xml; then
             echo "Aucun changement d'horaire."
+            echo "change=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           n=$(python3 -c "import json;print(len(json.load(open('data/traversees.json'))['departs']))")
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/traversees.json
+          git add data/traversees.json sitemap.xml
           git commit -m "Horaires ferry : mise à jour automatique ($n traversées)"
           git push
+          echo "change=true" >> "$GITHUB_OUTPUT"
+
+  publier:
+    needs: maj
+    if: needs.maj.outputs.change == 'true'
+    uses: ./.github/workflows/publier.yml
+    secrets: inherit
