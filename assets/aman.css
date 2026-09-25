@@ -478,3 +478,20 @@ body.no-scroll{overflow:hidden}
 .price-card.best .price-line .dur small{color:var(--or-txt)}
 .perday{text-align:center;font-size:16px;color:#fff;margin:0 0 12px}
 .perday b{color:var(--or-l)}
+
+/* ---------- pages editoriales (assurance frontiere par pays) ---------- */
+.wrap-txt{max-width:880px}
+.txt{color:#3b4a63;font-size:17px;line-height:1.7;margin:0 0 16px}
+.txt:last-child{margin-bottom:0}
+.txt strong{color:var(--navy)}
+.head-cta{margin:24px 0 0}
+.liste{list-style:none;margin:0 0 18px;padding:0;display:grid;gap:11px}
+.liste li{display:flex;align-items:flex-start;gap:12px;color:#3b4a63;font-size:16.5px;line-height:1.6}
+.liste li::before{content:"";flex:none;width:9px;height:9px;margin-top:9px;border-radius:50%;
+  background:linear-gradient(180deg,var(--or-l),var(--or))}
+.tt-prix th[scope="row"]{background:#fbf8f1;font-weight:700;color:var(--navy);white-space:nowrap;text-align:start;padding:14px 18px}
+.tt-prix td.p{font-weight:800;color:var(--or-txt);font-size:17px;white-space:nowrap}
+.page-head .head-cta .btn{font-size:16.5px}
+/* liens dans le corps de texte : identifiables autrement que par la couleur */
+.txt a{text-decoration:underline;text-underline-offset:3px;font-weight:600}
+.txt a:hover{color:var(--or)}
