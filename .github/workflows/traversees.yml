@@ -28,7 +28,7 @@ jobs:
       change: ${{ steps.commit.outputs.change }}
     steps:
       - name: Récupérer le code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Collecter les horaires
         run: python3 .github/scripts/maj-traversees.py
