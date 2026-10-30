@@ -19,6 +19,8 @@ import sys
 CSS_PATH = "assets/aman.css"
 PAGES = ["index.html", "ar/index.html", "traversees.html", "ar/traversees.html",
          "assurance-frontiere-algerie.html", "ar/assurance-frontiere-algerie.html",
+         "assurance-frontiere-tunisie.html", "ar/assurance-frontiere-tunisie.html",
+         "assurance-frontiere-maroc.html", "ar/assurance-frontiere-maroc.html",
          "mentions-legales.html", "erreur-404.html"]
 
 # <link rel="stylesheet" href="...aman.css?v=..." /> quel que soit le chemin relatif
